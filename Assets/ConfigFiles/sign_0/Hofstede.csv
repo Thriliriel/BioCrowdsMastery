@@ -1,0 +1,14 @@
+#####################################################
+#file structure:
+#each line represents the Hofstede values for a group
+#so, first line is for first group, second line for second group, and so on
+#
+#Example
+#
+#50;0;20;50;30 -> PDI; MAS; LTO; IND; IDV
+#
+#####################################################
+
+50;23;21;73;80
+50;83;34;81;80
+50;90;38;81;80
