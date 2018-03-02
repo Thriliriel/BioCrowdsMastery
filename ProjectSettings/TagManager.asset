@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cell
+  - Sign
+  - Goal
+  - AgentGroup
+  - Obstacle
+  - LookingFor
+  - Furnace
+  - Snowman
+  - Room
   layers:
   - Default
   - TransparentFX

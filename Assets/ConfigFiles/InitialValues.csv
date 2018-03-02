@@ -19,7 +19,7 @@ MeanAgentAngVar:ConfigFiles/sign_0/MeanAgentAngVar.csv
 SaveConfigFile:false
 
 #use Hofstede parameters?
-UseHofstede:true
+UseHofstede:false
 
 #use Durupinar parameters?
 UseDurupinar:false
@@ -31,7 +31,10 @@ UseFavaretto:false
 PaintHeatMap:false
 
 #use exploratory behavior?
-ExploratoryBehavior:false
+ExploratoryBehavior:true
+
+#use group behavior?
+GroupBehavior:true
 
 #group parameters (just used if not using cultural parameters)
 Cohesion:3

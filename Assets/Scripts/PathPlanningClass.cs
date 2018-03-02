@@ -180,7 +180,7 @@ public class PathPlanningClass {
             {
                 //find the cell
                 //GameObject neighbourCell = GameObject.Find("Cell" + i + "X" + j);
-                GameObject neighbourCell = CellController.GetCellByName("Cell" + i + "X" + j);
+                GameObject neighbourCell = CellController.GetCellByName("cell" + i + "-" + j);
 
                 //if it exists..
                 if (neighbourCell)

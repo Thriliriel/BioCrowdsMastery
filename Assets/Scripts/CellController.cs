@@ -14,6 +14,22 @@ public class CellController : MonoBehaviour {
     //paint heatMaps?
     public bool paintHeatMap;
 
+    //thermical confort variables
+    //air temperature (ta)
+    public float airTemperature;
+    //room it belongs
+    public GameObject room;
+    //agents who are inside it
+    public List<GameObject> agents;
+    //any source of heat
+    public GameObject heatSource;
+    //if cell is part of wall
+    public bool isWall;
+    //wall value (0 = wall, c = normal)
+    public float wallFilter;
+    //if cell is a door
+    public bool isDoor;
+
     //cell name
     public string cellName
     {
@@ -40,7 +56,7 @@ public class CellController : MonoBehaviour {
     }
 
     //structure to store all paths from this cell
-    private Dictionary<string, List<GameObject>> cellPath = new Dictionary<string, List<GameObject>>();
+    /*private SerializableDictionary<string, List<GameObject>> cellPath = new SerializableDictionary<string, List<GameObject>>();
     public void SetPath(string idName, List<GameObject> pathi)
     {
         cellPath[idName] = pathi;
@@ -56,15 +72,29 @@ public class CellController : MonoBehaviour {
             //Debug.LogWarning(idName + ": Cell not found!!!");
             return new List<GameObject>();
         }
-    }
+    }*/
 
     private void Awake()
     {
         agentsDensity = new List<GameObject>();
+
+        agents = new List<GameObject>();
+        // heat diffusivity(air diffusivity = 1.9 × 10 - 5)
+        if (!isWall)
+        {
+            wallFilter = 0.019f;
+        }
+    }
+
+    private void Start()
+    {
+        room = transform.parent.gameObject;
+        airTemperature = transform.parent.gameObject.GetComponent<RoomController>().airTemperature;
     }
 
     private void Update()
     {
+        //if heat map, use it
         if (paintHeatMap)
         {
             //update heatmap
@@ -88,14 +118,47 @@ public class CellController : MonoBehaviour {
             {
                 GetComponent<Renderer>().sharedMaterial = Resources.Load("DesertDensity") as Material;
             }
+        }//otherwise, use the thermal
+        else //if it is not wall
+        if (!isWall)
+        {
+            //ResetCell();
+
+            //update its material according its temperature
+            if (airTemperature < 10)
+            {
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Freezing") as Material;
+            }
+            else if (airTemperature >= 10 && airTemperature < 18)
+            {
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Cold") as Material;
+            }
+            else if (airTemperature >= 18 && airTemperature < 25)
+            {
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Normal") as Material;
+            }
+            else if (airTemperature >= 25 && airTemperature < 29)
+            {
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Hot") as Material;
+            }
+            else if (airTemperature >= 29)
+            {
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Hell") as Material;
+            }
         }
     }
 
     public void StartList()
     {
         myAuxins = new List<AuxinController>();
+        StartAgentList();
     }
-    
+
+    public void StartAgentList()
+    {
+        agents = new List<GameObject>();
+    }
+
     //add a new auxin on myAuxins
     public void AddAuxin(AuxinController auxin)
     {

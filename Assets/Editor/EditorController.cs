@@ -37,11 +37,12 @@ public class EditorController : Editor {
         }
         else
         {
-            (target as GameController).ClearScene();
+            //(target as GameController).ClearScene();
             //(target as GameController).DrawObstacles();
-            (target as GameController).DrawCells();
-            (target as GameController).PlaceAuxins();
+            //(target as GameController).DrawCells();
+            //(target as GameController).PlaceAuxins();
             //(target as GameController).DrawGoals();
+            //(target as GameController).CalculateAllPaths();
         }
     }
 

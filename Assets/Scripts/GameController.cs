@@ -95,6 +95,12 @@ public class GameController : MonoBehaviour
     public int qntFrames;
     //seconds taken
     public float secondsTaken;
+    //type of place
+    //example: restaurant, library, square..
+    public enum roomTypes
+    {
+        square, restaurant, theater, shop, corridor
+    }
 
     //default group values
     //default cohesion
@@ -120,11 +126,15 @@ public class GameController : MonoBehaviour
     public float meanAgentsAngVar;
     //max qnt of groups through the simulation
     public int maxQntGroups;
+    //store all cells
+    public GameObject[] allCells;
 
     //all agents
     private GameObject[] allAgents;
     //all Groups
     private GameObject[] allGroups;
+    //all rooms
+    private GameObject[] allRooms;
     //auxins density
     private float PORC_QTD_Marcacoes = 0.65f;
     //private float PORC_QTD_Marcacoes = 1f;
@@ -136,8 +146,6 @@ public class GameController : MonoBehaviour
     private int simulationIndex = 0;
     //stop all sims
     private bool gameOver = false;
-    //store all cells
-    private GameObject[] allCells;
     //terrain
     private Terrain terrain;
     //intention threshold
@@ -178,6 +186,9 @@ public class GameController : MonoBehaviour
     {
         //default useless value
         staticLookingFor = Vector3.zero;
+
+        //get rooms
+        allRooms = GameObject.FindGameObjectsWithTag("Room");
 
         meanAgentsSpeed = meanAgentsAngVar = maxQntGroups = groupsNameCounter = 0;
 
@@ -518,110 +529,114 @@ public class GameController : MonoBehaviour
                 GameObject goal = agentIController.go[0];
                 List<AuxinController> agentAuxins = agentIController.GetAuxins();
                 AgentGroupController agentGroupI = agentIController.group.GetComponent<AgentGroupController>();
-                    
-                threshold = agentGroupI.CohesionToHall(agentGroupI.hall.GetPersonalZone().y, agentGroupI.hall.GetSocialZone().y);
-                //Debug.Log(threshold);
-                //vector for each auxin
-                for (int j = 0; j < agentAuxins.Count; j++)
+
+                //just calculate the motion vector if agent is not marked as idle
+                if (!agentIController.isIdle)
                 {
-                    //add the distance vector between it and the agent
-                    agentIController.vetorDistRelacaoMarcacao.Add(agentAuxins[j].position - agentI.transform.position);
-
-                    //just draw the little spider legs xD
-                    if (agentAuxins[j].ignoreAuxin)
+                    threshold = agentGroupI.CohesionToHall(agentGroupI.hall.GetPersonalZone().y, agentGroupI.hall.GetSocialZone().y);
+                    //Debug.Log(threshold);
+                    //vector for each auxin
+                    for (int j = 0; j < agentAuxins.Count; j++)
                     {
-                        Debug.DrawLine(agentAuxins[j].position, agentI.transform.position, Color.black);
-                    }
-                    else
-                    {
-                        Debug.DrawLine(agentAuxins[j].position, agentI.transform.position);
-                    }
-                }
+                        //add the distance vector between it and the agent
+                        agentIController.vetorDistRelacaoMarcacao.Add(agentAuxins[j].position - agentI.transform.position);
 
-                //calculate the movement vector
-                agentIController.CalculateMotionVector();
-                //calculate speed vector
-                agentIController.CalculateSpeed();
-
-                //if group behavior, check splits
-                if (groupBehavior)
-                {
-                    //check if agent is too far away of the group, so we need to create a new group for him
-                    bool tooFarAway = true;
-
-                    //if size = 1, there are no other agents on the group. So, tooFarAway = false
-                    if (agentGroupI.agents.Count == 1)
-                    {
-                        tooFarAway = false;
-                    }//else, we check its distance with every other agent in the group
-                    else
-                    {
-                        //NEW: check the distance between the agent and the center of its group
-                        float distance = (Vector3.Distance(agentI.transform.position, agentIController.group.transform.position)) - (auxinRadius * 2); //- (2 * agentRadius)
-
-                        //if it is still inside the threshold distance, it is ok
-                        if (distance <= threshold)
+                        //just draw the little spider legs xD
+                        if (agentAuxins[j].ignoreAuxin)
                         {
-                            //reset the agent farAwayTimer
-                            agentIController.farAwayTimer = 0;
-                            tooFarAway = false;
-                        }//else, we need to update the counter and see if it is still inside the max timer
+                            Debug.DrawLine(agentAuxins[j].position, agentI.transform.position, Color.black);
+                        }
                         else
                         {
-                            tooFarAway = true;
-                            //Debug.Log(agentI.name + " with " + thisAgent.name + " and threshold " + threshold + " - Distance: " + distance);
+                            Debug.DrawLine(agentAuxins[j].position, agentI.transform.position);
                         }
                     }
 
-                    //now, if tooFarAway, need to create a new group for the agent
-                    if (tooFarAway)
-                    {
-                        //update timer
-                        agentIController.farAwayTimer++;
+                    //calculate the movement vector
+                    agentIController.CalculateMotionVector();
+                    //calculate speed vector
+                    agentIController.CalculateSpeed();
 
-                        //test the timer. Agent is just far away if the max timer is passed
-                        if (agentIController.farAwayTimer >= agentIController.maxFarAwayTimer)
-                        {
-                            SplitAgent(agentI);
-                        }
-                    }//else, he is still inside the group. Check interactions between them IF inside the cohesion value
-                    else
+                    //if group behavior, check splits
+                    if (groupBehavior)
                     {
-                        foreach (GameObject otherAgentInGroup in agentGroupI.agents)
+                        //check if agent is too far away of the group, so we need to create a new group for him
+                        bool tooFarAway = true;
+
+                        //if size = 1, there are no other agents on the group. So, tooFarAway = false
+                        if (agentGroupI.agents.Count == 1)
                         {
-                            if (agentI.name != otherAgentInGroup.name)
+                            tooFarAway = false;
+                        }//else, we check its distance with every other agent in the group
+                        else
+                        {
+                            //NEW: check the distance between the agent and the center of its group
+                            float distance = (Vector3.Distance(agentI.transform.position, agentIController.group.transform.position)) - (auxinRadius * 2); //- (2 * agentRadius)
+
+                            //if it is still inside the threshold distance, it is ok
+                            if (distance <= threshold)
                             {
-                                float distance = Vector3.Distance(agentI.transform.position, otherAgentInGroup.transform.position);
-                                if (distance < threshold)
+                                //reset the agent farAwayTimer
+                                agentIController.farAwayTimer = 0;
+                                tooFarAway = false;
+                            }//else, we need to update the counter and see if it is still inside the max timer
+                            else
+                            {
+                                tooFarAway = true;
+                                //Debug.Log(agentI.name + " with " + thisAgent.name + " and threshold " + threshold + " - Distance: " + distance);
+                            }
+                        }
+
+                        //now, if tooFarAway, need to create a new group for the agent
+                        if (tooFarAway)
+                        {
+                            //update timer
+                            agentIController.farAwayTimer++;
+
+                            //test the timer. Agent is just far away if the max timer is passed
+                            if (agentIController.farAwayTimer >= agentIController.maxFarAwayTimer)
+                            {
+                                SplitAgent(agentI);
+                            }
+                        }//else, he is still inside the group. Check interactions between them IF inside the cohesion value
+                        else
+                        {
+                            foreach (GameObject otherAgentInGroup in agentGroupI.agents)
+                            {
+                                if (agentI.name != otherAgentInGroup.name)
                                 {
-                                    agentIController.InteractionBetweenAgents(otherAgentInGroup, distance, agentGroupI.GetCohesion());
+                                    float distance = Vector3.Distance(agentI.transform.position, otherAgentInGroup.transform.position);
+                                    if (distance < threshold)
+                                    {
+                                        agentIController.InteractionBetweenAgents(otherAgentInGroup, distance, agentGroupI.GetCohesion());
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                //just to be sure
-                agentGroupI = agentIController.group.GetComponent<AgentGroupController>();
-                //Debug.Log(agentIController.group.name);
+                    //just to be sure
+                    agentGroupI = agentIController.group.GetComponent<AgentGroupController>();
+                    //Debug.Log(agentIController.group.name);
 
-                //now, we check if agent is stuck with another agent
-                //if so, change places
-                if (agentIController.speed.Equals(Vector3.zero))
-                {
-                    Collider[] lockHit = Physics.OverlapSphere(agentI.transform.position, agentRadius);
-                    foreach (Collider loki in lockHit)
+                    //now, we check if agent is stuck with another agent
+                    //if so, change places
+                    if (agentIController.speed.Equals(Vector3.zero))
                     {
-                        //if it is the Player tag (agent) and it is not the agent itself and he can change position (to avoid forever changing)
-                        if (loki.gameObject.tag == "Player" && loki.gameObject.name != agentI.gameObject.name && agentIController.changePosition)
+                        Collider[] lockHit = Physics.OverlapSphere(agentI.transform.position, agentRadius);
+                        foreach (Collider loki in lockHit)
                         {
-                            //the other agent will not change position in this frame
-                            loki.GetComponent<AgentController>().changePosition = false;
-                            Debug.Log(agentI.gameObject.name + " -- " + loki.gameObject.name);
-                            //exchange!!!
-                            Vector3 positionA = agentI.transform.position;
-                            agentI.transform.position = loki.gameObject.transform.position;
-                            loki.gameObject.transform.position = positionA;
+                            //if it is the Player tag (agent) and it is not the agent itself and he can change position (to avoid forever changing)
+                            if (loki.gameObject.tag == "Player" && loki.gameObject.name != agentI.gameObject.name && agentIController.changePosition)
+                            {
+                                //the other agent will not change position in this frame
+                                loki.GetComponent<AgentController>().changePosition = false;
+                                Debug.Log(agentI.gameObject.name + " -- " + loki.gameObject.name);
+                                //exchange!!!
+                                Vector3 positionA = agentI.transform.position;
+                                agentI.transform.position = loki.gameObject.transform.position;
+                                loki.gameObject.transform.position = positionA;
+                            }
                         }
                     }
                 }
@@ -642,96 +657,103 @@ public class GameController : MonoBehaviour
                 GameObject goal = agentIController.go[0];
                 List<AuxinController> agentAuxins = agentIController.GetAuxins();
                 AgentGroupController agentGroupI = agentIController.group.GetComponent<AgentGroupController>();
-                    
-                threshold = agentGroupI.CohesionToHall(agentGroupI.hall.GetPersonalZone().y, agentGroupI.hall.GetSocialZone().y);
 
-                //update mean speed
-                frameMeanAgentsSpeed += agentIController.speedModule;
-
-                //update angle
-                frameMeanAgentsAngVar += Vector3.Angle(agentIController.goal - agentI.transform.position, agentIController.GetM());
-
-                //walk
-                agentIController.Walk(fixedStep);
-
-                //write the Rodolfo exit file
-                agentIController.SaveAgentsExitFile(lastFrameCount);
-
-                //verify agent position, in relation to the goal.
-                //if the distance between them is less than 1 (arbitrary, maybe authors have a better solution), he arrived. Destroy it so
-                float dist = Vector3.Distance(goal.transform.position, agentI.transform.position);
-                if (dist < agentIController.agentRadius)
+                //just walk and stuff if agent is not marked as idle
+                if (!agentIController.isIdle)
                 {
-                    //if we are already at the last agent goal, he arrived
-                    //if he has 2 goals yet, but the second one is the Looking For, he arrived too
-                    if (agentIController.go.Count == 1 ||
-                        (agentIController.go.Count == 2 && agentIController.go[1].gameObject.tag == "LookingFor"))
-                    {
-                        //save on the file
-                        filesController.SaveAgentsGoalFile(agentI.name, goal.name, lastFrameCount);
-                        //destroy it
-                        agentGroupI.agents.Remove(agentI);
-                        Destroy(agentI);
-                    }//else, he must go to the next goal. Remove this actual goal and this intention
-                    else
-                    {
-                        //before we remove his actual go, we check if it is the looking for state.
-                        //if it is, we remove it, but add a new one, because he doesnt know where to go yet
-                        bool newLookingFor = false;
+                    threshold = agentGroupI.CohesionToHall(agentGroupI.hall.GetPersonalZone().y, agentGroupI.hall.GetSocialZone().y);
 
-                        if (agentIController.go[0].gameObject.tag == "LookingFor")
-                        {
-                            newLookingFor = true;
-                        }//else, it is a goal. Save on the file
-                        else
+                    //update mean speed
+                    frameMeanAgentsSpeed += agentIController.speedModule;
+
+                    //update angle
+                    frameMeanAgentsAngVar += Vector3.Angle(agentIController.goal - agentI.transform.position, agentIController.GetM());
+
+                    //walk
+                    agentIController.Walk(fixedStep);
+
+                    //write the Rodolfo exit file
+                    agentIController.SaveAgentsExitFile(lastFrameCount);
+
+                    //verify agent position, in relation to the goal.
+                    //if the distance between them is less than 1 (arbitrary, maybe authors have a better solution), he arrived. Destroy it so
+                    float dist = Vector3.Distance(goal.transform.position, agentI.transform.position);
+                    if (dist < agentIController.agentRadius)
+                    {
+                        //if we are already at the last agent goal, he arrived
+                        //if he has 2 goals yet, but the second one is the Looking For, he arrived too
+                        if (agentIController.go.Count == 1 ||
+                            (agentIController.go.Count == 2 && agentIController.go[1].gameObject.tag == "LookingFor"))
                         {
                             //save on the file
                             filesController.SaveAgentsGoalFile(agentI.name, goal.name, lastFrameCount);
-                        }
-
-                        //remove it from the lists, for each agent of this group
-                        foreach(GameObject agRemove in agentGroupI.agents)
+                            //destroy it
+                            agentGroupI.agents.Remove(agentI);
+                            Destroy(agentI);
+                        }//else, he must go to the next goal. Remove this actual goal and this intention
+                        else
                         {
-                            //just remove if it is not a LF state
-                            if (!newLookingFor)
+                            //before we remove his actual go, we check if it is the looking for state.
+                            //if it is, we remove it, but add a new one, because he doesnt know where to go yet
+                            bool newLookingFor = false;
+
+                            if (agentIController.go[0].gameObject.tag == "LookingFor")
                             {
-                                RemoveGoalFromList(agRemove.GetComponent<AgentController>());
+                                newLookingFor = true;
+                            }//else, it is a goal. Save on the file
+                            else
+                            {
+                                //save on the file
+                                filesController.SaveAgentsGoalFile(agentI.name, goal.name, lastFrameCount);
                             }
-                        }
 
-                        if (newLookingFor)
-                        {
-                            //change the Looking For state, with a random position
-                            GameObject lookingFor = GenerateLookingFor();
-
+                            //remove it from the lists, for each agent of this group
                             foreach (GameObject agRemove in agentGroupI.agents)
                             {
-                                //foreach goal of this agent
-                                foreach (GameObject thisLF in agRemove.GetComponent<AgentController>().go)
+                                //reset the agent path
+                                agRemove.GetComponent<AgentController>().pat.Clear();
+
+                                //just remove if it is not a LF state
+                                if (!newLookingFor)
                                 {
-                                    if(thisLF.tag == "LookingFor")
+                                    RemoveGoalFromList(agRemove.GetComponent<AgentController>());
+                                }
+                            }
+
+                            if (newLookingFor)
+                            {
+                                //change the Looking For state, with a random position
+                                GameObject lookingFor = GenerateLookingFor();
+
+                                foreach (GameObject agRemove in agentGroupI.agents)
+                                {
+                                    //foreach goal of this agent
+                                    foreach (GameObject thisLF in agRemove.GetComponent<AgentController>().go)
                                     {
-                                        thisLF.transform.position = lookingFor.transform.position;
+                                        if (thisLF.tag == "LookingFor")
+                                        {
+                                            thisLF.transform.position = lookingFor.transform.position;
+                                            break;
+                                        }
+                                    }
+
+                                    //since we have a new one, reorder
+                                    //agRemove.GetComponent<AgentController>().ReorderGoals();
+                                }
+
+                                //update in group too
+                                foreach (GameObject groupLF in agentGroupI.GetComponent<AgentGroupController>().go)
+                                {
+                                    if (groupLF.tag == "LookingFor")
+                                    {
+                                        groupLF.transform.position = lookingFor.transform.position;
                                         break;
                                     }
                                 }
 
-                                //since we have a new one, reorder
-                                //agRemove.GetComponent<AgentController>().ReorderGoals();
+                                //delete this temp LF
+                                Destroy(lookingFor);
                             }
-
-                            //update in group too
-                            foreach(GameObject groupLF in agentGroupI.GetComponent<AgentGroupController>().go)
-                            {
-                                if(groupLF.tag == "LookingFor")
-                                {
-                                    groupLF.transform.position = lookingFor.transform.position;
-                                    break;
-                                }
-                            }
-
-                            //delete this temp LF
-                            Destroy(lookingFor);
                         }
                     }
                 }
@@ -973,7 +995,7 @@ public class GameController : MonoBehaviour
     public void DrawCells()
     {
         //if it is not set yet
-        if (!terrain)
+        /*if (!terrain)
         {
             terrain = GameObject.Find("Terrain").GetComponent<Terrain>();
         }
@@ -1025,6 +1047,23 @@ public class GameController : MonoBehaviour
                 }
             }
         }
+        */
+
+        //get rooms
+        allRooms = GameObject.FindGameObjectsWithTag("Room");
+
+        //foreach room, instantiate the cells
+        foreach (GameObject room in allRooms)
+        {
+            room.GetComponent<RoomController>().StartLists();
+            room.GetComponent<RoomController>().CreateTermicCells();
+        }
+
+        //create room doors
+        foreach (GameObject room in allRooms)
+        {
+            room.GetComponent<RoomController>().CreateDoors();
+        }
 
         //get all cells in scene
         allCells = GameObject.FindGameObjectsWithTag("Cell");
@@ -1036,7 +1075,7 @@ public class GameController : MonoBehaviour
     public void PlaceAuxins()
     {
         //get all cells in scene
-        //allCells = GameObject.FindGameObjectsWithTag("Cell");
+        allCells = GameObject.FindGameObjectsWithTag("Cell");
 
         //lets set the qntAuxins for each cell according the density estimation
         float densityToQnt = PORC_QTD_Marcacoes;
@@ -1440,14 +1479,14 @@ public class GameController : MonoBehaviour
         GameObject[] goalsToClear = GameObject.FindGameObjectsWithTag("Goal");
         foreach(GameObject gtc in goalsToClear)
         {
-            DestroyImmediate(gtc);
+            //DestroyImmediate(gtc);
         }
 
         //clear signs
         GameObject[] signsToClear = GameObject.FindGameObjectsWithTag("Sign");
         foreach (GameObject stc in signsToClear)
         {
-            DestroyImmediate(stc);
+            //DestroyImmediate(stc);
         }
 
         //clear cells
@@ -1632,8 +1671,13 @@ public class GameController : MonoBehaviour
             //open the file
             theReader = new StreamReader(file.ToString(), System.Text.Encoding.Default);
             float sumDistances = 0;
+            float sumSpeeds = 0;
+            float sumAngVars = 0;
             string groupName = "";
             qntFrames = 0;
+            //qnt lines with info of the same frame
+            //order: distance, speed, angvar
+            int frameLine = 1;
 
             //store all values to calculate variance
             List<float> allDistances = new List<float>();
@@ -1654,10 +1698,33 @@ public class GameController : MonoBehaviour
                         else
                         {
                             string[] info = line.Split(';');
-                            qntFrames = System.Int32.Parse(info[0]);
-                            sumDistances += System.Convert.ToSingle(info[1]);
 
-                            allDistances.Add(System.Convert.ToSingle(info[1]));
+                            //frameLine = 1 -> distance
+                            if (frameLine == 1)
+                            {
+                                sumDistances += System.Convert.ToSingle(info[1]);
+
+                                allDistances.Add(System.Convert.ToSingle(info[1]));
+                            }//frameLine = 2 -> speed
+                            else if (frameLine == 2)
+                            {
+                                sumSpeeds += System.Convert.ToSingle(info[1]);
+                            }//frameLine = 3 -> angVar
+                            else if (frameLine == 3)
+                            {
+                                sumAngVars += System.Convert.ToSingle(info[1]);
+                            }
+
+                            //update frameline
+                            frameLine++;
+                            //if is higher than 3, reset
+                            if (frameLine > 3)
+                            {
+                                frameLine = 1;
+                            }
+
+                            //update qntFrames
+                            qntFrames = System.Int32.Parse(info[0]);
                         }
                     }
                 }
@@ -1674,7 +1741,11 @@ public class GameController : MonoBehaviour
             else
             {
                 float averageDistance = sumDistances / qntFrames;
+                float averageSpeeds = sumSpeeds / qntFrames;
+                float averageAngVars = sumAngVars / qntFrames;
                 Debug.Log(groupName + ": mean distance between agents = " + averageDistance);
+                Debug.Log(groupName + ": mean group speed = " + averageSpeeds);
+                Debug.Log(groupName + ": mean group ang var = " + averageAngVars);
 
                 //variance
                 variance = 0;
@@ -1696,8 +1767,11 @@ public class GameController : MonoBehaviour
     }
 
     //calculate all the possible paths from each cell
-    public void CalculateAllPaths()
+    /*public void CalculateAllPaths()
     {
+        //just to be sure
+        allCells = GameObject.FindGameObjectsWithTag("Cell");
+
         PathPlanningClass paths = new PathPlanningClass(allCells.Length * 10);
 
         for(int i = 0; i < allCells.Length; i++)
@@ -1728,7 +1802,18 @@ public class GameController : MonoBehaviour
                 }
             }
         }
-    }
+
+        //save a file with the paths
+        /*StreamWriter pathsFile = File.CreateText(Application.dataPath + "/" + allSimulations + "/Paths.txt");
+        foreach (GameObject cl in allCells)
+        {
+            string wrtFile = cl.name + ":";
+
+            
+            //Debug.Log(cl.name + ": " + (cl.GetComponent<CellController>().GetCellPathByName("cell15-15").Count));
+        }
+        pathsFile.Close();*
+    }*/
 
     //change group agent
     private void ChangeGroupAgent(GameObject agentToChange, GameObject newGroup)
@@ -1816,7 +1901,7 @@ public class GameController : MonoBehaviour
 
     //create groups and agents
     private void CreateGroupAgents(string cellName, int qntAgentsInGroup, List<GameObject> groupGoals, List<float> groupIntentions, 
-        int[] hofvalues, List<float[]> duruvalues, List<float[]> favavalues)
+        int[] hofvalues, List<float[]> duruvalues, List<float[]> favavalues, bool agentsIdle)
     {
         float x = 0, z = 0;
         GameObject[] agentsGroups = GameObject.FindGameObjectsWithTag("AgentGroup");
@@ -1944,6 +2029,8 @@ public class GameController : MonoBehaviour
                 newAgentController.SetCell(newAgentGroupController.cell);
                 //agent radius
                 newAgentController.agentRadius = agentRadius;
+                //is idle?
+                newAgentController.isIdle = agentsIdle;
 
                 newAgent.GetComponent<MeshRenderer>().material.color = newAgentController.GetColor();
 
@@ -2185,13 +2272,20 @@ public class GameController : MonoBehaviour
                         //find the cell informed
                         GameObject chosenCell = GameObject.Find(entries[0]);
 
+                        //are agents idle?
+                        bool areAgentsIdle = false;
+                        if(entries[1] == "true")
+                        {
+                            areAgentsIdle = true;
+                        }
+
                         List<GameObject> groupGoals = new List<GameObject>();
                         List<float> groupIntentions = new List<float>();
 
                         //set his goals
                         //first and second information in the file are just the coordinates, which i already have in config file
                         //go 2 in 2, since it is a pair between goal and intention to that goal
-                        for (int j = 1; j < entries.Length; j = j + 2)
+                        for (int j = 2; j < entries.Length; j = j + 2)
                         {
                             //there is an empty space on the end of the line, dont know why.
                             if (entries[j] == "") continue;
@@ -2211,22 +2305,22 @@ public class GameController : MonoBehaviour
                         if (useHofstede)
                         {
                             CreateGroupAgents(chosenCell.name, qntAgentsPerGroup, groupGoals, groupIntentions,
-                                groupHof[qntGroups], ooze, ooze);
+                                groupHof[qntGroups], ooze, ooze, areAgentsIdle);
                         }
                         else if (useDurupinar)
                         {
                             CreateGroupAgents(chosenCell.name, qntAgentsPerGroup, groupGoals, groupIntentions,
-                                new int[4] { 0, 0, 0, 0 }, groupDuru[qntGroups], ooze);
+                                new int[4] { 0, 0, 0, 0 }, groupDuru[qntGroups], ooze, areAgentsIdle);
                         }
                         else if (useFavaretto)
                         {
                             CreateGroupAgents(chosenCell.name, qntAgentsPerGroup, groupGoals, groupIntentions,
-                                new int[4] { 0, 0, 0, 0 }, ooze, groupFava[qntGroups]);
+                                new int[4] { 0, 0, 0, 0 }, ooze, groupFava[qntGroups], areAgentsIdle);
                         }
                         else
                         {
                             CreateGroupAgents(chosenCell.name, qntAgentsPerGroup, groupGoals, groupIntentions,
-                                new int[4] { 0, 0, 0, 0 }, ooze, ooze);
+                                new int[4] { 0, 0, 0, 0 }, ooze, ooze, areAgentsIdle);
                         }
 
                         //increment
@@ -2297,7 +2391,7 @@ public class GameController : MonoBehaviour
     }
 
     //check if there is Obstacles or something on a given position
-    private bool CheckObstacle(Vector3 checkPosition, string tag, float radius)
+    public bool CheckObstacle(Vector3 checkPosition, string tag, float radius)
     {
         Collider[] hitCollider = Physics.OverlapSphere(checkPosition, radius);
         bool returning = false;
@@ -2720,22 +2814,11 @@ public class GameController : MonoBehaviour
         GameObject lookingFor = new GameObject();
         lookingFor.name = "LookingFor";
         lookingFor.tag = "LookingFor";
-        bool foundPosition = false;
-        Vector3 LFPosition = Vector3.zero;
-        //while bool. Use this to check for possible obstacles.
-        while (!foundPosition)
-        {
-            foundPosition = true;
-            /*LFPosition = new Vector3(Random.Range(0f, terrain.terrainData.size.x),
-                0f, Random.Range(0f, terrain.terrainData.size.z));
-            foundPosition = !CheckObstacle(LFPosition, "Obstacle", 0.1f);*/
 
-            //find a cell for the new position
-            GameObject cl = allCells[Random.Range(0, allCells.Length)];
-            LFPosition = new Vector3(cl.transform.position.x - cellRadius, cl.transform.position.y, cl.transform.position.z - cellRadius);
-            foundPosition = !CheckObstacle(LFPosition, "Obstacle", 0.1f); 
-        }
-        lookingFor.transform.position = LFPosition;
+        //just generate a random cell for the LF
+        GameObject cl = allCells[Random.Range(0, allCells.Length)];
+        lookingFor.transform.position = cl.transform.position;
+
         return lookingFor;
     }
 
@@ -2963,6 +3046,16 @@ public class GameController : MonoBehaviour
                             else
                             {
                                 exploratoryBehavior = false;
+                            }
+                            break;
+                        case "GroupBehavior":
+                            if (entries[1] == "true")
+                            {
+                                groupBehavior = true;
+                            }
+                            else
+                            {
+                                groupBehavior = false;
                             }
                             break;
                     }
