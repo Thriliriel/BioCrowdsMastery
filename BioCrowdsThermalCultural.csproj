@@ -294,6 +294,7 @@
     <Compile Include="Assets\Scripts\HofstedeClass.cs" />
     <Compile Include="Assets\Scripts\NodeClass.cs" />
     <Compile Include="Assets\Scripts\PathPlanningClass.cs" />
+    <Compile Include="Assets\Scripts\PathPlanningDClass.cs" />
     <Compile Include="Assets\Scripts\RoomController.cs" />
     <Compile Include="Assets\Scripts\SerializableDictionary.cs" />
     <Compile Include="Assets\Scripts\SignController.cs" />

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-//Good tutorial at: http://www.policyalmanac.org/games/aStarTutorial.htm
-public class PathPlanningClass {
+public class PathPlanningDClass {
     //constructors
-    public PathPlanningClass(int newStopCondition)
+    public PathPlanningDClass(int newStopCondition)
     {
         //initialize
         nodesToCheck = new List<NodeClass>();
@@ -32,18 +31,18 @@ public class PathPlanningClass {
     private Vector3 terrainLimits;
 
     //find a path between two points
-    public List<GameObject> FindPath(GameObject cellOrigin, GameObject cellDestination)
+    public List<NodeClass> FindPath(GameObject cellOrigin, GameObject cellDestination)
     {
-        //add the origin cell to the open list
+        //add the destination cell to the open list
         NodeClass newNode = new NodeClass();
-        newNode.cell = cellOrigin;
+        newNode.cell = cellDestination;
         nodesToCheck.Add(newNode);
 
-        //set the origin node
-        originNode.cell = cellOrigin;
+        //set the origin node (D* is backwards, so invert it)
+        originNode.cell = cellDestination;
 
-        //set the destination node
-        destinationNode.cell = cellDestination;
+        //set the destination node (D* is backwards, so invert it)
+        destinationNode.cell = cellOrigin;
 
         //to control the stop condition
         int nrIt = 0;
@@ -78,7 +77,7 @@ public class PathPlanningClass {
         }
 
         //path
-        List<GameObject> path = new List<GameObject>();
+        /*List<GameObject> path = new List<GameObject>();
 
         //add the destination
         path.Add(destinationNode.cell);
@@ -95,17 +94,41 @@ public class PathPlanningClass {
                 //update node with the parent
                 nodi = nodi.parent;
             }
+        }*/
+        List<NodeClass> path = new List<NodeClass>();
+
+        //add the destination
+        //path.Add(destinationNode.cell);
+
+        //if found Path, make the reverse way to mount it
+        //else, path is empty. Agent tries to go directly towards it
+        if (foundPath)
+        {
+            NodeClass nodi = nodesChecked[nodesChecked.Count - 1];
+            while (nodi.parent != null)
+            {
+                //add to path
+                path.Add(nodi.parent);
+                //update node with the parent
+                nodi = nodi.parent;
+            }
+        }
+        else
+        {
+            NodeClass dc = new NodeClass();
+            dc.cell = destinationNode.cell;
+            path.Add(dc);
         }
 
         //revert it
-        path.Reverse();
+        //path.Reverse();
 
         //clear lists
         nodesChecked.Clear();
         nodesToCheck.Clear();
 
         //now the full path is ready, find only the corners
-        List<GameObject> cornerPath = new List<GameObject>();
+        /*List<GameObject> cornerPath = new List<GameObject>();
         for(int i = 1; i < path.Count - 1; i++)
         {
             //difference between next position and actual position
@@ -128,7 +151,7 @@ public class PathPlanningClass {
         if (!cornerPath.Contains(cellDestination))
         {
             cornerPath.Add(cellDestination);
-        }
+        }*/
 
         //return cornerPath;
         return path;
@@ -157,10 +180,10 @@ public class PathPlanningClass {
     {
         //find all neighbours cells
         float cellSize = cellRadius * 2;
-        float startX = (chosenNode.cell.transform.position.x - cellSize);
-        float startZ = (chosenNode.cell.transform.position.z - cellSize);
-        float endX = (chosenNode.cell.transform.position.x + cellSize);
-        float endZ = (chosenNode.cell.transform.position.z + cellSize);
+        float startX = Mathf.Round((chosenNode.cell.transform.position.x - cellSize) * 10) / 10.0f;
+        float startZ = Mathf.Round((chosenNode.cell.transform.position.z - cellSize) * 10) / 10.0f;
+        float endX = Mathf.Round((chosenNode.cell.transform.position.x + cellSize) * 10) / 10.0f;
+        float endZ = Mathf.Round((chosenNode.cell.transform.position.z + cellSize) * 10) / 10.0f;
 
         //see if it is in some border
         if (chosenNode.cell.transform.position.x == cellRadius)

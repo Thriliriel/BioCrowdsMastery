@@ -30,6 +30,16 @@ public class CellController : MonoBehaviour {
     //if cell is a door
     public bool isDoor;
 
+    //D* higher and lower cost, to use for tempareture and density
+    public bool higher, lower;
+
+    //game controller
+    private GameController gameController;
+    //textures
+    static private List<Material> loadedMaterials;
+    //old air temperature, to be able to notice change moment
+    public float oldAirTemperature;
+
     //cell name
     public string cellName
     {
@@ -84,12 +94,44 @@ public class CellController : MonoBehaviour {
         {
             wallFilter = 0.019f;
         }
+
+        higher = lower = false;
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
+        loadedMaterials = new List<Material>();
+
+        loadedMaterials.Add(Resources.Load("Materials/Freezing") as Material);
+        loadedMaterials.Add(Resources.Load("Materials/Cold") as Material);
+        loadedMaterials.Add(Resources.Load("Materials/Normal") as Material);
+        loadedMaterials.Add(Resources.Load("Materials/Hot") as Material);
+        loadedMaterials.Add(Resources.Load("Materials/Hell") as Material);
     }
 
     private void Start()
     {
         room = transform.parent.gameObject;
-        airTemperature = transform.parent.gameObject.GetComponent<RoomController>().airTemperature;
+        airTemperature = oldAirTemperature = transform.parent.gameObject.GetComponent<RoomController>().airTemperature;
+
+        if (airTemperature < 10)
+        {
+            GetComponent<Renderer>().sharedMaterial = loadedMaterials[0];
+        }
+        else if (airTemperature >= 10 && airTemperature < 18)
+        {
+            GetComponent<Renderer>().sharedMaterial = loadedMaterials[1];
+        }
+        else if (airTemperature >= 18 && airTemperature < 25)
+        {
+            GetComponent<Renderer>().sharedMaterial = loadedMaterials[2];
+        }
+        else if (airTemperature >= 25 && airTemperature < 29)
+        {
+            GetComponent<Renderer>().sharedMaterial = loadedMaterials[3];
+        }
+        else if (airTemperature >= 29)
+        {
+            GetComponent<Renderer>().sharedMaterial = loadedMaterials[4];
+        }
     }
 
     private void Update()
@@ -123,28 +165,40 @@ public class CellController : MonoBehaviour {
         if (!isWall)
         {
             //ResetCell();
-
+            
             //update its material according its temperature
-            if (airTemperature < 10)
+            if (airTemperature < 10.0f && oldAirTemperature >= 10.0f)
             {
-                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Freezing") as Material;
+                GetComponent<Renderer>().sharedMaterial = loadedMaterials[0];
             }
-            else if (airTemperature >= 10 && airTemperature < 18)
+            else if (airTemperature >= 10.0f && airTemperature < 18.0f && (oldAirTemperature < 10.0f || oldAirTemperature >= 18.0f))
             {
-                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Cold") as Material;
+                GetComponent<Renderer>().sharedMaterial = loadedMaterials[1];
             }
-            else if (airTemperature >= 18 && airTemperature < 25)
+            else if (airTemperature >= 18.0f && airTemperature < 25.0f && (oldAirTemperature < 18.0f || oldAirTemperature >= 25.0f))
             {
-                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Normal") as Material;
+                GetComponent<Renderer>().sharedMaterial = loadedMaterials[2];
             }
-            else if (airTemperature >= 25 && airTemperature < 29)
+            else if (airTemperature >= 25.0f && airTemperature < 29.0f && (oldAirTemperature < 25.0f || oldAirTemperature >= 29.0f))
             {
-                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Hot") as Material;
+                GetComponent<Renderer>().sharedMaterial = loadedMaterials[3];
+
+                //higher cost
+                higher = true;
             }
-            else if (airTemperature >= 29)
+            else if (airTemperature >= 29.0f && oldAirTemperature < 29.0f)
             {
-                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Hell") as Material;
+                GetComponent<Renderer>().sharedMaterial = loadedMaterials[4];
+
+                //higher cost
+                higher = true;
             }
+        }
+
+        //if cost if higher os lower, should update path to/from this cell
+        if(higher || lower)
+        {
+            gameController.CheckAlteredCell(gameObject);
         }
     }
 

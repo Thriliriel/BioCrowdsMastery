@@ -60,6 +60,13 @@ public class RoomController : MonoBehaviour {
         //do not calculate for corridor
         if (GameController.roomTypes.corridor != roomType)
         {
+            //update oldTemperature
+            foreach (GameObject ceu in termicCells)
+            {
+                //update old air temperature
+                ceu.GetComponent<CellController>().oldAirTemperature = ceu.GetComponent<CellController>().airTemperature;
+            }
+
             //pray... 0.016666 = 60FPS
             SolveGaussSeidel(fixedStep, 50, 0.0001f);
 
@@ -355,7 +362,8 @@ public class RoomController : MonoBehaviour {
                     }
 
                     error = Mathf.Max(error, Mathf.Abs(termicCells[indCell].GetComponent<CellController>().airTemperature - newvalue));
-
+                    
+                    //update actual air temperature
                     termicCells[indCell].GetComponent<CellController>().airTemperature = newvalue;
                 }
             }

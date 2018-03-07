@@ -165,6 +165,10 @@ public class GameController : MonoBehaviour
     //control the group names
     private int groupsNameCounter;
 
+    //testing D*
+    PathPlanningDClass dStar;
+    public List<NodeClass> pathD;
+
     //on destroy application, close the exit files
     void OnDestroy()
     {
@@ -453,6 +457,10 @@ public class GameController : MonoBehaviour
 
         //calculate paths
         //CalculateAllPaths();
+
+        //testing D*
+        dStar = new PathPlanningDClass(allCells.Length * 10);
+        pathD = new List<NodeClass>();
     }
 
     void Start()
@@ -466,11 +474,21 @@ public class GameController : MonoBehaviour
         //change timeScale (make things faster)
         //seems to not be so good, since it calculates just once for a great amount of time
         //Time.timeScale = 5f;
+
+        //testing D*
+        pathD = dStar.FindPath(allCells[0], allCells[100]);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //testing D*
+        //List<GameObject> pathD = dStar.FindPath(allCells[0], allCells[100]);
+        for (int i = 0; i < pathD.Count - 1; i++)
+        {
+            Debug.DrawLine(pathD[i].cell.transform.position, pathD[i + 1].cell.transform.position, Color.red);
+        }
+
         //if simulation should be running yet
         if (!gameOver)
         {
@@ -909,6 +927,106 @@ public class GameController : MonoBehaviour
 
                     //get a print (for the heatmap)
                     ScreenCapture.CaptureScreenshot(Application.dataPath + "/" + allSimulations + "/" + "HeatMap.png");
+                }
+            }
+        }
+    }
+
+    //check if the raised/lowered cell is present in any path
+    public void CheckAlteredCell(GameObject cellToCheck)
+    {
+        //need to check for each agent path. But for now, just check the tested path
+        //if has the cell, get the index
+        int nodeIndex = -1;
+        for(int i = 0; i < pathD.Count; i++)
+        {
+            if(pathD[i].cell.name == cellToCheck.name)
+            {
+                nodeIndex = i;
+                break;
+            }
+        }
+
+        //if found, check back and forward to find unchanged nodes
+        if(nodeIndex > -1)
+        {
+            NodeClass nodeBefore = new NodeClass();
+            NodeClass nodeAfter = new NodeClass();
+
+            if(nodeIndex > 0)
+            {
+                for(int i = nodeIndex - 1; i >= 0; i--)
+                {
+                    //if higher and lower are false, this one can be used
+                    if(!pathD[i].higher && !pathD[i].lower)
+                    {
+                        nodeBefore = pathD[i];
+                        break;
+                    }
+                }
+            }
+
+            if(nodeIndex < pathD.Count - 1)
+            {
+                for (int i = nodeIndex + 1; i < pathD.Count; i++)
+                {
+                    //if higher and lower are false, this one can be used
+                    if (!pathD[i].higher && !pathD[i].lower)
+                    {
+                        nodeAfter = pathD[i];
+                        break;
+                    }
+                }
+            }
+
+            //if found nodes
+            if (nodeBefore.cell != null && nodeAfter.cell != null)
+            {
+                //now, calculate the sub-path between nodeBefore and nodeAfter
+                List<NodeClass> subPath = dStar.FindPath(nodeBefore.cell, nodeAfter.cell);
+                bool substitute = false;
+                //index for subpath
+                int j = 0;
+
+                //now, recreate the path including the new subPath
+                List<NodeClass> newPathD = new List<NodeClass>();
+                for (int i = 0; i < pathD.Count; i++)
+                {
+                    if (substitute)
+                    {
+                        newPathD.Add(subPath[j]);
+                        i++; j++;
+                    }
+                    else
+                    {
+                        newPathD.Add(pathD[i]);
+                    }
+
+                    //if it is the node before, need to mark to use the subpath
+                    if(pathD[i].cell.name == nodeBefore.cell.name)
+                    {
+                        substitute = true;
+                    }//else, if it is the node after, need to unmark to use subpath
+                    else if (pathD[i].cell.name == nodeAfter.cell.name)
+                    {
+                        //since the last does not come back from path planning, add it
+                        newPathD.Add(pathD[i]);
+
+                        substitute = false;
+                    }
+                }
+
+                //update the path
+                pathD = newPathD;
+
+                //reset the higher and lower values
+                foreach (NodeClass nd in pathD)
+                {
+                    nd.higher = false;
+                    nd.lower = false;
+
+                    nd.cell.GetComponent<CellController>().higher = false;
+                    nd.cell.GetComponent<CellController>().lower = false;
                 }
             }
         }

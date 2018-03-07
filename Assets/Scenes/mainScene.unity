@@ -9207,7 +9207,7 @@ MonoBehaviour:
   agentsDensity: []
   qntAgents: 0
   paintHeatMap: 0
-  airTemperature: 20
+  airTemperature: 30
   room: {fileID: 873944594}
   agents: []
   heatSource: {fileID: 0}
@@ -32520,7 +32520,7 @@ MonoBehaviour:
   agentsDensity: []
   qntAgents: 0
   paintHeatMap: 0
-  airTemperature: 20
+  airTemperature: 30
   room: {fileID: 873944594}
   agents: []
   heatSource: {fileID: 0}
@@ -46361,7 +46361,7 @@ MonoBehaviour:
   agentsDensity: []
   qntAgents: 0
   paintHeatMap: 0
-  airTemperature: 20
+  airTemperature: 30
   room: {fileID: 873944594}
   agents: []
   heatSource: {fileID: 0}
@@ -56858,7 +56858,7 @@ MonoBehaviour:
   sign: {fileID: 1000011549557636, guid: c97bd2f73ade8f941a32afbe7ccc6647, type: 2}
   goalP: {fileID: 1000011549557636, guid: c5c7701bb6d5d2245b8b72fd177b368e, type: 2}
   agentGroup: {fileID: 1418439418203916, guid: e79b67982012d484cbea1b80225d02ec, type: 2}
-  qntAgents: 5
+  qntAgents: 0
   qntSigns: 4
   qntGoals: 4
   auxinRadius: 0.1
@@ -91711,7 +91711,7 @@ MonoBehaviour:
   agentsDensity: []
   qntAgents: 0
   paintHeatMap: 0
-  airTemperature: 20
+  airTemperature: 30
   room: {fileID: 873944594}
   agents: []
   heatSource: {fileID: 0}

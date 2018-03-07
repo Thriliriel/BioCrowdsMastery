@@ -255,6 +255,9 @@ public class AgentController : MonoBehaviour {
             cell.GetComponent<CellController>().agentsDensity.Add(gameObject);
         }
 
+        //check the sub goal distance, to change sub-goal
+        CheckSubGoalDistance();
+
         //START THERMAL STUFF
         //update the metabolism according agent speed
         metabolism = 1.6f + (Vector3.Dot(speed, speed));
@@ -937,6 +940,21 @@ public class AgentController : MonoBehaviour {
 
                 //update my auxins
                 myAuxins.Add(cellAuxins[i]);
+            }
+        }
+    }
+
+    //check the sub-goal distance
+    private void CheckSubGoalDistance()
+    {
+        //just check if the sub-goal is not the actual goal
+        if(goal != go[0].transform.position)
+        {
+            float distanceSubGoal = Vector3.Distance(transform.position, goal);
+            if(distanceSubGoal < agentRadius)
+            {
+                pat.RemoveAt(0);
+                goal = new Vector3(pat[0].transform.position.x, 0f, pat[0].transform.position.z);
             }
         }
     }
