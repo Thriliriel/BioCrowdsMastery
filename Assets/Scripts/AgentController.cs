@@ -73,8 +73,13 @@ public class AgentController : MonoBehaviour {
     //sort out a side
     private bool biggerThanZero;
     //path planning
-    private PathPlanningClass paths;
-    public List<GameObject> pat;
+    public PathPlanningDClass paths;
+    //corner path
+    public List<NodeClass> cornerPath;
+    //full path
+    public List<NodeClass> fullPath;
+    //original path
+    public List<NodeClass> originalPath;
 
     //START THERMAL STUFF
     //thermical confort variables
@@ -180,8 +185,10 @@ public class AgentController : MonoBehaviour {
         //get all signs, on the environment
         allSigns = GameObject.FindGameObjectsWithTag("Sign");
 
-        paths = new PathPlanningClass(gameController.allCells.Length * 10);
-        pat = new List<GameObject>();
+        paths = new PathPlanningDClass(gameController.allCells.Length * 10);
+        cornerPath = new List<NodeClass>();
+        fullPath = new List<NodeClass>();
+        originalPath = new List<NodeClass>();
     }
 
     void Update() {
@@ -204,13 +211,18 @@ public class AgentController : MonoBehaviour {
             }
 
             //if pat is zeroed, calculate it
-            if(pat.Count == 0)
+            if(cornerPath.Count == 0)
             {
                 //path planning
-                pat = paths.FindPath(cell, go[0]);
-                if (pat.Count > 0)
+                List<List<NodeClass>> newPath = paths.FindPath(cell, go[0]);
+
+                cornerPath = newPath[0];
+                fullPath = newPath[1];
+                originalPath = newPath[1];
+
+                if (cornerPath.Count > 0)
                 {
-                    goal = new Vector3(pat[0].transform.position.x, 0f, pat[0].transform.position.z);
+                    goal = new Vector3(cornerPath[0].cell.transform.position.x, 0f, cornerPath[0].cell.transform.position.z);
                 }
             }
 
@@ -236,12 +248,12 @@ public class AgentController : MonoBehaviour {
             {
                 Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
             }*/
-            if (pat.Count > 0)
+            if (cornerPath.Count > 0)
             {
-                Debug.DrawLine(transform.position, pat[0].transform.position, Color.red);
-                for (int i = 0; i < pat.Count - 1; i++)
+                Debug.DrawLine(transform.position, cornerPath[0].cell.transform.position, Color.red);
+                for (int i = 0; i < cornerPath.Count - 1; i++)
                 {
-                    Debug.DrawLine(pat[i].transform.position, pat[i + 1].transform.position, Color.red);
+                    Debug.DrawLine(cornerPath[i].cell.transform.position, cornerPath[i + 1].cell.transform.position, Color.red);
                 }
             }
 
@@ -644,7 +656,7 @@ public class AgentController : MonoBehaviour {
         if (changed)
         {
             //reset path list
-            pat.Clear();
+            cornerPath.Clear();
         }
     }
 
@@ -951,10 +963,17 @@ public class AgentController : MonoBehaviour {
         if(goal != go[0].transform.position)
         {
             float distanceSubGoal = Vector3.Distance(transform.position, goal);
-            if(distanceSubGoal < agentRadius)
+            if(distanceSubGoal < agentRadius && cornerPath.Count > 1)
             {
-                pat.RemoveAt(0);
-                goal = new Vector3(pat[0].transform.position.x, 0f, pat[0].transform.position.z);
+                cornerPath.RemoveAt(0);
+                goal = new Vector3(cornerPath[0].cell.transform.position.x, 0f, cornerPath[0].cell.transform.position.z);
+            }
+
+            //same to remove from the full path
+            distanceSubGoal = Vector3.Distance(transform.position, fullPath[0].cell.transform.position);
+            if (distanceSubGoal < agentRadius && fullPath.Count > 1)
+            {
+                fullPath.RemoveAt(0);
             }
         }
     }

@@ -520,6 +520,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &3191903
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -934,6 +937,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &7172307
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1348,6 +1354,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &7487264
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1762,6 +1771,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &11112379
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2176,6 +2188,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &20883952
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2590,6 +2605,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &42226162
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3004,6 +3022,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &44585040
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3418,6 +3439,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &67050562
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3832,6 +3856,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &76413679
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4246,6 +4273,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &93725641
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4660,6 +4690,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &94014471
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5074,6 +5107,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &98659139
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5488,6 +5524,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &99501307
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5902,6 +5941,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &109473229
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6316,6 +6358,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &111344159
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6730,6 +6775,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &147898953
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7144,6 +7192,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &162158855
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7558,6 +7609,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &164617651
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7972,6 +8026,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &164877948
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8386,6 +8443,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &173396287
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8800,6 +8860,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &185514440
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9214,6 +9277,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &211615594
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9628,6 +9694,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &220564999
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10042,6 +10111,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &228330843
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10456,6 +10528,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &251985042
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10898,6 +10973,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &297623553
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11312,6 +11390,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &298224974
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11726,6 +11807,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &305399998
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12168,6 +12252,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &316808062
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12582,6 +12669,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &330505988
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12996,6 +13086,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &332731770
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13410,6 +13503,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &348955730
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13824,6 +13920,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &359015537
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -14238,6 +14337,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &362155221
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -14652,6 +14754,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &371319996
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15066,6 +15171,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &379647111
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15565,6 +15673,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &452220034
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15979,6 +16090,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &467023236
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16393,6 +16507,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &470140762
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16807,6 +16924,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &471672063
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17221,6 +17341,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &481839546
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17635,6 +17758,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &521545401
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18049,6 +18175,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &535561846
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18528,6 +18657,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &546694684
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18942,6 +19074,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &569887486
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19356,6 +19491,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &599558411
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19770,6 +19908,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &624806844
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20184,6 +20325,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &628544773
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20598,6 +20742,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &635234807
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21012,6 +21159,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &639211330
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21426,6 +21576,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &651209243
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21840,6 +21993,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &663078245
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22428,6 +22584,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &694637837
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22842,6 +23001,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &696348592
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -23256,6 +23418,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &705648838
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -23670,6 +23835,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &706901489
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24084,6 +24252,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &729670471
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24498,6 +24669,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &732905621
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24912,6 +25086,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &736489687
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25326,6 +25503,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &737358240
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25740,6 +25920,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &739610242
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -26154,6 +26337,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &747378470
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -26568,6 +26754,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &748244204
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -26982,6 +27171,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &754095348
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27396,6 +27588,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &758087246
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27810,6 +28005,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &803171812
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28224,6 +28422,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &810263252
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28638,6 +28839,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &818671263
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -29084,6 +29288,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &845946671
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -29498,6 +29705,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &858502419
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -29912,6 +30122,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &860948975
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -30326,6 +30539,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &866472336
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -31285,6 +31501,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &874471544
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -31699,6 +31918,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &879200273
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32113,6 +32335,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &889339014
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32527,6 +32752,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &901358229
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32941,6 +33169,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &901446567
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -33355,6 +33586,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &917865789
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -33769,6 +34003,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &919682063
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -34183,6 +34420,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &921417330
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -34597,6 +34837,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &922404107
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -35011,6 +35254,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &928589270
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -35425,6 +35671,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &973498620
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -35839,6 +36088,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &978086212
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -36253,6 +36505,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &978378654
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -36667,6 +36922,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &980245826
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -37081,6 +37339,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1023279931
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -37495,6 +37756,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1030170095
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -37909,6 +38173,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1034737562
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -38323,6 +38590,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1039998702
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -38737,6 +39007,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1041582446
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -39151,6 +39424,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1045024682
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -39565,6 +39841,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1053458552
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -40064,6 +40343,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1068675405
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -40478,6 +40760,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1069034892
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -40892,6 +41177,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1071973019
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41306,6 +41594,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1077760454
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41720,6 +42011,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1081286042
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42134,6 +42428,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1084608774
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42642,6 +42939,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1101551171
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43056,6 +43356,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1108381390
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43470,6 +43773,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1111023052
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43884,6 +44190,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1112686137
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -44298,6 +44607,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1123534547
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -44712,6 +45024,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1124493770
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -45126,6 +45441,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1130013862
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -45540,6 +45858,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1134641533
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -45954,6 +46275,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1154819793
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -46368,6 +46692,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1155113745
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -46782,6 +47109,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1192645290
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47196,6 +47526,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1203693184
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47610,6 +47943,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1206058892
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -48024,6 +48360,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1216351587
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -48438,6 +48777,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1226366665
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -48852,6 +49194,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1228849227
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -49350,6 +49695,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1244879764
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -49764,6 +50112,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1249602105
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -50178,6 +50529,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1259014179
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -50592,6 +50946,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1261327887
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -51006,6 +51363,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1265331970
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -51420,6 +51780,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1266490550
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -51834,6 +52197,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1275661382
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -52248,6 +52614,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1279665615
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -52662,6 +53031,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1297344092
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -53076,6 +53448,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1300221025
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -53490,6 +53865,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1312636124
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -53904,6 +54282,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1327447141
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -54318,6 +54699,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1328865980
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -54732,6 +55116,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1333839530
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -55146,6 +55533,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1334971483
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -55560,6 +55950,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1337353157
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -55974,6 +56367,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1342193353
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -56388,6 +56784,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1345822326
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -56802,6 +57201,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1348855938
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -56858,7 +57260,7 @@ MonoBehaviour:
   sign: {fileID: 1000011549557636, guid: c97bd2f73ade8f941a32afbe7ccc6647, type: 2}
   goalP: {fileID: 1000011549557636, guid: c5c7701bb6d5d2245b8b72fd177b368e, type: 2}
   agentGroup: {fileID: 1418439418203916, guid: e79b67982012d484cbea1b80225d02ec, type: 2}
-  qntAgents: 0
+  qntAgents: 5
   qntSigns: 4
   qntGoals: 4
   auxinRadius: 0.1
@@ -57310,6 +57712,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1374453583
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -57724,6 +58129,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1376882588
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -58138,6 +58546,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1379764565
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -58637,6 +59048,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1393193292
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -59136,6 +59550,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1395955778
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -59579,6 +59996,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1408783917
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -59993,6 +60413,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1436614520
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -60407,6 +60830,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1452995884
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -60821,6 +61247,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1465717560
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61235,6 +61664,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1473642615
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61649,6 +62081,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1479066895
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -62063,6 +62498,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1484084448
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -62477,6 +62915,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1507832816
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -62891,6 +63332,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1512459877
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -63305,6 +63749,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1518002016
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -63719,6 +64166,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1531484406
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -64133,6 +64583,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1548241387
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -64547,6 +65000,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1561481220
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -64961,6 +65417,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1563399467
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -65375,6 +65834,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1575151620
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -65789,6 +66251,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1578496147
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -66203,6 +66668,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1588923539
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -66617,6 +67085,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1588934935
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -67031,6 +67502,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1593740859
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -67519,6 +67993,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1607007726
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -67933,6 +68410,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1618026688
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -68347,6 +68827,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1621174822
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -68761,6 +69244,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1621198675
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -69175,6 +69661,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1653565366
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -69589,6 +70078,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1666304284
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -70003,6 +70495,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1675705114
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -70417,6 +70912,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1675904289
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -70831,6 +71329,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1690399001
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -71245,6 +71746,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1693302481
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -71659,6 +72163,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1698150900
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -72073,6 +72580,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1700669789
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -72487,6 +72997,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1705843169
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -72972,6 +73485,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1714515274
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -73386,6 +73902,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1714990786
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -73800,6 +74319,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1728243028
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -74214,6 +74736,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1732158117
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -74628,6 +75153,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1741660983
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -75042,6 +75570,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1742338785
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -75456,6 +75987,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1759419512
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -75870,6 +76404,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1763439298
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -76284,6 +76821,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1770227376
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -76698,6 +77238,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1773506671
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -77112,6 +77655,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1787666259
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -77526,6 +78072,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1798374199
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -77940,6 +78489,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1799018363
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -78354,6 +78906,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1807090415
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -78768,6 +79323,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1819000030
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -79182,6 +79740,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1821375259
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -79596,6 +80157,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1835971274
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -80010,6 +80574,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1838678842
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -80424,6 +80991,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1839231666
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -80838,6 +81408,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1842704414
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81252,6 +81825,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1845885991
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81666,6 +82242,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1848061693
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -82080,6 +82659,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1850758122
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -82494,6 +83076,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1852711018
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -82908,6 +83493,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1880870629
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -83322,6 +83910,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1882753913
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -83736,6 +84327,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1889189577
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84150,6 +84744,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1890218539
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84564,6 +85161,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1898456705
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84978,6 +85578,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1922441051
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -85392,6 +85995,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1935486181
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -85806,6 +86412,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1946502165
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -86220,6 +86829,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1951576787
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -86750,6 +87362,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1962119163
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -87164,6 +87779,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1975357961
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -87578,6 +88196,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1980945855
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -87992,6 +88613,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1987025546
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -88406,6 +89030,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &1991017306
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -88820,6 +89447,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2007934122
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -89234,6 +89864,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2015789183
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -89648,6 +90281,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2021313567
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -90062,6 +90698,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2028102147
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -90476,6 +91115,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2032735898
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -90890,6 +91532,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2042483582
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -91304,6 +91949,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2071499290
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -91718,6 +92366,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2074270722
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92132,6 +92783,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2085625783
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92546,6 +93200,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2092076903
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92960,6 +93617,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2096128200
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -93458,6 +94118,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2109515141
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -93872,6 +94535,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2113622656
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -94286,6 +94952,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2116276759
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -94762,6 +95431,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2122988243
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -95176,6 +95848,9 @@ MonoBehaviour:
   isWall: 0
   wallFilter: 0
   isDoor: 0
+  higher: 0
+  lower: 0
+  oldAirTemperature: 0
 --- !u!33 &2143109679
 MeshFilter:
   m_ObjectHideFlags: 0

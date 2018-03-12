@@ -170,21 +170,54 @@ public class CellController : MonoBehaviour {
             if (airTemperature < 10.0f && oldAirTemperature >= 10.0f)
             {
                 GetComponent<Renderer>().sharedMaterial = loadedMaterials[0];
+
+                //higher cost
+                higher = true;
+                lower = false;
             }
             else if (airTemperature >= 10.0f && airTemperature < 18.0f && (oldAirTemperature < 10.0f || oldAirTemperature >= 18.0f))
             {
                 GetComponent<Renderer>().sharedMaterial = loadedMaterials[1];
+
+                //if old temperature was higher, higher cost
+                if (oldAirTemperature >= 18.0f)
+                {
+                    //higher cost
+                    higher = true;
+                    lower = false;
+                }//else, if old temperature was lower, lower cost
+                else if (oldAirTemperature < 10.0f)
+                {
+                    //higher cost
+                    higher = false;
+                    lower = true;
+                }
             }
             else if (airTemperature >= 18.0f && airTemperature < 25.0f && (oldAirTemperature < 18.0f || oldAirTemperature >= 25.0f))
             {
                 GetComponent<Renderer>().sharedMaterial = loadedMaterials[2];
+
+                //lower cost
+                higher = false;
+                lower = true;
             }
             else if (airTemperature >= 25.0f && airTemperature < 29.0f && (oldAirTemperature < 25.0f || oldAirTemperature >= 29.0f))
             {
                 GetComponent<Renderer>().sharedMaterial = loadedMaterials[3];
 
-                //higher cost
-                higher = true;
+                //if old temperature was lower, higher cost
+                if(oldAirTemperature < 25.0f)
+                {
+                    //higher cost
+                    higher = true;
+                    lower = false;
+                }//else, if old temperature was higher, lower cost
+                else if (oldAirTemperature >= 29.0f)
+                {
+                    //higher cost
+                    higher = false;
+                    lower = true;
+                }
             }
             else if (airTemperature >= 29.0f && oldAirTemperature < 29.0f)
             {
@@ -192,13 +225,18 @@ public class CellController : MonoBehaviour {
 
                 //higher cost
                 higher = true;
+                lower = false;
             }
         }
 
-        //if cost if higher os lower, should update path to/from this cell
-        if(higher || lower)
+        //if cost if higher or lower, should update path to/from this cell
+        if(higher)
         {
-            gameController.CheckAlteredCell(gameObject);
+            gameController.CheckRaisedCell(gameObject);
+        }
+        else if (lower)
+        {
+            gameController.CheckLoweredCell(gameObject);
         }
     }
 

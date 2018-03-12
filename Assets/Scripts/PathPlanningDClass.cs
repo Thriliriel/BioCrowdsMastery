@@ -31,7 +31,7 @@ public class PathPlanningDClass {
     private Vector3 terrainLimits;
 
     //find a path between two points
-    public List<NodeClass> FindPath(GameObject cellOrigin, GameObject cellDestination)
+    public List<List<NodeClass>> FindPath(GameObject cellOrigin, GameObject cellDestination)
     {
         //add the destination cell to the open list
         NodeClass newNode = new NodeClass();
@@ -128,33 +128,43 @@ public class PathPlanningDClass {
         nodesToCheck.Clear();
 
         //now the full path is ready, find only the corners
-        /*List<GameObject> cornerPath = new List<GameObject>();
-        for(int i = 1; i < path.Count - 1; i++)
+        List<NodeClass> cornerPath = FindPathCorners(path);
+
+        //return a list of the corner paths (index 0) and the full path (index 1)
+        //return cornerPath;
+        //return path;
+        return new List<List<NodeClass>> { cornerPath, path };
+    }
+
+    //find path corners
+    public List<NodeClass> FindPathCorners(List<NodeClass> path)
+    {
+        List<NodeClass> cornerPath = new List<NodeClass>();
+        for (int i = 1; i < path.Count - 1; i++)
         {
             //difference between next position and actual position
-            float nextDiffX = path[i + 1].transform.position.x - path[i].transform.position.x;
-            float nextDiffZ = path[i + 1].transform.position.z - path[i].transform.position.z;
+            float nextDiffX = path[i + 1].cell.transform.position.x - path[i].cell.transform.position.x;
+            float nextDiffZ = path[i + 1].cell.transform.position.z - path[i].cell.transform.position.z;
 
             //difference between actual position and last position
-            float lastDiffX = path[i].transform.position.x - path[i - 1].transform.position.x;
-            float lastDiffZ = path[i].transform.position.z - path[i - 1].transform.position.z;
+            float lastDiffX = path[i].cell.transform.position.x - path[i - 1].cell.transform.position.x;
+            float lastDiffZ = path[i].cell.transform.position.z - path[i - 1].cell.transform.position.z;
 
             //if the difference just calculated is equal than the difference between actual position and last position, it is following a straight line. So, no need for corner
             //otherwise, add it
-            if(nextDiffX != lastDiffX || nextDiffZ != lastDiffZ)
+            if (nextDiffX != lastDiffX || nextDiffZ != lastDiffZ)
             {
                 cornerPath.Add(path[i]);
             }
         }
 
         //if goal is not already in the list, add it
-        if (!cornerPath.Contains(cellDestination))
+        if (!cornerPath.Contains(path[path.Count - 1]))
         {
-            cornerPath.Add(cellDestination);
-        }*/
+            cornerPath.Add(path[path.Count - 1]);
+        }
 
-        //return cornerPath;
-        return path;
+        return cornerPath;
     }
 
     //reorder the nodes to check list, placing the lowest f at first

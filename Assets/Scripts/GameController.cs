@@ -166,8 +166,8 @@ public class GameController : MonoBehaviour
     private int groupsNameCounter;
 
     //testing D*
-    PathPlanningDClass dStar;
-    public List<NodeClass> pathD;
+    //PathPlanningDClass dStar;
+    //public List<NodeClass> pathD;
 
     //on destroy application, close the exit files
     void OnDestroy()
@@ -459,8 +459,8 @@ public class GameController : MonoBehaviour
         //CalculateAllPaths();
 
         //testing D*
-        dStar = new PathPlanningDClass(allCells.Length * 10);
-        pathD = new List<NodeClass>();
+        //dStar = new PathPlanningDClass(allCells.Length * 10);
+        //pathD = new List<NodeClass>();
     }
 
     void Start()
@@ -476,7 +476,7 @@ public class GameController : MonoBehaviour
         //Time.timeScale = 5f;
 
         //testing D*
-        pathD = dStar.FindPath(allCells[0], allCells[100]);
+        //pathD = dStar.FindPath(allCells[0], allCells[100]);
     }
 
     // Update is called once per frame
@@ -484,10 +484,10 @@ public class GameController : MonoBehaviour
     {
         //testing D*
         //List<GameObject> pathD = dStar.FindPath(allCells[0], allCells[100]);
-        for (int i = 0; i < pathD.Count - 1; i++)
+        /*for (int i = 0; i < pathD.Count - 1; i++)
         {
             Debug.DrawLine(pathD[i].cell.transform.position, pathD[i + 1].cell.transform.position, Color.red);
-        }
+        }*/
 
         //if simulation should be running yet
         if (!gameOver)
@@ -729,7 +729,7 @@ public class GameController : MonoBehaviour
                             foreach (GameObject agRemove in agentGroupI.agents)
                             {
                                 //reset the agent path
-                                agRemove.GetComponent<AgentController>().pat.Clear();
+                                agRemove.GetComponent<AgentController>().cornerPath.Clear();
 
                                 //just remove if it is not a LF state
                                 if (!newLookingFor)
@@ -932,101 +932,244 @@ public class GameController : MonoBehaviour
         }
     }
 
-    //check if the raised/lowered cell is present in any path
-    public void CheckAlteredCell(GameObject cellToCheck)
+    //check if the raised cell is present in any path
+    public void CheckRaisedCell(GameObject cellToCheck)
     {
-        //need to check for each agent path. But for now, just check the tested path
-        //if has the cell, get the index
-        int nodeIndex = -1;
-        for(int i = 0; i < pathD.Count; i++)
+        //update, just to be sure
+        allAgents = GameObject.FindGameObjectsWithTag("Player");
+
+        //for each agent
+        foreach(GameObject ag in allAgents)
         {
-            if(pathD[i].cell.name == cellToCheck.name)
+            //agent controller
+            AgentController ac = ag.GetComponent<AgentController>();
+
+            //if has the cell, get the index
+            int nodeIndex = -1;
+            for (int i = 0; i < ac.fullPath.Count; i++)
             {
-                nodeIndex = i;
-                break;
+                if (ac.fullPath[i].cell.name == cellToCheck.name)
+                {
+                    nodeIndex = i;
+                    break;
+                }
+            }
+
+            //if found, check back and forward to find unchanged nodes
+            if (nodeIndex > -1)
+            {
+                NodeClass nodeBefore = new NodeClass();
+                NodeClass nodeAfter = new NodeClass();
+
+                if (nodeIndex > 0)
+                {
+                    for (int i = nodeIndex - 1; i >= 0; i--)
+                    {
+                        if (ac.fullPath[i].cell.name != "LookingFor")
+                        {
+                            //if higher is false, this one can be used
+                            if (!ac.fullPath[i].cell.GetComponent<CellController>().higher)
+                            {
+                                nodeBefore = ac.fullPath[i];
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (nodeIndex < ac.fullPath.Count - 1)
+                {
+                    for (int i = nodeIndex + 1; i < ac.fullPath.Count; i++)
+                    {
+                        //if higher is false, this one can be used
+                        if (ac.fullPath[i].cell.name != "LookingFor")
+                        {
+                            if (!ac.fullPath[i].cell.GetComponent<CellController>().higher)
+                            {
+                                nodeAfter = ac.fullPath[i];
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                //if found nodes
+                if (nodeBefore.cell != null && nodeAfter.cell != null)
+                {
+                    //now, calculate the sub-path between nodeBefore and nodeAfter
+                    List<List<NodeClass>> subPath = ac.paths.FindPath(nodeBefore.cell, nodeAfter.cell);
+                    bool substitute = false;
+                    //index for subpath
+                    int j = 0;
+
+                    //now, recreate the path including the new subPath
+                    List<NodeClass> newPathD = new List<NodeClass>();
+                    for (int i = 0; i < ac.fullPath.Count; i++)
+                    {
+                        if (substitute && j < subPath[1].Count)
+                        {
+                            newPathD.Add(subPath[1][j]);
+                            i++; j++;
+                        }
+                        else
+                        {
+                            newPathD.Add(ac.fullPath[i]);
+                        }
+
+                        //if it is the node before, need to mark to use the subpath
+                        if (ac.fullPath[i].cell.name == nodeBefore.cell.name)
+                        {
+                            substitute = true;
+                        }//else, if it is the node after, need to unmark to use subpath
+                        else if (ac.fullPath[i].cell.name == nodeAfter.cell.name)
+                        {
+                            //since the last does not come back from path planning, add it
+                            newPathD.Add(ac.fullPath[i]);
+
+                            substitute = false;
+                        }
+                    }
+
+                    //update the path
+                    ac.fullPath = newPathD;
+
+                    //reset the higher and lower values
+                    foreach (NodeClass nd in ac.fullPath)
+                    {
+                        if (nd.cell.name != "LookingFor")
+                        {
+                            nd.cell.GetComponent<CellController>().higher = false;
+                            nd.cell.GetComponent<CellController>().lower = false;
+                        }
+                    }
+
+                    //update path corners
+                    ac.cornerPath = ac.paths.FindPathCorners(ac.fullPath);
+
+                    //update agent goal
+                    ac.goal = ac.cornerPath[0].cell.transform.position;
+                }
             }
         }
+    }
 
-        //if found, check back and forward to find unchanged nodes
-        if(nodeIndex > -1)
+    //check if the lowered cell is present in any original path
+    public void CheckLoweredCell(GameObject cellToCheck)
+    {
+        //update, just to be sure
+        allAgents = GameObject.FindGameObjectsWithTag("Player");
+
+        //for each agent
+        foreach (GameObject ag in allAgents)
         {
-            NodeClass nodeBefore = new NodeClass();
-            NodeClass nodeAfter = new NodeClass();
+            //agent controller
+            AgentController ac = ag.GetComponent<AgentController>();
 
-            if(nodeIndex > 0)
+            //if has the cell, get the index
+            //the test should be against the original path, since the agent actual path may be different already
+            int nodeIndex = -1;
+            for (int i = 0; i < ac.originalPath.Count; i++)
             {
-                for(int i = nodeIndex - 1; i >= 0; i--)
+                if (ac.originalPath[i].cell.name == cellToCheck.name)
                 {
-                    //if higher and lower are false, this one can be used
-                    if(!pathD[i].higher && !pathD[i].lower)
-                    {
-                        nodeBefore = pathD[i];
-                        break;
-                    }
+                    nodeIndex = i;
+                    break;
                 }
             }
 
-            if(nodeIndex < pathD.Count - 1)
+            //if found, check back and forward to find unchanged nodes
+            if (nodeIndex > -1)
             {
-                for (int i = nodeIndex + 1; i < pathD.Count; i++)
+                NodeClass nodeBefore = new NodeClass();
+                NodeClass nodeAfter = new NodeClass();
+
+                if (nodeIndex > 0)
                 {
-                    //if higher and lower are false, this one can be used
-                    if (!pathD[i].higher && !pathD[i].lower)
+                    for (int i = nodeIndex - 1; i >= 0; i--)
                     {
-                        nodeAfter = pathD[i];
-                        break;
-                    }
-                }
-            }
-
-            //if found nodes
-            if (nodeBefore.cell != null && nodeAfter.cell != null)
-            {
-                //now, calculate the sub-path between nodeBefore and nodeAfter
-                List<NodeClass> subPath = dStar.FindPath(nodeBefore.cell, nodeAfter.cell);
-                bool substitute = false;
-                //index for subpath
-                int j = 0;
-
-                //now, recreate the path including the new subPath
-                List<NodeClass> newPathD = new List<NodeClass>();
-                for (int i = 0; i < pathD.Count; i++)
-                {
-                    if (substitute)
-                    {
-                        newPathD.Add(subPath[j]);
-                        i++; j++;
-                    }
-                    else
-                    {
-                        newPathD.Add(pathD[i]);
-                    }
-
-                    //if it is the node before, need to mark to use the subpath
-                    if(pathD[i].cell.name == nodeBefore.cell.name)
-                    {
-                        substitute = true;
-                    }//else, if it is the node after, need to unmark to use subpath
-                    else if (pathD[i].cell.name == nodeAfter.cell.name)
-                    {
-                        //since the last does not come back from path planning, add it
-                        newPathD.Add(pathD[i]);
-
-                        substitute = false;
+                        if (ac.originalPath[i].cell.name != "LookingFor")
+                        {
+                            //if lower is false, this one can be used
+                            if (!ac.originalPath[i].cell.GetComponent<CellController>().lower)
+                            {
+                                nodeBefore = ac.originalPath[i];
+                                break;
+                            }
+                        }
                     }
                 }
 
-                //update the path
-                pathD = newPathD;
-
-                //reset the higher and lower values
-                foreach (NodeClass nd in pathD)
+                if (nodeIndex < ac.originalPath.Count - 1)
                 {
-                    nd.higher = false;
-                    nd.lower = false;
+                    for (int i = nodeIndex + 1; i < ac.originalPath.Count; i++)
+                    {
+                        //if lower is false, this one can be used
+                        if (ac.originalPath[i].cell.name != "LookingFor")
+                        {
+                            if (!ac.originalPath[i].cell.GetComponent<CellController>().lower)
+                            {
+                                nodeAfter = ac.originalPath[i];
+                                break;
+                            }
+                        }
+                    }
+                }
 
-                    nd.cell.GetComponent<CellController>().higher = false;
-                    nd.cell.GetComponent<CellController>().lower = false;
+                //if found nodes
+                if (nodeBefore.cell != null && nodeAfter.cell != null)
+                {
+                    //now, calculate the sub-path between nodeBefore and nodeAfter
+                    List<List<NodeClass>> subPath = ac.paths.FindPath(nodeBefore.cell, nodeAfter.cell);
+                    bool substitute = false;
+                    //index for subpath
+                    int j = 0;
+
+                    //now, recreate the path including the new subPath
+                    List<NodeClass> newPathD = new List<NodeClass>();
+                    for (int i = 0; i < ac.originalPath.Count; i++)
+                    {
+                        if (substitute && j < subPath[1].Count)
+                        {
+                            newPathD.Add(subPath[1][j]);
+                            i++; j++;
+                        }
+                        else
+                        {
+                            newPathD.Add(ac.originalPath[i]);
+                        }
+
+                        //if it is the node before, need to mark to use the subpath
+                        if (ac.originalPath[i].cell.name == nodeBefore.cell.name)
+                        {
+                            substitute = true;
+                        }//else, if it is the node after, need to unmark to use subpath
+                        else if (ac.originalPath[i].cell.name == nodeAfter.cell.name)
+                        {
+                            //since the last does not come back from path planning, add it
+                            newPathD.Add(ac.originalPath[i]);
+
+                            substitute = false;
+                        }
+                    }
+
+                    //update the path
+                    ac.fullPath = newPathD;
+
+                    //reset the higher and lower values
+                    foreach (NodeClass nd in ac.fullPath)
+                    {
+                        if (nd.cell.name != "LookingFor")
+                        {
+                            nd.cell.GetComponent<CellController>().higher = false;
+                            nd.cell.GetComponent<CellController>().lower = false;
+                        }
+                    }
+
+                    //update path corners
+                    ac.cornerPath = ac.paths.FindPathCorners(ac.fullPath);
+
+                    //update agent goal
+                    ac.goal = ac.cornerPath[0].cell.transform.position;
                 }
             }
         }
