@@ -161,8 +161,8 @@ public class CellController : MonoBehaviour {
                 GetComponent<Renderer>().sharedMaterial = Resources.Load("DesertDensity") as Material;
             }
         }//otherwise, use the thermal
-        else //if it is not wall
-        if (!isWall)
+        else //if it is not wall and using thermal comfort
+        if (!isWall && gameController.thermalComfort)
         {
             //ResetCell();
             

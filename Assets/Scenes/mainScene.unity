@@ -57260,14 +57260,14 @@ MonoBehaviour:
   sign: {fileID: 1000011549557636, guid: c97bd2f73ade8f941a32afbe7ccc6647, type: 2}
   goalP: {fileID: 1000011549557636, guid: c5c7701bb6d5d2245b8b72fd177b368e, type: 2}
   agentGroup: {fileID: 1418439418203916, guid: e79b67982012d484cbea1b80225d02ec, type: 2}
-  qntAgents: 5
+  qntAgents: 1
   qntSigns: 4
   qntGoals: 4
   auxinRadius: 0.1
   saveConfigFile: 0
   loadConfigFile: 0
   allSimulations: ConfigFiles
-  masterFilename: ConfigFiles/InitialValues.csv
+  masterFilename: ConfigFiles/InitialValues.txt
   configFilename: ConfigFiles/Config.csv
   obstaclesFilename: ConfigFiles/Obstacles.csv
   scheduleFilename: ConfigFiles/sign_0/Agents.csv
@@ -57284,14 +57284,16 @@ MonoBehaviour:
   canvasText: {fileID: 1599235859}
   lastFrameCount: 0
   obstacleDisplacement: 0
-  qntGroups: 1
+  qntGroups: 0
   useHofstede: 0
   useDurupinar: 0
   useFavaretto: 0
   paintHeatMap: 0
-  exploratoryBehavior: 1
+  exploratoryBehavior: 0
   evacuationBehavior: 0
   groupBehavior: 0
+  thermalComfort: 0
+  densityComfort: 0
   qntFrames: 0
   secondsTaken: 0
   defaultCohesion: 3

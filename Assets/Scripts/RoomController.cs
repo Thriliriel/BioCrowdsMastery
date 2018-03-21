@@ -30,6 +30,9 @@ public class RoomController : MonoBehaviour {
     //room size
     public Vector2 roomSize;
 
+    //game controller
+    private GameController gameController;
+
     // Use this for initialization
     void Awake () {
         /*airTemperature = 25;
@@ -40,6 +43,7 @@ public class RoomController : MonoBehaviour {
         //isInternal = false;
 
         fixedStep = GameObject.Find("GameController").GetComponent<GameController>().fixedStep;
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
 	}
 
     void Start()
@@ -57,34 +61,56 @@ public class RoomController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        //do not calculate for corridor
-        if (GameController.roomTypes.corridor != roomType)
+        //just calculate if thermal comfort is active
+        if (gameController.thermalComfort)
         {
-            //update oldTemperature
-            foreach (GameObject ceu in termicCells)
+            //do not calculate for corridor
+            if (GameController.roomTypes.corridor != roomType)
             {
-                //update old air temperature
-                ceu.GetComponent<CellController>().oldAirTemperature = ceu.GetComponent<CellController>().airTemperature;
+                //update oldTemperature
+                foreach (GameObject ceu in termicCells)
+                {
+                    //update old air temperature
+                    ceu.GetComponent<CellController>().oldAirTemperature = ceu.GetComponent<CellController>().airTemperature;
+                }
+
+                //pray... 0.016666 = 60FPS
+                SolveGaussSeidel(fixedStep, 50, 0.0001f);
+
+                //room temperature is a mean temperature of all termic cells
+                float temp = 0;
+                int qntAgents = 0;
+                foreach (GameObject ceu in termicCells)
+                {
+                    temp += ceu.GetComponent<CellController>().airTemperature;
+
+                    //add the qnt agents
+                    qntAgents += ceu.GetComponent<CellController>().agents.Count;
+                }
+                airTemperature = temp / termicCells.Count;
+                environmentRadTemp = airTemperature;
+
+                //density is an average of qnt of agents / qnt of cells
+                density = (float)qntAgents / (float)termicCells.Count;
             }
+        }
 
-            //pray... 0.016666 = 60FPS
-            SolveGaussSeidel(fixedStep, 50, 0.0001f);
-
-            //room temperature is a mean temperature of all termic cells
-            float temp = 0;
-            int qntAgents = 0;
-            foreach (GameObject ceu in termicCells)
+        //just calculate if density comfort is active
+        if (gameController.densityComfort)
+        {
+            //do not calculate for corridor
+            if (GameController.roomTypes.corridor != roomType)
             {
-                temp += ceu.GetComponent<CellController>().airTemperature;
+                int qntAgents = 0;
+                foreach (GameObject ceu in termicCells)
+                {
+                    //add the qnt agents
+                    qntAgents += ceu.GetComponent<CellController>().agents.Count;
+                }
 
-                //add the qnt agents
-                qntAgents += ceu.GetComponent<CellController>().agents.Count;
+                //density is an average of qnt of agents / qnt of cells
+                density = (float)qntAgents / (float)termicCells.Count;
             }
-            airTemperature = temp / termicCells.Count;
-            environmentRadTemp = airTemperature;
-
-            //density is an average of qnt of agents / qnt of cells
-            density = (float)qntAgents / (float)termicCells.Count;
         }
     }
 

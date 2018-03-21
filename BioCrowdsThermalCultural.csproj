@@ -292,6 +292,7 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\HallClass.cs" />
     <Compile Include="Assets\Scripts\HofstedeClass.cs" />
+    <Compile Include="Assets\Scripts\MenuClass.cs" />
     <Compile Include="Assets\Scripts\NodeClass.cs" />
     <Compile Include="Assets\Scripts\PathPlanningClass.cs" />
     <Compile Include="Assets\Scripts\PathPlanningDClass.cs" />
@@ -301,6 +302,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ConfigFiles\FrameCount.txt" />
+    <None Include="Assets\ConfigFiles\InitialValues.txt" />
     <None Include="Assets\ConfigFiles\Paths.txt" />
     <None Include="Assets\ConfigFiles\SimulationIterator.txt" />
     <None Include="Assets\RodolfoFile.txt" />

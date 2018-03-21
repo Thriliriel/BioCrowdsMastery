@@ -270,176 +270,179 @@ public class AgentController : MonoBehaviour {
         //check the sub goal distance, to change sub-goal
         CheckSubGoalDistance();
 
-        //START THERMAL STUFF
-        //update the metabolism according agent speed
-        metabolism = 1.6f + (Vector3.Dot(speed, speed));
-
-        //calculate the agent radiant transfer
-        CalculateTr1();
-
-        //calculate the agent PMV
-        CalculatePMV();
-        //Debug.Log(pmv);
-
-        //calculate the density PPD
-        CalculateDensityPPD();
-
-        //calculate the total PPD (thermal and density)
-        CalculateTotalPPD();
-
-        //update its material according its pmv
-        if (pmv < -2)
+        if (gameController.thermalComfort)
         {
-            GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Freezing") as Material;
-        }
-        else if (pmv >= -2 && pmv < -0.5f)
-        {
-            GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Cold") as Material;
-        }
-        else if (pmv >= -0.5f && pmv <= 0.5f)
-        {
-            GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Normal") as Material;
-        }
-        else if (pmv > 0.5f && pmv < 2)
-        {
-            GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Hot") as Material;
-        }
-        else if (pmv >= 2)
-        {
-            GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Hell") as Material;
-        }
+            //START THERMAL STUFF
+            //update the metabolism according agent speed
+            metabolism = 1.6f + (Vector3.Dot(speed, speed));
 
-        /*
-        //for ppdBias = 1: if PMV is lower than -0.5 or higher than 0.5, agent is uncomfortable
-        //for ppdBias = 0: if ppdD is above 0, agent is uncomfortable
-        //for 0 < ppdBias < 1, any can be true
-        if ((ppdBias == 1 && (pmv < -0.5f || pmv > 0.5f)) || (ppdBias == 0 && ppdD > 0) ||
-            ((0 < ppdBias && ppdBias < 1) && ((pmv < -0.5f || pmv > 0.5f) || ppdD > 0)))
-        {
-            //update the notCozytimer
-            notCozyTimer += Time.deltaTime;
+            //calculate the agent radiant transfer
+            CalculateTr1();
 
-            //if it surpassed the timeGap, choose a better place
-            if (notCozyTimer > usedTimeGap)
+            //calculate the agent PMV
+            CalculatePMV();
+            //Debug.Log(pmv);
+
+            //calculate the density PPD
+            CalculateDensityPPD();
+
+            //calculate the total PPD (thermal and density)
+            CalculateTotalPPD();
+
+            //update its material according its pmv
+            if (pmv < -2)
             {
-                //try to remove/put clothes
-                float randum = Random.Range(0.1f, 99);
-                if (randum < ppd)
-                {
-                    //just if it is not moving towards a goal already
-                    if (speed == Vector3.zero && group.GetComponent<AgentGroupController>().go.Count == 0)
-                    {
-                        //to control if clothes were put/removed
-                        bool changedClothes = false;
-                        //if it is too hot, try to remove clothes
-                        if (pmv > 0.5f)
-                        {
-                            if (clothingIns == 2)
-                            {
-                                clothingIns = 1.2f;
-                                changedClothes = true;
-                            }
-                            else if (clothingIns == 1.2f)
-                            {
-                                clothingIns = 0.4f;
-                                changedClothes = true;
-                            }
-                        }//otherwise, if it is too cold, try to put some clothes on
-                        else if (pmv < -0.5f)
-                        {
-                            if (clothingIns == 0.4f)
-                            {
-                                clothingIns = 1.2f;
-                                changedClothes = true;
-                            }
-                            else if (clothingIns == 1.2f)
-                            {
-                                clothingIns = 2;
-                                changedClothes = true;
-                            }
-                        }
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Freezing") as Material;
+            }
+            else if (pmv >= -2 && pmv < -0.5f)
+            {
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Cold") as Material;
+            }
+            else if (pmv >= -0.5f && pmv <= 0.5f)
+            {
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Normal") as Material;
+            }
+            else if (pmv > 0.5f && pmv < 2)
+            {
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Hot") as Material;
+            }
+            else if (pmv >= 2)
+            {
+                GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Hell") as Material;
+            }
 
-                        //if agent could not change clothes, move
-                        if (!changedClothes)
+            /*
+            //for ppdBias = 1: if PMV is lower than -0.5 or higher than 0.5, agent is uncomfortable
+            //for ppdBias = 0: if ppdD is above 0, agent is uncomfortable
+            //for 0 < ppdBias < 1, any can be true
+            if ((ppdBias == 1 && (pmv < -0.5f || pmv > 0.5f)) || (ppdBias == 0 && ppdD > 0) ||
+                ((0 < ppdBias && ppdBias < 1) && ((pmv < -0.5f || pmv > 0.5f) || ppdD > 0)))
+            {
+                //update the notCozytimer
+                notCozyTimer += Time.deltaTime;
+
+                //if it surpassed the timeGap, choose a better place
+                if (notCozyTimer > usedTimeGap)
+                {
+                    //try to remove/put clothes
+                    float randum = Random.Range(0.1f, 99);
+                    if (randum < ppd)
+                    {
+                        //just if it is not moving towards a goal already
+                        if (speed == Vector3.zero && group.GetComponent<AgentGroupController>().go.Count == 0)
                         {
-                            bool moving = false;
-                            //all the group should move. So, verify if group has a leader
-                            //if it has, the leader shall be uncomfortable for group to move
-                            if (group.GetComponent<AgentGroupController>().leader)
+                            //to control if clothes were put/removed
+                            bool changedClothes = false;
+                            //if it is too hot, try to remove clothes
+                            if (pmv > 0.5f)
                             {
-                                if(group.GetComponent<AgentGroupController>().leader.name == name)
+                                if (clothingIns == 2)
                                 {
+                                    clothingIns = 1.2f;
+                                    changedClothes = true;
+                                }
+                                else if (clothingIns == 1.2f)
+                                {
+                                    clothingIns = 0.4f;
+                                    changedClothes = true;
+                                }
+                            }//otherwise, if it is too cold, try to put some clothes on
+                            else if (pmv < -0.5f)
+                            {
+                                if (clothingIns == 0.4f)
+                                {
+                                    clothingIns = 1.2f;
+                                    changedClothes = true;
+                                }
+                                else if (clothingIns == 1.2f)
+                                {
+                                    clothingIns = 2;
+                                    changedClothes = true;
+                                }
+                            }
+
+                            //if agent could not change clothes, move
+                            if (!changedClothes)
+                            {
+                                bool moving = false;
+                                //all the group should move. So, verify if group has a leader
+                                //if it has, the leader shall be uncomfortable for group to move
+                                if (group.GetComponent<AgentGroupController>().leader)
+                                {
+                                    if(group.GetComponent<AgentGroupController>().leader.name == name)
+                                    {
+                                        moving = true;
+                                    }
+                                }//else, if cohesion is high (>=2), the majority of the group should be uncomfortable for group to move
+                                else if (group.GetComponent<AgentGroupController>().cohesion >= 2)
+                                {
+                                    int qntBad = 0;
+                                    foreach (GameObject agn in group.GetComponent<AgentGroupController>().agents)
+                                    {
+                                        AgentController agc = agn.GetComponent<AgentController>();
+                                        //if(agc.pmv < -0.5f || agc.pmv > 0.5f)
+                                        if ((agc.ppdBias == 1 && (agc.pmv < -0.5f || agc.pmv > 0.5f)) || (agc.ppdBias == 0 && agc.ppdD > 0) ||
+                                            ((0 < agc.ppdBias && agc.ppdBias < 1) && ((agc.pmv < -0.5f || agc.pmv > 0.5f) || agc.ppdD > 0)))
+                                        {
+                                            qntBad++;
+                                        }
+                                    }
+
+                                    if(qntBad > group.GetComponent<AgentGroupController>().agents.Count / 2)
+                                    {
+                                        moving = true;
+                                    }
+                                }//else, agent just split
+                                else
+                                {
+                                    gameController.SplitAgent(gameObject);
                                     moving = true;
                                 }
-                            }//else, if cohesion is high (>=2), the majority of the group should be uncomfortable for group to move
-                            else if (group.GetComponent<AgentGroupController>().cohesion >= 2)
-                            {
-                                int qntBad = 0;
-                                foreach (GameObject agn in group.GetComponent<AgentGroupController>().agents)
+
+                                if (moving)
                                 {
-                                    AgentController agc = agn.GetComponent<AgentController>();
-                                    //if(agc.pmv < -0.5f || agc.pmv > 0.5f)
-                                    if ((agc.ppdBias == 1 && (agc.pmv < -0.5f || agc.pmv > 0.5f)) || (agc.ppdBias == 0 && agc.ppdD > 0) ||
-                                        ((0 < agc.ppdBias && agc.ppdBias < 1) && ((agc.pmv < -0.5f || agc.pmv > 0.5f) || agc.ppdD > 0)))
+                                    //sort another room with the same type of the one it is already
+                                    //sort out a new room
+                                    int roomIndex = 0;
+
+                                    while (allRooms[roomIndex].GetComponent<RoomController>().roomType != cell.GetComponent<CellController>().room.GetComponent<RoomController>().roomType
+                                        || allRooms[roomIndex].name == cell.GetComponent<CellController>().room.name)
                                     {
-                                        qntBad++;
+                                        roomIndex = Random.Range(0, allRooms.Length);
+                                    }
+
+                                    //in this room, sort out an empty termic cell
+                                    int termicCellIndex = Random.Range(0, allRooms[roomIndex].GetComponent<RoomController>().termicCells.Count);
+                                    while (allRooms[roomIndex].GetComponent<RoomController>().termicCells[termicCellIndex].GetComponent<CellController>().agents.Count > 0 ||
+                                        allRooms[roomIndex].GetComponent<RoomController>().termicCells[termicCellIndex].GetComponent<CellController>().isWall ||
+                                        allRooms[roomIndex].GetComponent<RoomController>().termicCells[termicCellIndex].GetComponent<CellController>().isDoor)
+                                    {
+                                        termicCellIndex = Random.Range(0, allRooms[roomIndex].GetComponent<RoomController>().termicCells.Count);
+                                    }
+
+                                    //now, get the path for all agents of the group
+                                    foreach (GameObject agn in group.GetComponent<AgentGroupController>().agents)
+                                    {
+                                        agn.GetComponent<AgentController>().CalculatePath(allRooms[roomIndex].GetComponent<RoomController>().termicCells[termicCellIndex]);
                                     }
                                 }
-
-                                if(qntBad > group.GetComponent<AgentGroupController>().agents.Count / 2)
-                                {
-                                    moving = true;
-                                }
-                            }//else, agent just split
-                            else
-                            {
-                                gameController.SplitAgent(gameObject);
-                                moving = true;
                             }
 
-                            if (moving)
-                            {
-                                //sort another room with the same type of the one it is already
-                                //sort out a new room
-                                int roomIndex = 0;
-                               
-                                while (allRooms[roomIndex].GetComponent<RoomController>().roomType != cell.GetComponent<CellController>().room.GetComponent<RoomController>().roomType
-                                    || allRooms[roomIndex].name == cell.GetComponent<CellController>().room.name)
-                                {
-                                    roomIndex = Random.Range(0, allRooms.Length);
-                                }
-
-                                //in this room, sort out an empty termic cell
-                                int termicCellIndex = Random.Range(0, allRooms[roomIndex].GetComponent<RoomController>().termicCells.Count);
-                                while (allRooms[roomIndex].GetComponent<RoomController>().termicCells[termicCellIndex].GetComponent<CellController>().agents.Count > 0 ||
-                                    allRooms[roomIndex].GetComponent<RoomController>().termicCells[termicCellIndex].GetComponent<CellController>().isWall ||
-                                    allRooms[roomIndex].GetComponent<RoomController>().termicCells[termicCellIndex].GetComponent<CellController>().isDoor)
-                                {
-                                    termicCellIndex = Random.Range(0, allRooms[roomIndex].GetComponent<RoomController>().termicCells.Count);
-                                }
-
-                                //now, get the path for all agents of the group
-                                foreach (GameObject agn in group.GetComponent<AgentGroupController>().agents)
-                                {
-                                    agn.GetComponent<AgentController>().CalculatePath(allRooms[roomIndex].GetComponent<RoomController>().termicCells[termicCellIndex]);
-                                }
-                            }
+                            //reset timer anyway
+                            notCozyTimer = 0;
+                            //usedTimeGap = 5;
                         }
-
-                        //reset timer anyway
-                        notCozyTimer = 0;
-                        //usedTimeGap = 5;
                     }
                 }
-            }
-        }//else, he is cozy and warm, little ball of fur... does not need to walk anymore
-        else
-        {
-            //agent.isStopped = true;
-            notCozyTimer = 0;
-            //usedTimeGap = timeGap;
-        }*/
-        //END THERMAL STUFF
+            }//else, he is cozy and warm, little ball of fur... does not need to walk anymore
+            else
+            {
+                //agent.isStopped = true;
+                notCozyTimer = 0;
+                //usedTimeGap = timeGap;
+            }*/
+            //END THERMAL STUFF
+        }
     }
 
     void OnGUI() {

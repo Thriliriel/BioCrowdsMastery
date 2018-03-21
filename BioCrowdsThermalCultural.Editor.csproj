@@ -292,6 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ConfigFiles\FrameCount.txt" />
+    <None Include="Assets\ConfigFiles\InitialValues.txt" />
     <None Include="Assets\ConfigFiles\Paths.txt" />
     <None Include="Assets\ConfigFiles\SimulationIterator.txt" />
     <None Include="Assets\RodolfoFile.txt" />

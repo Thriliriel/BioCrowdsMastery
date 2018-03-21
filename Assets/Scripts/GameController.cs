@@ -91,6 +91,10 @@ public class GameController : MonoBehaviour
     public bool evacuationBehavior;
     //using group behavior? (split and join agents)
     public bool groupBehavior;
+    //using thermal comfort?
+    public bool thermalComfort;
+    //using density comfort?
+    public bool densityComfort;
     //qnt frames
     public int qntFrames;
     //seconds taken
@@ -250,12 +254,12 @@ public class GameController : MonoBehaviour
             cell.GetComponent<CellController>().paintHeatMap = paintHeatMap;
         }
 
+        //load master file
+        LoadMasterFile();
+
         //if loadConfigFile is checked, we do not generate random agents and signs. We load it from the agents.dat and signs.dat
         if (loadConfigFile)
         {
-            //load master file
-            LoadMasterFile();
-
             //change the heat maps, since its value may be diferent at the master file
             foreach (GameObject cell in allCells)
             {
@@ -2327,6 +2331,18 @@ public class GameController : MonoBehaviour
                     newAgentController.favaretto.CalculateFavaretto(favavalues[i][0], favavalues[i][1], favavalues[i][2], favavalues[i][3], favavalues[i][4]);
                 }
 
+                //change PPD bias according selected option
+                float ppdBias = 0;
+                if (thermalComfort)
+                {
+                    ppdBias = 1;
+                }
+                if (thermalComfort && densityComfort)
+                {
+                    ppdBias = 0.5f;
+                }
+                newAgentController.ppdBias = ppdBias;
+
                 //change parent
                 newAgent.transform.parent = agents.transform;
 
@@ -3040,6 +3056,18 @@ public class GameController : MonoBehaviour
                     }
                 }*/
 
+                //change PPD bias according selected option
+                float ppdBias = 0;
+                if (thermalComfort)
+                {
+                    ppdBias = 1;
+                }
+                if (thermalComfort && densityComfort)
+                {
+                    ppdBias = 0.5f;
+                }
+                newAgentController.ppdBias = ppdBias;
+
                 newAgentController.group = chosenGroup;
                 chosenGroup.GetComponent<AgentGroupController>().agents.Add(newAgent);
 
@@ -3214,7 +3242,7 @@ public class GameController : MonoBehaviour
                             favarettoFilename = entries[1];
                             break;
                         case "SaveConfigFile":
-                            if(entries[1] == "true")
+                            if(entries[1].ToLower() == "true")
                             {
                                 saveConfigFile = true;
                             }
@@ -3223,8 +3251,25 @@ public class GameController : MonoBehaviour
                                 saveConfigFile = false;
                             }
                             break;
+                        case "LoadConfigFile":
+                            if (entries[1].ToLower() == "true")
+                            {
+                                loadConfigFile = true;
+                            }
+                            else
+                            {
+                                loadConfigFile = false;
+                            }
+                            break;
+                        case "QntAgents":
+                            qntAgents = System.Int32.Parse(entries[1]);
+                            break;
+                        case "QntGroups":
+                            qntGroups = System.Int32.Parse(entries[1]);
+
+                            break;
                         case "UseHofstede":
-                            if (entries[1] == "true")
+                            if (entries[1].ToLower() == "true")
                             {
                                 useHofstede = true;
                                 useDurupinar = false;
@@ -3236,7 +3281,7 @@ public class GameController : MonoBehaviour
                             }
                             break;
                         case "UseDurupinar":
-                            if (entries[1] == "true")
+                            if (entries[1].ToLower() == "true")
                             {
                                 useDurupinar = true;
                                 useHofstede = false;
@@ -3248,7 +3293,7 @@ public class GameController : MonoBehaviour
                             }
                             break;
                         case "UseFavaretto":
-                            if (entries[1] == "true")
+                            if (entries[1].ToLower() == "true")
                             {
                                 useDurupinar = false;
                                 useHofstede = false;
@@ -3290,7 +3335,7 @@ public class GameController : MonoBehaviour
                                 System.Convert.ToSingle(lfsPos[2]));
                             break;
                         case "PaintHeatMap":
-                            if (entries[1] == "true")
+                            if (entries[1].ToLower() == "true")
                             {
                                 paintHeatMap = true;
                             }
@@ -3300,7 +3345,7 @@ public class GameController : MonoBehaviour
                             }
                             break;
                         case "ExploratoryBehavior":
-                            if (entries[1] == "true")
+                            if (entries[1].ToLower() == "true")
                             {
                                 exploratoryBehavior = true;
                             }
@@ -3310,7 +3355,7 @@ public class GameController : MonoBehaviour
                             }
                             break;
                         case "GroupBehavior":
-                            if (entries[1] == "true")
+                            if (entries[1].ToLower() == "true")
                             {
                                 groupBehavior = true;
                             }
@@ -3319,12 +3364,38 @@ public class GameController : MonoBehaviour
                                 groupBehavior = false;
                             }
                             break;
+                        case "ThermalComfort":
+                            if (entries[1].ToLower() == "true")
+                            {
+                                thermalComfort = true;
+                            }
+                            else
+                            {
+                                thermalComfort = false;
+                            }
+                            break;
+                        case "DensityComfort":
+                            if (entries[1].ToLower() == "true")
+                            {
+                                densityComfort = true;
+                            }
+                            else
+                            {
+                                densityComfort = false;
+                            }
+                            break;
                     }
                 }
             }
             while (line != null);
         }
         theReader.Close();
+
+        //if qntGroups is 0, set it equal number of agents
+        if(qntGroups == 0)
+        {
+            qntGroups = qntAgents;
+        }
     }
 
     //control all chained simulations

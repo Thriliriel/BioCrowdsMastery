@@ -18,23 +18,38 @@ MeanAgentAngVar:ConfigFiles/sign_0/MeanAgentAngVar.csv
 #Save this input files to use another time?
 SaveConfigFile:false
 
+#Load file?
+LoadConfigFile:True
+
+#qnt agents
+QntAgents:10
+
+#qnt groups
+QntGroups:1
+
 #use Hofstede parameters?
-UseHofstede:false
+UseHofstede:True
 
 #use Durupinar parameters?
-UseDurupinar:false
+UseDurupinar:False
 
 #use Favaretto parameters?
-UseFavaretto:false
+UseFavaretto:False
 
 #paint heat map?
-PaintHeatMap:false
+PaintHeatMap:False
 
 #use exploratory behavior?
-ExploratoryBehavior:true
+ExploratoryBehavior:True
 
 #use group behavior?
-GroupBehavior:true
+GroupBehavior:True
+
+#use thermal comfort?
+ThermalComfort:True
+
+#use density comfort?
+DensityComfort:False
 
 #group parameters (just used if not using cultural parameters)
 Cohesion:3
@@ -44,3 +59,26 @@ AngularVariation:0
 
 #static looking for initial position (default is to keep it commented)
 #staticLFS:5,0,25
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

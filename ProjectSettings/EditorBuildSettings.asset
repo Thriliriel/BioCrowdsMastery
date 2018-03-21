@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/menu.unity
+    guid: b3807ab796da82f4d90923f35d8077dd
+  - enabled: 1
+    path: Assets/Scenes/mainScene.unity
+    guid: d749460669d732945a9759f050a45c85
