@@ -959,8 +959,19 @@ public class GameController : MonoBehaviour
                 }
             }
 
-            //if found, check back and forward to find unchanged nodes
-            if (nodeIndex > -1)
+            //if found, check if it is close enough of the agent to affect the path
+            bool closeEnough = false;
+            if(nodeIndex > -1)
+            {
+                float distanceCellAg = Vector3.Distance(ag.transform.position, ac.fullPath[nodeIndex].cell.transform.position);
+                if(distanceCellAg <= ac.fieldOfView * 2)
+                {
+                    closeEnough = true;
+                }
+            }
+            
+            //if found and it is close enough, check back and forward to find unchanged nodes
+            if (nodeIndex > -1 && closeEnough)
             {
                 NodeClass nodeBefore = new NodeClass();
                 NodeClass nodeAfter = new NodeClass();
@@ -1014,6 +1025,9 @@ public class GameController : MonoBehaviour
                         {
                             newPathD.Add(subPath[1][j]);
                             i++; j++;
+
+                            //if passed the size, break;
+                            if (i >= ac.fullPath.Count) break;
                         }
                         else
                         {
@@ -1081,8 +1095,19 @@ public class GameController : MonoBehaviour
                 }
             }
 
-            //if found, check back and forward to find unchanged nodes
+            //if found, check if it is close enough of the agent to affect the path
+            bool closeEnough = false;
             if (nodeIndex > -1)
+            {
+                float distanceCellAg = Vector3.Distance(ag.transform.position, ac.originalPath[nodeIndex].cell.transform.position);
+                if (distanceCellAg <= ac.fieldOfView * 2)
+                {
+                    closeEnough = true;
+                }
+            }
+
+            //if found and close enough, check back and forward to find unchanged nodes
+            if (nodeIndex > -1 && closeEnough)
             {
                 NodeClass nodeBefore = new NodeClass();
                 NodeClass nodeAfter = new NodeClass();

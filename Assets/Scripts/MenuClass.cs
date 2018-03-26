@@ -282,6 +282,9 @@ public class MenuClass : MonoBehaviour {
             //close
             theWriter.Close();
 
+            //save agents file
+            SaveAgentsFile();
+
             //now, save the hof or duru file, if using it
             if (useHofstede)
             {
@@ -353,6 +356,78 @@ public class MenuClass : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
+    //save agents file
+    private void SaveAgentsFile()
+    {
+        StreamReader theReader = new StreamReader(Application.dataPath + "/" + agentsFilename, System.Text.Encoding.Default);
+        string line;
+        string newText = "";
+        using (theReader)
+        {
+            do
+            {
+                line = theReader.ReadLine();
+
+                if (line != null && line != "")
+                {
+                    //if line starts with #, ignore
+                    if (line[0] == '#')
+                    {
+                        //just rewrite and keep going
+                        newText += line + "\r\n";
+                        continue;
+                    }
+
+                    //for each group, create the info for it
+                    //first line: qnt of agents inside the group
+                    //second line: group info
+                    int qntGr = System.Int32.Parse(qntGroupsInput.GetComponent<InputField>().text);
+                    int qntAg = System.Int32.Parse(qntAgentsInput.GetComponent<InputField>().text);
+                    for (int i = 0; i < qntGr; i++)
+                    {
+                        //sort out a number of agents
+                        int sortQntAg = qntAg / qntGr;
+
+                        //if it is the last group, just take the remaining agents
+                        if (i == qntGr - 1)
+                        {
+                            sortQntAg = qntAg - (sortQntAg * i);
+                        }
+
+                        //write first line
+                        newText += sortQntAg + "\r\n";
+
+                        //write second line
+                        //@TODO: get this info too
+                        newText += "cell25-25;false;Goal4;0.359452;Goal3;0.0276675;Goal2;0.675362;Goal1;0.557535\r\n";
+
+                        //break line
+                        newText += "\r\n";
+                    }
+
+                    //already saved, get out
+                    break;
+                }
+                else
+                {
+                    //add a blank line too
+                    newText += "\r\n";
+                }
+            }
+            while (line != null);
+        }
+        theReader.Close();
+
+        //now, write the new string
+        StreamWriter theWriter = File.CreateText(Application.dataPath + "/" + agentsFilename);
+
+        //update
+        theWriter.Write(newText);
+
+        //close
+        theWriter.Close();
+    }
+
     //save hofstede file
     private void SaveHofstedeFile()
     {
@@ -380,7 +455,7 @@ public class MenuClass : MonoBehaviour {
                     for (int i = 0; i < qntGr; i++)
                     {
                         newText += "0;" + inputMAS.GetComponent<InputField>().text + ";" + inputLTO.GetComponent<InputField>().text + ";" + inputING.GetComponent<InputField>().text
-                            + ";0";
+                            + ";0\r\n";
                     }
 
                     //already saved, get out

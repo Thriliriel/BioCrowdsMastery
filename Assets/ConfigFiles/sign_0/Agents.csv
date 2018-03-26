@@ -10,5 +10,12 @@
 #INFOGROUP -> Starting Cell, Are agents of this group Idle?, Pairs with Goal/Intention
 #####################################################
 
-10
+3
 cell25-25;false;Goal4;0.359452;Goal3;0.0276675;Goal2;0.675362;Goal1;0.557535
+
+3
+cell25-25;false;Goal4;0.359452;Goal3;0.0276675;Goal2;0.675362;Goal1;0.557535
+
+4
+cell25-25;false;Goal4;0.359452;Goal3;0.0276675;Goal2;0.675362;Goal1;0.557535
+
