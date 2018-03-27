@@ -259,6 +259,9 @@ public class AgentController : MonoBehaviour {
 
             //check interaction with possible signs
             CheckSignsInView();
+
+            //check nodes in sight to be recalculated
+            CheckNodeInSight();
         }
 
         //update agents in this cell
@@ -290,7 +293,7 @@ public class AgentController : MonoBehaviour {
             CalculateTotalPPD();
 
             //update its material according its pmv
-            if (pmv < -2)
+            /*if (pmv < -2)
             {
                 GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Freezing") as Material;
             }
@@ -309,7 +312,7 @@ public class AgentController : MonoBehaviour {
             else if (pmv >= 2)
             {
                 GetComponent<Renderer>().sharedMaterial = Resources.Load("Materials/Hell") as Material;
-            }
+            }*/
 
             /*
             //for ppdBias = 1: if PMV is lower than -0.5 or higher than 0.5, agent is uncomfortable
@@ -443,6 +446,10 @@ public class AgentController : MonoBehaviour {
             }*/
             //END THERMAL STUFF
         }
+
+        //update agent orientation
+        transform.LookAt(transform.forward);
+        transform.Rotate(transform.up * 180);
     }
 
     void OnGUI() {
@@ -739,6 +746,126 @@ public class AgentController : MonoBehaviour {
         }
     }
 
+    //recalculate the sub path
+    //original: should use original path?
+    public void RecalculateSubPath(int nodeIndex, bool original = false)
+    {
+        NodeClass nodeBefore = new NodeClass();
+        NodeClass nodeAfter = new NodeClass();
+
+        //path to be used
+        List<NodeClass> usingPath = fullPath;
+        if (original)
+        {
+            usingPath = originalPath;
+        }
+
+        if (nodeIndex > 0)
+        {
+            for (int i = nodeIndex - 1; i >= 0; i--)
+            {
+                if (i >= 0)
+                {
+                    try
+                    {
+                        if (usingPath[i].cell.name != "LookingFor")
+                        {
+                            //if higher is false, this one can be used
+                            if (!usingPath[i].higher)
+                            {
+                                nodeBefore = usingPath[i];
+                                break;
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        Debug.Break();
+                    }
+                }
+            }
+        }
+
+        if (nodeIndex < usingPath.Count - 1)
+        {
+            for (int i = nodeIndex + 1; i < usingPath.Count; i++)
+            {
+                if (i < usingPath.Count)
+                {
+                    //if higher is false, this one can be used
+                    if (usingPath[i].cell.name != "LookingFor")
+                    {
+                        if (!usingPath[i].higher)
+                        {
+                            nodeAfter = usingPath[i];
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        //if found nodes
+        if (nodeBefore.cell != null && nodeAfter.cell != null)
+        {
+            //now, calculate the sub-path between nodeBefore and nodeAfter
+            List<List<NodeClass>> subPath = paths.FindPath(nodeBefore.cell, nodeAfter.cell);
+            bool substitute = false;
+            //index for subpath
+            int j = 0;
+
+            //now, recreate the path including the new subPath
+            List<NodeClass> newPathD = new List<NodeClass>();
+            for (int i = 0; i < usingPath.Count; i++)
+            {
+                if (substitute && j < subPath[1].Count)
+                {
+                    newPathD.Add(subPath[1][j]);
+                    i++; j++;
+
+                    //if passed the size, break;
+                    if (i >= usingPath.Count) break;
+                }
+                else
+                {
+                    newPathD.Add(usingPath[i]);
+                }
+
+                //if it is the node before, need to mark to use the subpath
+                if (usingPath[i].cell.name == nodeBefore.cell.name)
+                {
+                    substitute = true;
+                }//else, if it is the node after, need to unmark to use subpath
+                else if (usingPath[i].cell.name == nodeAfter.cell.name)
+                {
+                    //since the last does not come back from path planning, add it
+                    newPathD.Add(usingPath[i]);
+
+                    substitute = false;
+                }
+            }
+
+            //update the path
+            fullPath = newPathD;
+
+            //reset the higher and lower values
+            foreach (NodeClass nd in fullPath)
+            {
+                if (nd.cell.name != "LookingFor")
+                {
+                    nd.higher = false;
+                    nd.lower = false;
+                }
+            }
+
+            //update path corners
+            cornerPath = paths.FindPathCorners(fullPath);
+
+            //update agent goal
+            goal = cornerPath[0].cell.transform.position;
+        }
+    }
+
     //check if there is a sign in the agent Field of View
     private void CheckSignsInView()
     {
@@ -977,6 +1104,39 @@ public class AgentController : MonoBehaviour {
             if (distanceSubGoal < agentRadius && fullPath.Count > 1)
             {
                 fullPath.RemoveAt(0);
+            }
+
+            //same to remove from the original path
+            distanceSubGoal = Vector3.Distance(transform.position, originalPath[0].cell.transform.position);
+            if (distanceSubGoal < agentRadius && originalPath.Count > 1)
+            {
+                originalPath.RemoveAt(0);
+            }
+        }
+    }
+
+    //check if any node in this agent full path need to be recalculated when enter in sight
+    private void CheckNodeInSight()
+    {
+        //for each node in full path
+        for (int i = 0; i < fullPath.Count; i++)
+        {
+            //if need to be recalculated
+            if (fullPath[i].changePath)
+            {
+                //check if it is inside view
+                float distanceToNode = Vector3.Distance(transform.position, fullPath[i].cell.transform.position);
+                if (distanceToNode <= fieldOfView * 2)
+                {
+                    //reset it (prob not necessary cause it is going to be recalculated, but....)
+                    fullPath[i].changePath = false;
+
+                    //recalculate sub path
+                    RecalculateSubPath(i);
+
+                    //done, break;
+                    break;
+                }
             }
         }
     }

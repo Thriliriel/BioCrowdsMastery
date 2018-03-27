@@ -11,8 +11,8 @@ public class GameController : MonoBehaviour
     public float scenarioSizeX;
     //scenario Z
     public float scenarioSizeZ;
-    //agent prefab
-    public GameObject agent;
+    //agent prefabs
+    public List<GameObject> agentPF;
     //agent radius
     public float agentRadius;
     //cell radius
@@ -967,106 +967,17 @@ public class GameController : MonoBehaviour
                 if(distanceCellAg <= ac.fieldOfView * 2)
                 {
                     closeEnough = true;
+                }//otherwise, just mark it as needed to change path
+                else
+                {
+                    ac.fullPath[nodeIndex].changePath = true;
                 }
             }
             
             //if found and it is close enough, check back and forward to find unchanged nodes
             if (nodeIndex > -1 && closeEnough)
             {
-                NodeClass nodeBefore = new NodeClass();
-                NodeClass nodeAfter = new NodeClass();
-
-                if (nodeIndex > 0)
-                {
-                    for (int i = nodeIndex - 1; i >= 0; i--)
-                    {
-                        if (ac.fullPath[i].cell.name != "LookingFor")
-                        {
-                            //if higher is false, this one can be used
-                            if (!ac.fullPath[i].cell.GetComponent<CellController>().higher)
-                            {
-                                nodeBefore = ac.fullPath[i];
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                if (nodeIndex < ac.fullPath.Count - 1)
-                {
-                    for (int i = nodeIndex + 1; i < ac.fullPath.Count; i++)
-                    {
-                        //if higher is false, this one can be used
-                        if (ac.fullPath[i].cell.name != "LookingFor")
-                        {
-                            if (!ac.fullPath[i].cell.GetComponent<CellController>().higher)
-                            {
-                                nodeAfter = ac.fullPath[i];
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                //if found nodes
-                if (nodeBefore.cell != null && nodeAfter.cell != null)
-                {
-                    //now, calculate the sub-path between nodeBefore and nodeAfter
-                    List<List<NodeClass>> subPath = ac.paths.FindPath(nodeBefore.cell, nodeAfter.cell);
-                    bool substitute = false;
-                    //index for subpath
-                    int j = 0;
-
-                    //now, recreate the path including the new subPath
-                    List<NodeClass> newPathD = new List<NodeClass>();
-                    for (int i = 0; i < ac.fullPath.Count; i++)
-                    {
-                        if (substitute && j < subPath[1].Count)
-                        {
-                            newPathD.Add(subPath[1][j]);
-                            i++; j++;
-
-                            //if passed the size, break;
-                            if (i >= ac.fullPath.Count) break;
-                        }
-                        else
-                        {
-                            newPathD.Add(ac.fullPath[i]);
-                        }
-
-                        //if it is the node before, need to mark to use the subpath
-                        if (ac.fullPath[i].cell.name == nodeBefore.cell.name)
-                        {
-                            substitute = true;
-                        }//else, if it is the node after, need to unmark to use subpath
-                        else if (ac.fullPath[i].cell.name == nodeAfter.cell.name)
-                        {
-                            //since the last does not come back from path planning, add it
-                            newPathD.Add(ac.fullPath[i]);
-
-                            substitute = false;
-                        }
-                    }
-
-                    //update the path
-                    ac.fullPath = newPathD;
-
-                    //reset the higher and lower values
-                    foreach (NodeClass nd in ac.fullPath)
-                    {
-                        if (nd.cell.name != "LookingFor")
-                        {
-                            nd.cell.GetComponent<CellController>().higher = false;
-                            nd.cell.GetComponent<CellController>().lower = false;
-                        }
-                    }
-
-                    //update path corners
-                    ac.cornerPath = ac.paths.FindPathCorners(ac.fullPath);
-
-                    //update agent goal
-                    ac.goal = ac.cornerPath[0].cell.transform.position;
-                }
+                ac.RecalculateSubPath(nodeIndex);
             }
         }
     }
@@ -1103,103 +1014,17 @@ public class GameController : MonoBehaviour
                 if (distanceCellAg <= ac.fieldOfView * 2)
                 {
                     closeEnough = true;
+                }//otherwise, just mark it as needed to change path
+                else
+                {
+                    ac.originalPath[nodeIndex].changePath = true;
                 }
             }
 
             //if found and close enough, check back and forward to find unchanged nodes
             if (nodeIndex > -1 && closeEnough)
             {
-                NodeClass nodeBefore = new NodeClass();
-                NodeClass nodeAfter = new NodeClass();
-
-                if (nodeIndex > 0)
-                {
-                    for (int i = nodeIndex - 1; i >= 0; i--)
-                    {
-                        if (ac.originalPath[i].cell.name != "LookingFor")
-                        {
-                            //if lower is false, this one can be used
-                            if (!ac.originalPath[i].cell.GetComponent<CellController>().lower)
-                            {
-                                nodeBefore = ac.originalPath[i];
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                if (nodeIndex < ac.originalPath.Count - 1)
-                {
-                    for (int i = nodeIndex + 1; i < ac.originalPath.Count; i++)
-                    {
-                        //if lower is false, this one can be used
-                        if (ac.originalPath[i].cell.name != "LookingFor")
-                        {
-                            if (!ac.originalPath[i].cell.GetComponent<CellController>().lower)
-                            {
-                                nodeAfter = ac.originalPath[i];
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                //if found nodes
-                if (nodeBefore.cell != null && nodeAfter.cell != null)
-                {
-                    //now, calculate the sub-path between nodeBefore and nodeAfter
-                    List<List<NodeClass>> subPath = ac.paths.FindPath(nodeBefore.cell, nodeAfter.cell);
-                    bool substitute = false;
-                    //index for subpath
-                    int j = 0;
-
-                    //now, recreate the path including the new subPath
-                    List<NodeClass> newPathD = new List<NodeClass>();
-                    for (int i = 0; i < ac.originalPath.Count; i++)
-                    {
-                        if (substitute && j < subPath[1].Count)
-                        {
-                            newPathD.Add(subPath[1][j]);
-                            i++; j++;
-                        }
-                        else
-                        {
-                            newPathD.Add(ac.originalPath[i]);
-                        }
-
-                        //if it is the node before, need to mark to use the subpath
-                        if (ac.originalPath[i].cell.name == nodeBefore.cell.name)
-                        {
-                            substitute = true;
-                        }//else, if it is the node after, need to unmark to use subpath
-                        else if (ac.originalPath[i].cell.name == nodeAfter.cell.name)
-                        {
-                            //since the last does not come back from path planning, add it
-                            newPathD.Add(ac.originalPath[i]);
-
-                            substitute = false;
-                        }
-                    }
-
-                    //update the path
-                    ac.fullPath = newPathD;
-
-                    //reset the higher and lower values
-                    foreach (NodeClass nd in ac.fullPath)
-                    {
-                        if (nd.cell.name != "LookingFor")
-                        {
-                            nd.cell.GetComponent<CellController>().higher = false;
-                            nd.cell.GetComponent<CellController>().lower = false;
-                        }
-                    }
-
-                    //update path corners
-                    ac.cornerPath = ac.paths.FindPathCorners(ac.fullPath);
-
-                    //update agent goal
-                    ac.goal = ac.cornerPath[0].cell.transform.position;
-                }
+                ac.RecalculateSubPath(nodeIndex, true);
             }
         }
     }
@@ -2307,7 +2132,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                GameObject newAgent = Instantiate(agent, new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
+                GameObject newAgent = Instantiate(agentPF[Random.Range(0, agentPF.Count)], new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
                 AgentController newAgentController = newAgent.GetComponent<AgentController>();
                 //change his name
                 newAgent.name = "agent" + controlQntAgents;
@@ -2322,7 +2147,7 @@ public class GameController : MonoBehaviour
                 //is idle?
                 newAgentController.isIdle = agentsIdle;
 
-                newAgent.GetComponent<MeshRenderer>().material.color = newAgentController.GetColor();
+                //newAgent.GetComponent<MeshRenderer>().material.color = newAgentController.GetColor();
 
                 //group max speed
                 newAgentController.maxSpeed = newAgentGroupController.GetMeanSpeed();
@@ -3026,7 +2851,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                GameObject newAgent = Instantiate(agent, new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
+                GameObject newAgent = Instantiate(agentPF[Random.Range(0, agentPF.Count)], new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
                 AgentController newAgentController = newAgent.GetComponent<AgentController>();
                 //change his name
                 newAgent.name = "agent" + i;
@@ -3039,7 +2864,7 @@ public class GameController : MonoBehaviour
                 //agent radius
                 newAgentController.agentRadius = agentRadius;
 
-                newAgent.GetComponent<MeshRenderer>().material.color = newAgentController.GetColor();
+                //newAgent.GetComponent<MeshRenderer>().material.color = newAgentController.GetColor();
 
                 //if using durupinar, set it
                 if (useDurupinar)

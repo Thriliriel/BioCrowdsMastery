@@ -25,10 +25,10 @@ LoadConfigFile:True
 QntAgents:10
 
 #qnt groups
-QntGroups:3
+QntGroups:2
 
 #use Hofstede parameters?
-UseHofstede:True
+UseHofstede:False
 
 #use Durupinar parameters?
 UseDurupinar:False
@@ -46,7 +46,7 @@ ExploratoryBehavior:True
 GroupBehavior:True
 
 #use thermal comfort?
-ThermalComfort:True
+ThermalComfort:False
 
 #use density comfort?
 DensityComfort:False
@@ -59,6 +59,8 @@ AngularVariation:0
 
 #static looking for initial position (default is to keep it commented)
 #staticLFS:5,0,25
+
+
 
 
 

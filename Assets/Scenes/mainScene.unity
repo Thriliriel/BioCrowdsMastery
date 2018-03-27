@@ -158,7 +158,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -516,12 +516,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &3191903
 MeshFilter:
@@ -575,7 +574,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -933,12 +932,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &7172307
 MeshFilter:
@@ -992,7 +990,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1350,12 +1348,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &7487264
 MeshFilter:
@@ -1409,7 +1406,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1767,12 +1764,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &11112379
 MeshFilter:
@@ -1826,7 +1822,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2184,12 +2180,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &20883952
 MeshFilter:
@@ -2243,7 +2238,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2601,12 +2596,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &42226162
 MeshFilter:
@@ -2660,7 +2654,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3018,12 +3012,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &44585040
 MeshFilter:
@@ -3077,7 +3070,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3435,12 +3428,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &67050562
 MeshFilter:
@@ -3494,7 +3486,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3852,12 +3844,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &76413679
 MeshFilter:
@@ -3911,7 +3902,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4269,12 +4260,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &93725641
 MeshFilter:
@@ -4328,7 +4318,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4686,12 +4676,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &94014471
 MeshFilter:
@@ -4745,7 +4734,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5103,12 +5092,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &98659139
 MeshFilter:
@@ -5162,7 +5150,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5520,12 +5508,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &99501307
 MeshFilter:
@@ -5579,7 +5566,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5937,12 +5924,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &109473229
 MeshFilter:
@@ -5996,7 +5982,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6354,12 +6340,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &111344159
 MeshFilter:
@@ -6413,7 +6398,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6771,12 +6756,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &147898953
 MeshFilter:
@@ -6830,7 +6814,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7188,12 +7172,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &162158855
 MeshFilter:
@@ -7247,7 +7230,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7605,12 +7588,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &164617651
 MeshFilter:
@@ -7664,7 +7646,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8022,12 +8004,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &164877948
 MeshFilter:
@@ -8081,7 +8062,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8439,12 +8420,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &173396287
 MeshFilter:
@@ -8498,7 +8478,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8856,12 +8836,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &185514440
 MeshFilter:
@@ -8915,7 +8894,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9273,12 +9252,11 @@ MonoBehaviour:
   airTemperature: 30
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &211615594
 MeshFilter:
@@ -9332,7 +9310,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9690,12 +9668,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &220564999
 MeshFilter:
@@ -9749,7 +9726,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10107,12 +10084,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &228330843
 MeshFilter:
@@ -10166,7 +10142,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10524,12 +10500,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &251985042
 MeshFilter:
@@ -10611,7 +10586,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10969,12 +10944,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &297623553
 MeshFilter:
@@ -11028,7 +11002,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11386,12 +11360,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &298224974
 MeshFilter:
@@ -11445,7 +11418,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11803,12 +11776,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &305399998
 MeshFilter:
@@ -11890,7 +11862,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12248,12 +12220,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &316808062
 MeshFilter:
@@ -12307,7 +12278,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12665,12 +12636,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &330505988
 MeshFilter:
@@ -12724,7 +12694,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13082,12 +13052,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &332731770
 MeshFilter:
@@ -13141,7 +13110,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13499,12 +13468,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &348955730
 MeshFilter:
@@ -13558,7 +13526,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13916,12 +13884,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &359015537
 MeshFilter:
@@ -13975,7 +13942,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14333,12 +14300,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &362155221
 MeshFilter:
@@ -14392,7 +14358,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14750,12 +14716,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &371319996
 MeshFilter:
@@ -14809,7 +14774,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15167,12 +15132,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &379647111
 MeshFilter:
@@ -15311,7 +15275,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15669,12 +15633,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &452220034
 MeshFilter:
@@ -15728,7 +15691,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16086,12 +16049,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &467023236
 MeshFilter:
@@ -16145,7 +16107,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16503,12 +16465,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &470140762
 MeshFilter:
@@ -16562,7 +16523,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16920,12 +16881,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &471672063
 MeshFilter:
@@ -16979,7 +16939,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17337,12 +17297,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &481839546
 MeshFilter:
@@ -17396,7 +17355,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17754,12 +17713,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &521545401
 MeshFilter:
@@ -17813,7 +17771,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18171,12 +18129,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &535561846
 MeshFilter:
@@ -18295,7 +18252,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18653,12 +18610,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &546694684
 MeshFilter:
@@ -18712,7 +18668,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19070,12 +19026,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &569887486
 MeshFilter:
@@ -19129,7 +19084,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19487,12 +19442,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &599558411
 MeshFilter:
@@ -19546,7 +19500,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19904,12 +19858,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &624806844
 MeshFilter:
@@ -19963,7 +19916,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20321,12 +20274,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &628544773
 MeshFilter:
@@ -20380,7 +20332,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20738,12 +20690,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &635234807
 MeshFilter:
@@ -20797,7 +20748,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21155,12 +21106,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &639211330
 MeshFilter:
@@ -21214,7 +21164,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21572,12 +21522,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &651209243
 MeshFilter:
@@ -21631,7 +21580,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21989,12 +21938,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &663078245
 MeshFilter:
@@ -22222,7 +22170,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22580,12 +22528,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &694637837
 MeshFilter:
@@ -22639,7 +22586,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22997,12 +22944,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &696348592
 MeshFilter:
@@ -23056,7 +23002,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23414,12 +23360,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &705648838
 MeshFilter:
@@ -23473,7 +23418,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23831,12 +23776,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &706901489
 MeshFilter:
@@ -23890,7 +23834,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24248,12 +24192,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &729670471
 MeshFilter:
@@ -24307,7 +24250,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24665,12 +24608,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &732905621
 MeshFilter:
@@ -24724,7 +24666,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25082,12 +25024,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &736489687
 MeshFilter:
@@ -25141,7 +25082,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25499,12 +25440,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &737358240
 MeshFilter:
@@ -25558,7 +25498,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25916,12 +25856,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &739610242
 MeshFilter:
@@ -25975,7 +25914,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26333,12 +26272,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &747378470
 MeshFilter:
@@ -26392,7 +26330,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26750,12 +26688,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &748244204
 MeshFilter:
@@ -26809,7 +26746,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27167,12 +27104,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &754095348
 MeshFilter:
@@ -27226,7 +27162,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27584,12 +27520,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &758087246
 MeshFilter:
@@ -27643,7 +27578,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28001,12 +27936,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &803171812
 MeshFilter:
@@ -28060,7 +27994,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28418,12 +28352,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &810263252
 MeshFilter:
@@ -28477,7 +28410,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28835,12 +28768,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &818671263
 MeshFilter:
@@ -28926,7 +28858,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29284,12 +29216,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &845946671
 MeshFilter:
@@ -29343,7 +29274,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29701,12 +29632,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &858502419
 MeshFilter:
@@ -29760,7 +29690,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30118,12 +30048,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &860948975
 MeshFilter:
@@ -30177,7 +30106,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30535,12 +30464,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &866472336
 MeshFilter:
@@ -31139,7 +31067,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -31497,12 +31425,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &874471544
 MeshFilter:
@@ -31556,7 +31483,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -31914,12 +31841,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &879200273
 MeshFilter:
@@ -31973,7 +31899,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32331,12 +32257,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &889339014
 MeshFilter:
@@ -32390,7 +32315,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32748,12 +32673,11 @@ MonoBehaviour:
   airTemperature: 30
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &901358229
 MeshFilter:
@@ -32807,7 +32731,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -33165,12 +33089,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &901446567
 MeshFilter:
@@ -33224,7 +33147,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -33582,12 +33505,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &917865789
 MeshFilter:
@@ -33641,7 +33563,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -33999,12 +33921,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &919682063
 MeshFilter:
@@ -34058,7 +33979,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34416,12 +34337,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &921417330
 MeshFilter:
@@ -34475,7 +34395,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34833,12 +34753,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &922404107
 MeshFilter:
@@ -34892,7 +34811,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -35250,12 +35169,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &928589270
 MeshFilter:
@@ -35309,7 +35227,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -35667,12 +35585,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &973498620
 MeshFilter:
@@ -35726,7 +35643,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -36084,12 +36001,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &978086212
 MeshFilter:
@@ -36143,7 +36059,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -36501,12 +36417,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &978378654
 MeshFilter:
@@ -36560,7 +36475,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -36918,12 +36833,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &980245826
 MeshFilter:
@@ -36977,7 +36891,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37335,12 +37249,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1023279931
 MeshFilter:
@@ -37394,7 +37307,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37752,12 +37665,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1030170095
 MeshFilter:
@@ -37811,7 +37723,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38169,12 +38081,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1034737562
 MeshFilter:
@@ -38228,7 +38139,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38586,12 +38497,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1039998702
 MeshFilter:
@@ -38645,7 +38555,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39003,12 +38913,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1041582446
 MeshFilter:
@@ -39062,7 +38971,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39420,12 +39329,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1045024682
 MeshFilter:
@@ -39479,7 +39387,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39837,12 +39745,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1053458552
 MeshFilter:
@@ -39981,7 +39888,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -40339,12 +40246,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1068675405
 MeshFilter:
@@ -40398,7 +40304,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -40756,12 +40662,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1069034892
 MeshFilter:
@@ -40815,7 +40720,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -41173,12 +41078,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1071973019
 MeshFilter:
@@ -41232,7 +41136,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -41590,12 +41494,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1077760454
 MeshFilter:
@@ -41649,7 +41552,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -42007,12 +41910,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1081286042
 MeshFilter:
@@ -42066,7 +41968,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -42424,12 +42326,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1084608774
 MeshFilter:
@@ -42577,7 +42478,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -42935,12 +42836,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1101551171
 MeshFilter:
@@ -42994,7 +42894,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -43352,12 +43252,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1108381390
 MeshFilter:
@@ -43411,7 +43310,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -43769,12 +43668,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1111023052
 MeshFilter:
@@ -43828,7 +43726,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -44186,12 +44084,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1112686137
 MeshFilter:
@@ -44245,7 +44142,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -44603,12 +44500,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1123534547
 MeshFilter:
@@ -44662,7 +44558,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -45020,12 +44916,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1124493770
 MeshFilter:
@@ -45079,7 +44974,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -45437,12 +45332,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1130013862
 MeshFilter:
@@ -45496,7 +45390,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -45854,12 +45748,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1134641533
 MeshFilter:
@@ -45913,7 +45806,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -46271,12 +46164,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1154819793
 MeshFilter:
@@ -46330,7 +46222,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -46688,12 +46580,11 @@ MonoBehaviour:
   airTemperature: 30
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1155113745
 MeshFilter:
@@ -46747,7 +46638,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47105,12 +46996,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1192645290
 MeshFilter:
@@ -47164,7 +47054,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47522,12 +47412,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1203693184
 MeshFilter:
@@ -47581,7 +47470,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47939,12 +47828,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1206058892
 MeshFilter:
@@ -47998,7 +47886,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -48356,12 +48244,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1216351587
 MeshFilter:
@@ -48415,7 +48302,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -48773,12 +48660,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1226366665
 MeshFilter:
@@ -48832,7 +48718,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -49190,12 +49076,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1228849227
 MeshFilter:
@@ -49333,7 +49218,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -49691,12 +49576,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1244879764
 MeshFilter:
@@ -49750,7 +49634,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50108,12 +49992,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1249602105
 MeshFilter:
@@ -50167,7 +50050,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50525,12 +50408,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1259014179
 MeshFilter:
@@ -50584,7 +50466,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50942,12 +50824,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1261327887
 MeshFilter:
@@ -51001,7 +50882,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -51359,12 +51240,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1265331970
 MeshFilter:
@@ -51418,7 +51298,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -51776,12 +51656,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1266490550
 MeshFilter:
@@ -51835,7 +51714,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52193,12 +52072,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1275661382
 MeshFilter:
@@ -52252,7 +52130,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52610,12 +52488,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1279665615
 MeshFilter:
@@ -52669,7 +52546,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -53027,12 +52904,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1297344092
 MeshFilter:
@@ -53086,7 +52962,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -53444,12 +53320,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1300221025
 MeshFilter:
@@ -53503,7 +53378,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -53861,12 +53736,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1312636124
 MeshFilter:
@@ -53920,7 +53794,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54278,12 +54152,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1327447141
 MeshFilter:
@@ -54337,7 +54210,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54695,12 +54568,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1328865980
 MeshFilter:
@@ -54754,7 +54626,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55112,12 +54984,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1333839530
 MeshFilter:
@@ -55171,7 +55042,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55529,12 +55400,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1334971483
 MeshFilter:
@@ -55588,7 +55458,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55946,12 +55816,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1337353157
 MeshFilter:
@@ -56005,7 +55874,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -56363,12 +56232,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1342193353
 MeshFilter:
@@ -56422,7 +56290,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -56780,12 +56648,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1345822326
 MeshFilter:
@@ -56839,7 +56706,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -57197,12 +57064,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1348855938
 MeshFilter:
@@ -57253,7 +57119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenarioSizeX: 30
   scenarioSizeZ: 30
-  agent: {fileID: 1000011939965686, guid: 9c634be05cf57f342becbac81496aae9, type: 2}
+  agentPF:
+  - {fileID: 100098, guid: 789039647fed8584ab1ba4b28df624aa, type: 2}
+  - {fileID: 100098, guid: 907f1f2bc883d0547b16e3de0d0e0aea, type: 2}
+  - {fileID: 100000, guid: 90f11b9affcb9d14f9027571b5780cff, type: 2}
+  - {fileID: 100000, guid: b2b8c3d8a096d774cade69e3742872b3, type: 2}
   agentRadius: 1
   cellRadius: 1
   cell: {fileID: 1000014062538960, guid: ab417ae3e274a0b44bef7ff15ac4bc18, type: 2}
@@ -57352,7 +57222,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -57710,12 +57580,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1374453583
 MeshFilter:
@@ -57769,7 +57638,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -58127,12 +57996,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1376882588
 MeshFilter:
@@ -58186,7 +58054,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -58544,12 +58412,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1379764565
 MeshFilter:
@@ -58688,7 +58555,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -59046,12 +58913,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1393193292
 MeshFilter:
@@ -59190,7 +59056,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -59548,12 +59414,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1395955778
 MeshFilter:
@@ -59636,7 +59501,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -59994,12 +59859,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1408783917
 MeshFilter:
@@ -60053,7 +59917,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -60411,12 +60275,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1436614520
 MeshFilter:
@@ -60470,7 +60333,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -60828,12 +60691,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1452995884
 MeshFilter:
@@ -60887,7 +60749,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -61245,12 +61107,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1465717560
 MeshFilter:
@@ -61304,7 +61165,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -61662,12 +61523,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1473642615
 MeshFilter:
@@ -61721,7 +61581,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -62079,12 +61939,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1479066895
 MeshFilter:
@@ -62138,7 +61997,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -62496,12 +62355,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1484084448
 MeshFilter:
@@ -62555,7 +62413,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -62913,12 +62771,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1507832816
 MeshFilter:
@@ -62972,7 +62829,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -63330,12 +63187,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1512459877
 MeshFilter:
@@ -63389,7 +63245,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -63747,12 +63603,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1518002016
 MeshFilter:
@@ -63806,7 +63661,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -64164,12 +64019,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1531484406
 MeshFilter:
@@ -64223,7 +64077,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -64581,12 +64435,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1548241387
 MeshFilter:
@@ -64640,7 +64493,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -64998,12 +64851,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1561481220
 MeshFilter:
@@ -65057,7 +64909,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -65415,12 +65267,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1563399467
 MeshFilter:
@@ -65474,7 +65325,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -65832,12 +65683,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1575151620
 MeshFilter:
@@ -65891,7 +65741,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -66249,12 +66099,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1578496147
 MeshFilter:
@@ -66308,7 +66157,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -66666,12 +66515,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1588923539
 MeshFilter:
@@ -66725,7 +66573,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67083,12 +66931,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1588934935
 MeshFilter:
@@ -67142,7 +66989,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67500,12 +67347,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1593740859
 MeshFilter:
@@ -67633,7 +67479,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67991,12 +67837,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1607007726
 MeshFilter:
@@ -68050,7 +67895,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -68408,12 +68253,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1618026688
 MeshFilter:
@@ -68467,7 +68311,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -68825,12 +68669,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1621174822
 MeshFilter:
@@ -68884,7 +68727,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -69242,12 +69085,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1621198675
 MeshFilter:
@@ -69301,7 +69143,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -69659,12 +69501,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1653565366
 MeshFilter:
@@ -69718,7 +69559,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70076,12 +69917,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1666304284
 MeshFilter:
@@ -70135,7 +69975,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70493,12 +70333,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1675705114
 MeshFilter:
@@ -70552,7 +70391,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70910,12 +70749,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1675904289
 MeshFilter:
@@ -70969,7 +70807,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71327,12 +71165,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1690399001
 MeshFilter:
@@ -71386,7 +71223,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71744,12 +71581,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1693302481
 MeshFilter:
@@ -71803,7 +71639,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72161,12 +71997,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1698150900
 MeshFilter:
@@ -72220,7 +72055,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72578,12 +72413,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1700669789
 MeshFilter:
@@ -72637,7 +72471,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72995,12 +72829,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1705843169
 MeshFilter:
@@ -73125,7 +72958,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73483,12 +73316,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1714515274
 MeshFilter:
@@ -73542,7 +73374,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73900,12 +73732,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1714990786
 MeshFilter:
@@ -73959,7 +73790,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74317,12 +74148,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1728243028
 MeshFilter:
@@ -74376,7 +74206,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74734,12 +74564,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1732158117
 MeshFilter:
@@ -74793,7 +74622,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75151,12 +74980,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1741660983
 MeshFilter:
@@ -75210,7 +75038,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75568,12 +75396,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1742338785
 MeshFilter:
@@ -75627,7 +75454,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75985,12 +75812,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1759419512
 MeshFilter:
@@ -76044,7 +75870,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76402,12 +76228,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1763439298
 MeshFilter:
@@ -76461,7 +76286,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76819,12 +76644,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1770227376
 MeshFilter:
@@ -76878,7 +76702,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77236,12 +77060,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1773506671
 MeshFilter:
@@ -77295,7 +77118,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77653,12 +77476,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1787666259
 MeshFilter:
@@ -77712,7 +77534,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78070,12 +77892,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1798374199
 MeshFilter:
@@ -78129,7 +77950,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78487,12 +78308,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1799018363
 MeshFilter:
@@ -78546,7 +78366,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78904,12 +78724,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1807090415
 MeshFilter:
@@ -78963,7 +78782,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79321,12 +79140,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1819000030
 MeshFilter:
@@ -79380,7 +79198,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79738,12 +79556,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1821375259
 MeshFilter:
@@ -79797,7 +79614,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80155,12 +79972,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1835971274
 MeshFilter:
@@ -80214,7 +80030,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80572,12 +80388,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1838678842
 MeshFilter:
@@ -80631,7 +80446,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80989,12 +80804,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1839231666
 MeshFilter:
@@ -81048,7 +80862,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81406,12 +81220,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1842704414
 MeshFilter:
@@ -81465,7 +81278,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81823,12 +81636,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1845885991
 MeshFilter:
@@ -81882,7 +81694,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82240,12 +82052,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1848061693
 MeshFilter:
@@ -82299,7 +82110,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82657,12 +82468,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1850758122
 MeshFilter:
@@ -82716,7 +82526,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83074,12 +82884,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1852711018
 MeshFilter:
@@ -83133,7 +82942,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83491,12 +83300,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1880870629
 MeshFilter:
@@ -83550,7 +83358,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83908,12 +83716,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1882753913
 MeshFilter:
@@ -83967,7 +83774,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84325,12 +84132,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1889189577
 MeshFilter:
@@ -84384,7 +84190,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84742,12 +84548,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1890218539
 MeshFilter:
@@ -84801,7 +84606,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85159,12 +84964,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1898456705
 MeshFilter:
@@ -85218,7 +85022,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85576,12 +85380,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1922441051
 MeshFilter:
@@ -85635,7 +85438,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85993,12 +85796,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1935486181
 MeshFilter:
@@ -86052,7 +85854,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86410,12 +86212,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1946502165
 MeshFilter:
@@ -86469,7 +86270,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86827,12 +86628,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1951576787
 MeshFilter:
@@ -87002,7 +86802,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87360,12 +87160,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1962119163
 MeshFilter:
@@ -87419,7 +87218,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87777,12 +87576,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1975357961
 MeshFilter:
@@ -87836,7 +87634,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88194,12 +87992,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1980945855
 MeshFilter:
@@ -88253,7 +88050,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88611,12 +88408,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1987025546
 MeshFilter:
@@ -88670,7 +88466,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89028,12 +88824,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &1991017306
 MeshFilter:
@@ -89087,7 +88882,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89445,12 +89240,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2007934122
 MeshFilter:
@@ -89504,7 +89298,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89862,12 +89656,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2015789183
 MeshFilter:
@@ -89921,7 +89714,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90279,12 +90072,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2021313567
 MeshFilter:
@@ -90338,7 +90130,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90696,12 +90488,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2028102147
 MeshFilter:
@@ -90755,7 +90546,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91113,12 +90904,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2032735898
 MeshFilter:
@@ -91172,7 +90962,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91530,12 +91320,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2042483582
 MeshFilter:
@@ -91589,7 +91378,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91947,12 +91736,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2071499290
 MeshFilter:
@@ -92006,7 +91794,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92364,12 +92152,11 @@ MonoBehaviour:
   airTemperature: 30
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2074270722
 MeshFilter:
@@ -92423,7 +92210,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92781,12 +92568,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2085625783
 MeshFilter:
@@ -92840,7 +92626,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93198,12 +92984,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2092076903
 MeshFilter:
@@ -93257,7 +93042,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93615,12 +93400,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2096128200
 MeshFilter:
@@ -93758,7 +93542,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94116,12 +93900,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2109515141
 MeshFilter:
@@ -94175,7 +93958,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94533,12 +94316,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2113622656
 MeshFilter:
@@ -94592,7 +94374,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94950,12 +94732,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2116276759
 MeshFilter:
@@ -95071,7 +94852,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95429,12 +95210,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2122988243
 MeshFilter:
@@ -95488,7 +95268,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e00851db7227cb949933ca6c2776aef6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95846,12 +95626,11 @@ MonoBehaviour:
   airTemperature: 20
   room: {fileID: 873944594}
   agents: []
-  heatSource: {fileID: 0}
+  isHot: 0
+  isCold: 0
   isWall: 0
   wallFilter: 0
   isDoor: 0
-  higher: 0
-  lower: 0
   oldAirTemperature: 0
 --- !u!33 &2143109679
 MeshFilter:

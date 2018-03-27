@@ -303,11 +303,11 @@ public class PathPlanningDClass {
                                 //hot is as uncomfortable as cold
                                 if (newNode.cell.GetComponent<CellController>().airTemperature < 10)
                                 {
-                                    newNode.tc = 100;
+                                    newNode.tc = 60;
                                 }
                                 else if (newNode.cell.GetComponent<CellController>().airTemperature >= 10 && newNode.cell.GetComponent<CellController>().airTemperature < 18)
                                 {
-                                    newNode.tc = 50;
+                                    newNode.tc = 30;
                                 }
                                 else if (newNode.cell.GetComponent<CellController>().airTemperature >= 18 && newNode.cell.GetComponent<CellController>().airTemperature < 25)
                                 {
@@ -315,16 +315,16 @@ public class PathPlanningDClass {
                                 }
                                 else if (newNode.cell.GetComponent<CellController>().airTemperature >= 25 && newNode.cell.GetComponent<CellController>().airTemperature < 29)
                                 {
-                                    newNode.tc = 50;
+                                    newNode.tc = 30;
                                 }
                                 else if (newNode.cell.GetComponent<CellController>().airTemperature >= 29)
                                 {
-                                    newNode.tc = 100;
+                                    newNode.tc = 60;
                                 }
 
-                                //density confort: just sum up the qnt of agents on this cell node, * 50
+                                //density confort: just sum up the qnt of agents on this cell node, * 10
                                 //TO SEE: it gets cells which have agents in that instant, but agents may be still moving
-                                //newNode.dc = newNode.cell.GetComponent<CellController>().agents.Count * 50;
+                                newNode.dc = newNode.cell.GetComponent<CellController>().agents.Count * 10;
 
                                 //f, just sums h with g
                                 //new stuff: adds up the thermal comfort too

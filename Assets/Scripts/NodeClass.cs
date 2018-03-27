@@ -6,7 +6,8 @@ public class NodeClass {
     {
         //initialize
         f = g = h = tc = dc = 0;
-        //higher = lower = false;
+        higher = lower = false;
+        changePath = false;
     }
 
     //g + h. The node with the lowest f is used as the next node to look at in the open list
@@ -25,5 +26,7 @@ public class NodeClass {
     //parent node
     public NodeClass parent;
     //D* higher and lower cost
-    //public bool higher, lower;
+    public bool higher, lower;
+    //should agent change path when enter in sight?
+    public bool changePath;
 }

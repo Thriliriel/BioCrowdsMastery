@@ -21,8 +21,10 @@ public class CellController : MonoBehaviour {
     public GameObject room;
     //agents who are inside it
     public List<GameObject> agents;
-    //any source of heat
-    public GameObject heatSource;
+    //is hot?
+    public bool isHot;
+    //is cold?
+    public bool isCold;
     //if cell is part of wall
     public bool isWall;
     //wall value (0 = wall, c = normal)
@@ -30,8 +32,8 @@ public class CellController : MonoBehaviour {
     //if cell is a door
     public bool isDoor;
 
-    //D* higher and lower cost, to use for tempareture and density
-    public bool higher, lower;
+    //D* higher and lower cost, to use for tempereture and density
+    //public bool higher, lower;
 
     //game controller
     private GameController gameController;
@@ -95,7 +97,8 @@ public class CellController : MonoBehaviour {
             wallFilter = 0.019f;
         }
 
-        higher = lower = false;
+        //higher = lower = isHot = isCold = false;
+        isHot = isCold = false;
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
         loadedMaterials = new List<Material>();
@@ -136,6 +139,9 @@ public class CellController : MonoBehaviour {
 
     private void Update()
     {
+        bool higher = false;
+        bool lower = false;
+
         //if heat map, use it
         if (paintHeatMap)
         {
@@ -165,7 +171,7 @@ public class CellController : MonoBehaviour {
         if (!isWall && gameController.thermalComfort)
         {
             //ResetCell();
-            
+
             //update its material according its temperature
             if (airTemperature < 10.0f && oldAirTemperature >= 10.0f)
             {
@@ -188,7 +194,7 @@ public class CellController : MonoBehaviour {
                 }//else, if old temperature was lower, lower cost
                 else if (oldAirTemperature < 10.0f)
                 {
-                    //higher cost
+                    //lower cost
                     higher = false;
                     lower = true;
                 }
@@ -214,7 +220,7 @@ public class CellController : MonoBehaviour {
                 }//else, if old temperature was higher, lower cost
                 else if (oldAirTemperature >= 29.0f)
                 {
-                    //higher cost
+                    //lower cost
                     higher = false;
                     lower = true;
                 }
@@ -229,14 +235,40 @@ public class CellController : MonoBehaviour {
             }
         }
 
-        //if cost if higher or lower, should update path to/from this cell
-        if(higher)
+        if (higher || lower)
         {
-            gameController.CheckRaisedCell(gameObject);
+            UpdateNodes(higher, lower);
+
+            //if cost if higher or lower, should update path to/from this cell
+            if (higher)
+            {
+                gameController.CheckRaisedCell(gameObject);
+            }
+            else if (lower)
+            {
+                gameController.CheckLoweredCell(gameObject);
+            }
         }
-        else if (lower)
+    }
+
+    //update nodes higher and lower with this cell
+    private void UpdateNodes(bool nodeHigher, bool nodeLower)
+    {
+        GameObject[] allAgents = GameObject.FindGameObjectsWithTag("Player");
+
+        //for each agent
+        foreach(GameObject ag in allAgents)
         {
-            gameController.CheckLoweredCell(gameObject);
+            //foreach node in agent path
+            foreach(NodeClass nd in ag.GetComponent<AgentController>().fullPath)
+            {
+                //if has this cell, update value and break
+                if(nd.cell.name == name)
+                {
+                    nd.higher = nodeHigher;
+                    nd.lower = nodeLower;
+                }
+            }
         }
     }
 

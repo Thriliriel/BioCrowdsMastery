@@ -350,15 +350,15 @@ public class RoomController : MonoBehaviour {
                     float rhsPlusAgent = peopleWatts * termicCells[indCell].GetComponent<CellController>().agents.Count;
 
                     //if it has a source of heat on this cell, adds this value
-                    if (termicCells[indCell].GetComponent<CellController>().heatSource)
+                    if (termicCells[indCell].GetComponent<CellController>().isHot || termicCells[indCell].GetComponent<CellController>().isCold)
                     {
                         //if this source has tag Furnace, add this watts
-                        if (termicCells[indCell].GetComponent<CellController>().heatSource.tag == "Furnace")
+                        if (termicCells[indCell].GetComponent<CellController>().isHot)
                         {
                             //BUUURRRRNNNNNN!!!
                             rhsPlus = (rhsPlusAgent + sourceWatts) / cellWeight / airheatcapacity;
                         }//else, if it has tag Snowman, it is cooold
-                        else if (termicCells[indCell].GetComponent<CellController>().heatSource.tag == "Snowman")
+                        else if (termicCells[indCell].GetComponent<CellController>().isCold)
                         {
                             //FREEEEZEEEE!!!
                             rhsPlus = (rhsPlusAgent - sourceWatts) / cellWeight / airheatcapacity;
