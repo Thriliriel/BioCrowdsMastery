@@ -1774,12 +1774,12 @@ MonoBehaviour:
   agentRadius: 0
   speed: {x: 0, y: 0, z: 0}
   speedModule: 0
-  maxSpeed: 0
+  maxSpeed: 1.4
   go: []
   intentions: []
   desire: []
   vetorDistRelacaoMarcacao: []
-  fieldOfView: 0
+  fieldOfView: 5
   changePosition: 1
   cell: {fileID: 0}
   goal: {x: 0, y: 0, z: 0}

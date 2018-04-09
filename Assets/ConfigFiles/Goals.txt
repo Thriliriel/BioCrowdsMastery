@@ -1,0 +1,16 @@
+#####################################################
+#file structure:
+#each line represents a goal
+#
+#Example
+#
+#1 -> qnt of goals
+#Goal3,2,2 -> goal name, goal position x, goal position z
+#
+#####################################################
+
+4
+Goal3,5,5
+Goal1,15,15
+Goal2,5,25
+Goal4,25,5

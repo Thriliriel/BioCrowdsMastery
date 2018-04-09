@@ -1,29 +1,54 @@
-qntObstacles:2
+#####################################################
+#file structure:
+#each set of lines represents an obstacle
+#each set starts with the obstacle name (Obstacle) and goes until the next obstacle name (or EOF)
+#
+#Example
+#
+#qntObstacles:2 -> qnt of obstacles in the environment
+#
+#Obstacle -> Obstacle name
+#qntVertices:4 -> qnt of vertices that form the obstacle shape
+#18;0;18 -> obstacle vertice 1
+#18;0;25 -> obstacle vertice 2
+#25;0;25 -> obstacle vertice 3
+#25;0;18 -> obstacle vertice 4
+#qntTriangles:6 -> qnt of triangles points that connect the vertices
+#0 -> triangle 1 vertice 1
+#1 -> triangle 1 vertice 2
+#2 -> triangle 1 vertice 3
+#2 -> triangle 2 vertice 3
+#3 -> triangle 2 vertice 4
+#0 -> triangle 2 vertice 1
+#
+#####################################################
 
-Obstacle
-qntVertices:4
-18;0;18
-18;0;25
-25;0;25
-25;0;18
-qntTriangles:6
-0
-1
-2
-2
-3
-0
+qntObstacles:0
 
-Obstacle
-qntVertices:4
-5;0;5
-5;0;12
-12;0;12
-12;0;5
-qntTriangles:6
-0
-1
-2
-2
-3
-0
+#Obstacle
+#qntVertices:4
+#18;0;18
+#18;0;25
+#25;0;25
+#25;0;18
+#qntTriangles:6
+#0
+#1
+#2
+#2
+#3
+#0
+
+#Obstacle
+#qntVertices:4
+#5;0;5
+#5;0;12
+#12;0;12
+#12;0;5
+#qntTriangles:6
+#0
+#1
+#2
+#2
+#3
+#0

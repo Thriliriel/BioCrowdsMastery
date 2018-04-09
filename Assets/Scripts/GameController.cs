@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -87,8 +87,6 @@ public class GameController : MonoBehaviour
     public bool paintHeatMap;
     //using exploratory behavior?
     public bool exploratoryBehavior;
-    //using evacuation scenario?
-    public bool evacuationBehavior;
     //using group behavior? (split and join agents)
     public bool groupBehavior;
     //using thermal comfort?
@@ -192,6 +190,16 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        //load master file
+        LoadMasterFile();
+
+        //if load config File, load it
+        if (loadConfigFile)
+        {
+            ClearScene();
+            LoadCellsAuxins();
+        }
+
         //default useless value
         staticLookingFor = Vector3.zero;
 
@@ -253,9 +261,6 @@ public class GameController : MonoBehaviour
             cell.GetComponent<CellController>().qntAgents = qntAgents;
             cell.GetComponent<CellController>().paintHeatMap = paintHeatMap;
         }
-
-        //load master file
-        LoadMasterFile();
 
         //if loadConfigFile is checked, we do not generate random agents and signs. We load it from the agents.dat and signs.dat
         if (loadConfigFile)
@@ -1261,8 +1266,14 @@ public class GameController : MonoBehaviour
             {
                 line = theReader.ReadLine();
 
-                if (line != null)
+                if (line != null && line != "")
                 {
+                    //if #, it is just comment
+                    if(line[0] == '#')
+                    {
+                        continue;
+                    }
+
                     //line 1 = qntObstacles
                     if(lineCount == 1)
                     {
@@ -1312,9 +1323,9 @@ public class GameController : MonoBehaviour
                             }
                         }
                     }
-                }
 
-                lineCount++;
+                    lineCount++;
+                }
             }
             while (line != null);
         }
@@ -1336,6 +1347,8 @@ public class GameController : MonoBehaviour
 
         //parents
         GameObject parentCells = GameObject.Find("Cells");
+        //room
+        parentCells = parentCells.transform.GetChild(0).gameObject;
 
         int qntCells = 0;
         // Create a new StreamReader, tell it which file to read and what encoding the file
@@ -1442,8 +1455,14 @@ public class GameController : MonoBehaviour
             {
                 line = theReader.ReadLine();
 
-                if (line != null)
+                if (line != null && line != "")
                 {
+                    //if it is #, just comment
+                    if(line[0] == '#')
+                    {
+                        continue;
+                    }
+
                     //in first line, it is the qnt goals
                     if (lineCount == 1)
                     {
@@ -1451,8 +1470,8 @@ public class GameController : MonoBehaviour
                     }
                     else
                     {
-                        //each line 1 agent, separated by " "
-                        string[] entries = line.Split(';');
+                        //each line 1 agent, separated by ","
+                        string[] entries = line.Split(',');
 
                         //goal position
                         Vector3 newPosition = new Vector3(System.Convert.ToSingle(entries[1]), goalP.transform.position.y, System.Convert.ToSingle(entries[2]));
@@ -1460,8 +1479,9 @@ public class GameController : MonoBehaviour
                         //instantiante it
                         DrawGoal(entries[0], newPosition);
                     }
+
+                    lineCount++;
                 }
-                lineCount++;
             }
             while (line != null);
             // Done reading, close the reader and return true to broadcast success    
@@ -1594,14 +1614,14 @@ public class GameController : MonoBehaviour
         GameObject[] goalsToClear = GameObject.FindGameObjectsWithTag("Goal");
         foreach(GameObject gtc in goalsToClear)
         {
-            //DestroyImmediate(gtc);
+            DestroyImmediate(gtc);
         }
 
         //clear signs
         GameObject[] signsToClear = GameObject.FindGameObjectsWithTag("Sign");
         foreach (GameObject stc in signsToClear)
         {
-            //DestroyImmediate(stc);
+            DestroyImmediate(stc);
         }
 
         //clear cells
@@ -2535,6 +2555,12 @@ public class GameController : MonoBehaviour
         return returning;
     }
 
+    //return to the menu
+    public void ReturnMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     //generate new simulation agents and signs
     private void GenerateAnew()
     {
@@ -2556,16 +2582,9 @@ public class GameController : MonoBehaviour
             int centerCellZ = 14;
 
             GameObject foundCell;
-            //if evacuation, start them all at the cell14-14
-            if (evacuationBehavior)
-            {
-                foundCell = GameObject.Find("cell"+centerCellX+"-"+centerCellZ);
-            }//else, sort out
-            else
-            {
-                //sort out a cell
-                foundCell = allCells[Random.Range(0, allCells.Length)];
-            }
+
+            //sort out a cell
+            foundCell = allCells[Random.Range(0, allCells.Length)];
 
             bool pCollider = true;
             //while collider inside obstacle or player
@@ -2754,41 +2773,15 @@ public class GameController : MonoBehaviour
                 newAgentGroupController.SetAngularVariarion(newAgentGroupController.hofstede.GetMeanAngVar() * 90.0f);
             }
             //durupinar is for each agent, so do it later
-
-            //if evacuation behavior, just choose the nearest goal
-            if (evacuationBehavior)
+           
+            //agent group goals
+            for (int j = 0; j < allGoals.Length; j++)
             {
-                GameObject chosenGoal = allGoals[0];
-                float closer = Vector3.Distance(newAgentGroup.transform.position, allGoals[0].transform.position);
-                for (int j = 1; j < allGoals.Length; j++)
-                {
-                    //if it is closer
-                    float newCloser = Vector3.Distance(newAgentGroup.transform.position, allGoals[j].transform.position);
-                    if (newCloser < closer)
-                    {
-                        closer = newCloser;
-                        chosenGoal = allGoals[j];
-                    }
-                }
-
-                //add the chosen goal
-                newAgentGroupController.go.Add(chosenGoal);
+                newAgentGroupController.go.Add(allGoals[j]);
                 //add a random intention
                 newAgentGroupController.intentions.Add(Random.Range(0f, (intentionThreshold - 0.01f)));
                 //add a random desire
                 newAgentGroupController.desire.Add(Random.Range(0f, 1f));
-            }//else, all goals
-            else
-            {
-                //agent group goals
-                for (int j = 0; j < allGoals.Length; j++)
-                {
-                    newAgentGroupController.go.Add(allGoals[j]);
-                    //add a random intention
-                    newAgentGroupController.intentions.Add(Random.Range(0f, (intentionThreshold - 0.01f)));
-                    //add a random desire
-                    newAgentGroupController.desire.Add(Random.Range(0f, 1f));
-                }
             }
 
             //add the Looking For state, with a random position
@@ -3455,8 +3448,8 @@ public class GameController : MonoBehaviour
         go.name = "Obstacle";
 
         //change the static navigation to draw it dinamically
-        GameObjectUtility.SetStaticEditorFlags(go, StaticEditorFlags.NavigationStatic);
-        GameObjectUtility.SetNavMeshArea(go, 1);
+        //GameObjectUtility.SetStaticEditorFlags(go, StaticEditorFlags.NavigationStatic);
+        //GameObjectUtility.SetNavMeshArea(go, 1);
     }
 
     //NEW! draw each obstacle
@@ -3484,8 +3477,8 @@ public class GameController : MonoBehaviour
         go.GetComponent<MeshRenderer>().material = mat;
 
         //change the static navigation to draw it dinamically
-        GameObjectUtility.SetStaticEditorFlags(go, StaticEditorFlags.NavigationStatic);
-        GameObjectUtility.SetNavMeshArea(go, 1);
+        //GameObjectUtility.SetStaticEditorFlags(go, StaticEditorFlags.NavigationStatic);
+        //GameObjectUtility.SetNavMeshArea(go, 1);
     }
 
     //draw a sign

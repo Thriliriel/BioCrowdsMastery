@@ -3,7 +3,7 @@ Config:ConfigFiles/Config.csv
 Obstacles:ConfigFiles/Obstacles.csv
 Agents:ConfigFiles/sign_0/Agents.csv
 Signs:ConfigFiles/sign_0/Signs.csv
-Goals:ConfigFiles/Goals.csv
+Goals:ConfigFiles/Goals.txt
 Hofstede:ConfigFiles/sign_0/Hofstede.csv
 Durupinar:ConfigFiles/sign_0/Durupinar.csv
 Favaretto:ConfigFiles/sign_0/Favaretto.csv
@@ -25,7 +25,7 @@ LoadConfigFile:True
 QntAgents:10
 
 #qnt groups
-QntGroups:2
+QntGroups:1
 
 #use Hofstede parameters?
 UseHofstede:False
@@ -43,7 +43,7 @@ PaintHeatMap:False
 ExploratoryBehavior:True
 
 #use group behavior?
-GroupBehavior:True
+GroupBehavior:False
 
 #use thermal comfort?
 ThermalComfort:False
@@ -58,31 +58,4 @@ MeanSpeedDeviation:0
 AngularVariation:0
 
 #static looking for initial position (default is to keep it commented)
-#staticLFS:5,0,25
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#staticLFS:5,0,25
