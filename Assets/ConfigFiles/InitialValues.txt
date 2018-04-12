@@ -43,7 +43,7 @@ PaintHeatMap:False
 ExploratoryBehavior:True
 
 #use group behavior?
-GroupBehavior:False
+GroupBehavior:True
 
 #use thermal comfort?
 ThermalComfort:False

@@ -326,27 +326,13 @@ public class GameController : MonoBehaviour
                     duruSpeed -= 1;
                     //now, calculate the real value
                     agp.GetComponent<AgentGroupController>().meanSpeed = defaultMeanSpeed * duruSpeed;
-
-                    //set cohesion. PROPOSAL: function of communication, leadership and gesturing
-                    //since the values varies from 0 to 3, each of them is 1
-                    /*agp.GetComponent<AgentGroupController>().cohesion =
-                        (agp.GetComponent<AgentGroupController>().agents[leaderIndex].GetComponent<AgentController>().durupinar.GetLeadership()) +
-                        (agp.GetComponent<AgentGroupController>().agents[leaderIndex].GetComponent<AgentController>().durupinar.GetGesturing() / 10);
-                    if (agp.GetComponent<AgentGroupController>().agents[leaderIndex].GetComponent<AgentController>().durupinar.GetCommunication())
-                    {
-                        agp.GetComponent<AgentGroupController>().cohesion += 1;
-                    }*/
-                    //NEW PROPOSAL: function of waiting radius
-                    /*float waitingRadius = agp.GetComponent<AgentGroupController>().agents[leaderIndex].GetComponent<AgentController>().durupinar.GetWaitingRadius();
-                    float cohesionFromWR = (waitingRadius - 0.25f) * 7.5f;
-                    //cohesion
-                    agp.GetComponent<AgentGroupController>().cohesion = cohesionFromWR;*/
+                    
                     //NEEEWWWW PROPOSAL: function of impatience
                     //cohesion
                     agp.GetComponent<AgentGroupController>().cohesion = 
                         (1 - agp.GetComponent<AgentGroupController>().agents[leaderIndex].GetComponent<AgentController>().durupinar.GetImpatience()) * 3;
 
-                    //set speed deviation. PROPOSAL: keep it as function of Cohesion, just like Hof
+                    //set speed deviation. PROPOSAL: keep it as function of Cohesion, just like Hof. Between 0-20%
                     agp.GetComponent<AgentGroupController>().meanSpeedDeviation =
                         (3 - agp.GetComponent<AgentGroupController>().cohesion) / 15;
 
@@ -419,8 +405,10 @@ public class GameController : MonoBehaviour
                     //while speed is invalid
                     while (newSpeed <= 0)//newSpeed > agent.GetComponent<AgentController>().maxSpeed || 
                     {
-                        newSpeed = Random.Range(agp.GetComponent<AgentGroupController>().GetMeanSpeed() - agp.GetComponent<AgentGroupController>().GetMeanSpeedDeviation(),
-                            agp.GetComponent<AgentGroupController>().GetMeanSpeed() + agp.GetComponent<AgentGroupController>().GetMeanSpeedDeviation());
+                        /*newSpeed = Random.Range(agp.GetComponent<AgentGroupController>().GetMeanSpeed() - agp.GetComponent<AgentGroupController>().GetMeanSpeedDeviation(),
+                            agp.GetComponent<AgentGroupController>().GetMeanSpeed() + agp.GetComponent<AgentGroupController>().GetMeanSpeedDeviation());*/
+                        float variation = agp.GetComponent<AgentGroupController>().GetMeanSpeed() * agp.GetComponent<AgentGroupController>().GetMeanSpeedDeviation();
+                        newSpeed = Random.Range(agp.GetComponent<AgentGroupController>().GetMeanSpeed() - variation, agp.GetComponent<AgentGroupController>().GetMeanSpeed() + variation);
                     }
                     //set agent speed
                     ag.GetComponent<AgentController>().maxSpeed = newSpeed;
@@ -457,7 +445,9 @@ public class GameController : MonoBehaviour
                 groupController.cohesion = (sumCollectivity / groupSize) * 3;
                 groupController.meanSpeed = sumSpeed / groupSize;
                 //groupController.meanSpeedDeviation = System.Math.Abs(0.5f - (sumSpeedDeviation / groupSize));
-                groupController.meanSpeedDeviation = (3 - groupController.cohesion) / 15;
+                float variation = groupController.GetMeanSpeed() * groupController.GetMeanSpeedDeviation();
+                groupController.meanSpeedDeviation = Random.Range(groupController.GetMeanSpeed() - variation, groupController.GetMeanSpeed() + variation);
+                //groupController.meanSpeedDeviation = (3 - groupController.cohesion) / 15;
                 groupController.angularVariation = 90 * (sumAngularVar / groupSize);
             }
         }
@@ -637,6 +627,22 @@ public class GameController : MonoBehaviour
                                     {
                                         agentIController.InteractionBetweenAgents(otherAgentInGroup, distance, agentGroupI.GetCohesion());
                                     }
+                                }
+                            }
+                        }
+                    }//else, we can still check interaction between all agents
+                    else
+                    {
+                        foreach (GameObject otherAgentInGroup in allAgents)
+                        {
+                            if (agentI.name != otherAgentInGroup.name)
+                            {
+                                float distance = Vector3.Distance(agentI.transform.position, otherAgentInGroup.transform.position);
+
+                                //we use the personal space (1.2m) as threshold
+                                if (distance < 1.2f)
+                                {
+                                    agentIController.InteractionBetweenAgents(otherAgentInGroup, distance, 0.1f);
                                 }
                             }
                         }
@@ -1094,8 +1100,10 @@ public class GameController : MonoBehaviour
         //while speed is invalid
         while (newSpeed <= 0)//newSpeed > agent.GetComponent<AgentController>().maxSpeed || 
         {
-            newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - newAgentGroupController.GetMeanSpeedDeviation(),
-                newAgentGroupController.GetMeanSpeed() + newAgentGroupController.GetMeanSpeedDeviation());
+            float variation = newAgentGroupController.GetMeanSpeed() * newAgentGroupController.GetMeanSpeedDeviation();
+            newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - variation, newAgentGroupController.GetMeanSpeed() + variation);
+            /*newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - newAgentGroupController.GetMeanSpeedDeviation(),
+                newAgentGroupController.GetMeanSpeed() + newAgentGroupController.GetMeanSpeedDeviation());*/
         }
         //set agent speed
         agentIController.maxSpeed = newSpeed;
@@ -1987,8 +1995,10 @@ public class GameController : MonoBehaviour
         //while speed is invalid
         while (newSpeed <= 0)//newSpeed > agent.GetComponent<AgentController>().maxSpeed || 
         {
-            newSpeed = Random.Range(group2Controller.GetMeanSpeed() - group2Controller.GetMeanSpeedDeviation(),
-                group2Controller.GetMeanSpeed() + group2Controller.GetMeanSpeedDeviation());
+            float variation = group2Controller.GetMeanSpeed() * group2Controller.GetMeanSpeedDeviation();
+            newSpeed = Random.Range(group2Controller.GetMeanSpeed() - variation, group2Controller.GetMeanSpeed() + variation);
+            /*newSpeed = Random.Range(group2Controller.GetMeanSpeed() - group2Controller.GetMeanSpeedDeviation(),
+                group2Controller.GetMeanSpeed() + group2Controller.GetMeanSpeedDeviation());*/
         }
         //set agent speed
         agent1Controller.maxSpeed = newSpeed;
@@ -2082,7 +2092,7 @@ public class GameController : MonoBehaviour
             //set group cohesion
             newAgentGroupController.SetCohesion(newAgentGroupController.hofstede.GetMeanCohesion());
             //once we have the hofstede calculated values, we can use the meanSpeed as a mean velocity for the group and calculate the meanSpeedDeviation according the cohesion
-            //the more cohesion, the less deviation (between 0 and 0.2)
+            //the more cohesion, the less deviation (between 0 and 0.2), between 0-20%
             newAgentGroupController.hofstede.SetMeanSpeedDeviation((3 - newAgentGroupController.GetCohesion()) / 15);
             //set group speed deviation
             newAgentGroupController.SetMeanSpeedDeviation(newAgentGroupController.hofstede.GetMeanSpeedDeviation());
@@ -2177,8 +2187,10 @@ public class GameController : MonoBehaviour
                 //while speed is invalid
                 while (newSpeed <= 0)//newSpeed > agent.GetComponent<AgentController>().maxSpeed || 
                 {
-                    newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - newAgentGroupController.GetMeanSpeedDeviation(),
-                        newAgentGroupController.GetMeanSpeed() + newAgentGroupController.GetMeanSpeedDeviation());
+                    float variation = newAgentGroupController.GetMeanSpeed() * newAgentGroupController.GetMeanSpeedDeviation();
+                    newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - variation, newAgentGroupController.GetMeanSpeed() + variation);
+                    /*newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - newAgentGroupController.GetMeanSpeedDeviation(),
+                        newAgentGroupController.GetMeanSpeed() + newAgentGroupController.GetMeanSpeedDeviation());*/
                 }
                 //set agent speed
                 newAgentController.maxSpeed = newSpeed;
@@ -2763,7 +2775,7 @@ public class GameController : MonoBehaviour
                 //set group cohesion
                 newAgentGroupController.SetCohesion(newAgentGroupController.hofstede.GetMeanCohesion());
                 //once we have the hofstede calculated values, we can use the meanSpeed as a mean velocity for the group and calculate the meanSpeedDeviation according the cohesion
-                //the more cohesion, the less deviation (between 0 and 0.2)
+                //the more cohesion, the less deviation (between 0 and 0.2), between 0-20%
                 newAgentGroupController.hofstede.SetMeanSpeedDeviation((3 - newAgentGroupController.GetCohesion()) / 15);
                 //set group speed deviation
                 newAgentGroupController.SetMeanSpeedDeviation(newAgentGroupController.hofstede.GetMeanSpeedDeviation());
@@ -2877,8 +2889,11 @@ public class GameController : MonoBehaviour
                 //while speed is invalid
                 while (newSpeed <= 0)//newSpeed > agent.GetComponent<AgentController>().maxSpeed || 
                 {
-                    newSpeed = Random.Range(chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeed() - chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeedDeviation(),
-                        chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeed() + chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeedDeviation());
+                    float variation = chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeed() * chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeedDeviation();
+                    newSpeed = Random.Range(chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeed() - variation, 
+                        chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeed() + variation);
+                    /*newSpeed = Random.Range(chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeed() - chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeedDeviation(),
+                        chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeed() + chosenGroup.GetComponent<AgentGroupController>().GetMeanSpeedDeviation());*/
                 }
                 //set agent speed
                 newAgentController.maxSpeed = newSpeed;

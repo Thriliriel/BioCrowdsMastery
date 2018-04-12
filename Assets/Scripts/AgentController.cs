@@ -448,7 +448,7 @@ public class AgentController : MonoBehaviour {
         }
 
         //update agent orientation
-        transform.LookAt(transform.forward);
+        transform.LookAt(goal);
         transform.Rotate(transform.up * 180);
     }
 
@@ -726,22 +726,26 @@ public class AgentController : MonoBehaviour {
                 //otherAgent.GetComponent<AgentController>().intentions[otherIndex] += deltaIntention;
 
                 //other agent assumes this same intention
-                otherAgent.GetComponent<AgentController>().intentions[otherIndex] = intentions[z];
+                //otherAgent.GetComponent<AgentController>().intentions[otherIndex] = intentions[z];
 
                 //making an interpolation
                 //get the difference between this agent intention and otherAgent intention. This value would be the 100% cohesion interaction
-                //float deltaIntention = intentions[z] - otherAgent.GetComponent<AgentController>().intentions[otherIndex];
+                float deltaIntention = intentions[z] - otherAgent.GetComponent<AgentController>().intentions[otherIndex];
 
                 //since cohesion varies from 0 to 3, 0 would be no interaction (thus, 0%) and 3 would be 100% interaction. So, makes an interpolation between 0% and 100% (0.0 and 1.0 normalized)
-                //float perCentCohesion = cohesion / 3;
+                float perCentCohesion = cohesion / 3;
 
                 //multiplies deltaIntention by the perCentCohesion, which represents how strong the group cohesion is
-                //deltaIntention *= perCentCohesion;
+                deltaIntention *= perCentCohesion;
 
                 //other agent updates his intention with deltaIntention
-                //otherAgent.GetComponent<AgentController>().intentions[otherIndex] += deltaIntention;
+                otherAgent.GetComponent<AgentController>().intentions[otherIndex] += deltaIntention;
 
                 otherAgent.GetComponent<AgentController>().ReorderGoals();
+
+                //get the game controller to write the file
+                gameController.filesController.SaveInteractionsFile(gameObject, gameController.lastFrameCount, deltaIntention, 
+                    otherAgent.GetComponent<AgentController>().intentions[otherIndex], go[z].name, null, otherAgent);
             }
         }
     }
@@ -766,21 +770,14 @@ public class AgentController : MonoBehaviour {
             {
                 if (i >= 0)
                 {
-                    try
+                    if (usingPath[i].cell.name != "LookingFor")
                     {
-                        if (usingPath[i].cell.name != "LookingFor")
+                        //if higher is false, this one can be used
+                        if (!usingPath[i].higher)
                         {
-                            //if higher is false, this one can be used
-                            if (!usingPath[i].higher)
-                            {
-                                nodeBefore = usingPath[i];
-                                break;
-                            }
+                            nodeBefore = usingPath[i];
+                            break;
                         }
-                    }
-                    catch
-                    {
-                        Debug.Break();
                     }
                 }
             }
@@ -929,7 +926,8 @@ public class AgentController : MonoBehaviour {
         intentions[index] = intentions[index] + deltaIntention;
 
         //get the game controller to write the file
-        gameController.filesController.SaveInteractionsFile(gameObject, sign, gameController.lastFrameCount, deltaIntention, intentions[index]);
+        gameController.filesController.SaveInteractionsFile(gameObject, gameController.lastFrameCount, deltaIntention, intentions[index], 
+            sign.GetComponent<SignController>().goal.name, sign);
         //Debug.Log(gameObject.name+"--"+deltaIntention);
     }
 

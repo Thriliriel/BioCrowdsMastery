@@ -109,6 +109,8 @@ public class MenuClass : MonoBehaviour {
     private int qntAuxins;
     //all auxins
     private List<AuxinController> allAuxins;
+    //break line char
+    private string breakLine;
 
     private void Awake()
     {
@@ -124,6 +126,7 @@ public class MenuClass : MonoBehaviour {
         qntAuxins = 0;
         allAuxins = new List<AuxinController>();
         waitPanel.SetActive(false);
+        breakLine = "\r\n";
     }
 
     //toggle the loadConfigFile
@@ -242,7 +245,7 @@ public class MenuClass : MonoBehaviour {
                         if (line[0] == '#')
                         {
                             //just rewrite and keep going
-                            newText += line + "\r\n";
+                            newText += line + breakLine;
                             continue;
                         }
 
@@ -252,63 +255,63 @@ public class MenuClass : MonoBehaviour {
                         switch (entries[0])
                         {
                             /*case "LoadConfigFile":
-                                newText += "LoadConfigFile:" + loadConfigFile + "\r\n";
+                                newText += "LoadConfigFile:" + loadConfigFile + breakLine;
 
                                 break;*/
                             case "QntAgents":
                                 int qntAg = System.Int32.Parse(qntAgentsInput.GetComponent<InputField>().text);
 
                                 //write
-                                newText += "QntAgents:" + qntAg + "\r\n";
+                                newText += "QntAgents:" + qntAg + breakLine;
                                 break;
                             case "QntGroups":
                                 int qntGr = System.Int32.Parse(qntGroupsInput.GetComponent<InputField>().text);
 
                                 //write
-                                newText += "QntGroups:" + qntGr + "\r\n";
+                                newText += "QntGroups:" + qntGr + breakLine;
                                 break;
                             case "ExploratoryBehavior":
-                                newText += "ExploratoryBehavior:" + ebInput.GetComponent<Toggle>().isOn + "\r\n";
+                                newText += "ExploratoryBehavior:" + ebInput.GetComponent<Toggle>().isOn + breakLine;
 
                                 break;
                             case "GroupBehavior":
-                                newText += "GroupBehavior:" + gbInput.GetComponent<Toggle>().isOn + "\r\n";
+                                newText += "GroupBehavior:" + gbInput.GetComponent<Toggle>().isOn + breakLine;
 
                                 break;
                             case "PaintHeatMap":
-                                newText += "PaintHeatMap:" + hmInput.GetComponent<Toggle>().isOn + "\r\n";
+                                newText += "PaintHeatMap:" + hmInput.GetComponent<Toggle>().isOn + breakLine;
 
                                 break;
                             case "ThermalComfort":
-                                newText += "ThermalComfort:" + tcInput.GetComponent<Toggle>().isOn + "\r\n";
+                                newText += "ThermalComfort:" + tcInput.GetComponent<Toggle>().isOn + breakLine;
 
                                 break;
                             case "DensityComfort":
-                                newText += "DensityComfort:" + dcInput.GetComponent<Toggle>().isOn + "\r\n";
+                                newText += "DensityComfort:" + dcInput.GetComponent<Toggle>().isOn + breakLine;
 
                                 break;
                             case "UseHofstede":
-                                newText += "UseHofstede:" + hofInput.GetComponent<Toggle>().isOn + "\r\n";
+                                newText += "UseHofstede:" + hofInput.GetComponent<Toggle>().isOn + breakLine;
 
                                 break;
                             case "UseDurupinar":
-                                newText += "UseDurupinar:" + duruInput.GetComponent<Toggle>().isOn + "\r\n";
+                                newText += "UseDurupinar:" + duruInput.GetComponent<Toggle>().isOn + breakLine;
 
                                 break;
                             case "UseFavaretto":
-                                newText += "UseFavaretto:" + favInput.GetComponent<Toggle>().isOn + "\r\n";
+                                newText += "UseFavaretto:" + favInput.GetComponent<Toggle>().isOn + breakLine;
 
                                 break;
                             default:
                                 //default just write original
-                                newText += line + "\r\n";
+                                newText += line + breakLine;
                                 break;
                         }
                     }
                     else
                     {
                         //add a blank line too
-                        newText += "\r\n";
+                        newText += breakLine;
                     }
                 }
                 while (line != null);
@@ -355,7 +358,7 @@ public class MenuClass : MonoBehaviour {
                         if (line[0] == '#')
                         {
                             //just rewrite and keep going
-                            newText += line + "\r\n";
+                            newText += line + breakLine;
                             continue;
                         }
 
@@ -365,19 +368,19 @@ public class MenuClass : MonoBehaviour {
                         switch (entries[0])
                         {
                             case "LoadConfigFile":
-                                newText += "LoadConfigFile:" + loadConfigFile.ToString() + "\r\n";
+                                newText += "LoadConfigFile:" + loadConfigFile.ToString() + breakLine;
 
                                 break;
                             default:
                                 //default just write original
-                                newText += line + "\r\n";
+                                newText += line + breakLine;
                                 break;
                         }
                     }
                     else
                     {
                         //add a blank line too
-                        newText += "\r\n";
+                        newText += breakLine;
                     }
                 }
                 while (line != null);
@@ -416,7 +419,7 @@ public class MenuClass : MonoBehaviour {
                     if (line[0] == '#')
                     {
                         //just rewrite and keep going
-                        newText += line + "\r\n";
+                        newText += line + breakLine;
                         continue;
                     }
 
@@ -437,14 +440,14 @@ public class MenuClass : MonoBehaviour {
                         }
 
                         //write first line
-                        newText += sortQntAg + "\r\n";
+                        newText += sortQntAg + breakLine;
 
                         //write second line
                         //@TODO: get this info too
-                        newText += "cell25-25;false;Goal4;0.359452;Goal3;0.0276675;Goal2;0.675362;Goal1;0.557535\r\n";
+                        newText += "cell25-25;false;Goal4;0.359452;Goal3;0.0276675;Goal2;0.675362;Goal1;0.557535" + breakLine;
 
                         //break line
-                        newText += "\r\n";
+                        newText += breakLine;
                     }
 
                     //already saved, get out
@@ -453,7 +456,7 @@ public class MenuClass : MonoBehaviour {
                 else
                 {
                     //add a blank line too
-                    newText += "\r\n";
+                    newText += breakLine;
                 }
             }
             while (line != null);
@@ -488,7 +491,7 @@ public class MenuClass : MonoBehaviour {
                     if (line[0] == '#')
                     {
                         //just rewrite and keep going
-                        newText += line + "\r\n";
+                        newText += line + breakLine;
                         continue;
                     }
 
@@ -497,7 +500,7 @@ public class MenuClass : MonoBehaviour {
                     for (int i = 0; i < qntGr; i++)
                     {
                         newText += "0;" + inputMAS.GetComponent<InputField>().text + ";" + inputLTO.GetComponent<InputField>().text + ";" + inputING.GetComponent<InputField>().text
-                            + ";0\r\n";
+                            + ";0" + breakLine;
                     }
 
                     //already saved, get out
@@ -506,7 +509,7 @@ public class MenuClass : MonoBehaviour {
                 else
                 {
                     //add a blank line too
-                    newText += "\r\n";
+                    newText += breakLine;
                 }
             }
             while (line != null);
@@ -541,7 +544,7 @@ public class MenuClass : MonoBehaviour {
                     if (line[0] == '#')
                     {
                         //just rewrite and keep going
-                        newText += line + "\r\n";
+                        newText += line + breakLine;
                         continue;
                     }
 
@@ -550,7 +553,7 @@ public class MenuClass : MonoBehaviour {
                     int qntAg = System.Int32.Parse(qntAgentsInput.GetComponent<InputField>().text);
                     for (int i = 0; i < qntGr; i++)
                     {
-                        newText += "Group" + (i + 1) + "\r\n";
+                        newText += "Group" + (i + 1) + breakLine;
 
                         //sort out a number of agents
                         int sortQntAg = qntAg / qntGr;
@@ -564,11 +567,11 @@ public class MenuClass : MonoBehaviour {
                         for (int j = 0; j < sortQntAg; j++)
                         {
                             newText += inputO.GetComponent<InputField>().text + "," + inputC.GetComponent<InputField>().text + "," + inputE.GetComponent<InputField>().text + "," 
-                                + inputA.GetComponent<InputField>().text + "," + inputN.GetComponent<InputField>().text + "\r\n";
+                                + inputA.GetComponent<InputField>().text + "," + inputN.GetComponent<InputField>().text + breakLine;
                         }
 
                         //break line
-                        newText += "\r\n";
+                        newText += breakLine;
                     }
 
                     //already saved, get out
@@ -577,7 +580,7 @@ public class MenuClass : MonoBehaviour {
                 else
                 {
                     //add a blank line too
-                    newText += "\r\n";
+                    newText += breakLine;
                 }
             }
             while (line != null);

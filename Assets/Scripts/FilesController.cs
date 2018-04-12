@@ -58,7 +58,7 @@ public class FilesController {
         //open exit files
         exitFile = File.CreateText(Application.dataPath + "/" + exitFilename);
         agentsGoalFile = File.CreateText(Application.dataPath + "/" + agentsGoalFilename);
-        //interactionsFile = File.CreateText(Application.dataPath + "/" + interactionsFilename);
+        interactionsFile = File.CreateText(Application.dataPath + "/" + interactionsFilename);
         meanSpeedFile = File.CreateText(Application.dataPath + "/" + meanSpeedFilename);
         meanAngVarFile = File.CreateText(Application.dataPath + "/" + meanAngVarFilename);
         fullFDFile = File.CreateText(Application.dataPath + "/RodolfoFile.txt");
@@ -68,7 +68,7 @@ public class FilesController {
     public void Finish() {
         exitFile.Close();
         agentsGoalFile.Close();
-        //interactionsFile.Close();
+        interactionsFile.Close();
         meanSpeedFile.Close();
         meanAngVarFile.Close();
         fullFDFile.Close();
@@ -219,10 +219,20 @@ public class FilesController {
         agentsGoalFile.WriteLine(agentName + ";" + goalName + ";" + (Time.frameCount - lastFrameCount));
     }
 
-    public void SaveInteractionsFile(GameObject agent, GameObject sign, int lastFrameCount, float deltaIntention, float newIntention)
+    public void SaveInteractionsFile(GameObject agent, int lastFrameCount, float deltaIntention, float newIntention, string goalName, 
+        GameObject sign = null, GameObject otherAgent = null)
     {
-        //we save: Time, Agent name, Sign name, Goal it points, DeltaIntention, New Intention
-        //interactionsFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + agent.name + ";" + sign.name + ";" + sign.GetComponent<SignController>().GetGoal().name + ";" + deltaIntention + ";" + newIntention);
+        //we save: Time, Agent name, Sign name (may be null) or other agent name (may be null), Goal it points, DeltaIntention, New Intention
+        string interactionPairName = "";
+        if(sign != null)
+        {
+            interactionPairName = sign.name;
+        }
+        else if (otherAgent != null)
+        {
+            interactionPairName = otherAgent.name;
+        }
+        interactionsFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + agent.name + ";" + interactionPairName + ";" + goalName + ";" + deltaIntention + ";" + newIntention);
     }
 
     public void SaveMeanSpeedFile(int lastFrameCount, float meanSpeed)
