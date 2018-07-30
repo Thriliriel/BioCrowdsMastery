@@ -54,6 +54,16 @@ public class PathPlanningDClass {
             //order the list
             ReorderCheckList();
 
+            //if this node is a wall, continue
+            if (nodesToCheck[0].cell.name.Contains("cell"))
+            {
+                if (nodesToCheck[0].cell.GetComponent<CellController>().isWall)
+                {
+                    nodesToCheck.RemoveAt(0);
+                    continue;
+                }
+            }
+
             //check the neighbour cells of the first node of the list and create their nodes
             FindNodes(nodesToCheck[0]);
             

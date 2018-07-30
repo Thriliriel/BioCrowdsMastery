@@ -22,7 +22,7 @@ SaveConfigFile:false
 LoadConfigFile:True
 
 #qnt agents
-QntAgents:10
+QntAgents:1
 
 #qnt groups
 QntGroups:1
@@ -40,13 +40,13 @@ UseFavaretto:False
 PaintHeatMap:False
 
 #use exploratory behavior?
-ExploratoryBehavior:True
+ExploratoryBehavior:False
 
 #use group behavior?
-GroupBehavior:True
+GroupBehavior:False
 
 #use thermal comfort?
-ThermalComfort:False
+ThermalComfort:True
 
 #use density comfort?
 DensityComfort:False
@@ -58,4 +58,4 @@ MeanSpeedDeviation:0
 AngularVariation:0
 
 #static looking for initial position (default is to keep it commented)
-#staticLFS:5,0,25
+#staticLFS:25,0,15

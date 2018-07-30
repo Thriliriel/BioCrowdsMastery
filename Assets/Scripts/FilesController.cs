@@ -25,6 +25,8 @@ public class FilesController {
     public string meanSpeedFilename;
     //exit mean angvar filename
     public string meanAngVarFilename;
+    //exit mean distance filename
+    public string meanDistaceFilename;
 
     //exit file
     private StreamWriter exitFile;
@@ -36,12 +38,14 @@ public class FilesController {
     private StreamWriter meanSpeedFile;
     //exit mean angvar file
     private StreamWriter meanAngVarFile;
+    //exit mean distance file
+    private StreamWriter meanDistanceFile;
     //file for Rodolfo analisys
     private StreamWriter fullFDFile;
 
     //constructor
     public FilesController(string allSims, string configFN, string obstaclesFN, string scheduleFN, string exitFN, string signsFN, string goalsFN, string agentsGoalFN, 
-        string interactionsFN, string meanSpeedFN, string meanAngVarFN) {
+        string interactionsFN, string meanSpeedFN, string meanAngVarFN, string meanDistanceFN) {
         //set default values for actual simulation
         allSimulations = allSims;
         configFilename = configFN;
@@ -54,6 +58,7 @@ public class FilesController {
         interactionsFilename = interactionsFN;
         meanSpeedFilename = meanSpeedFN;
         meanAngVarFilename = meanAngVarFN;
+        meanDistaceFilename = meanDistanceFN;
 
         //open exit files
         exitFile = File.CreateText(Application.dataPath + "/" + exitFilename);
@@ -61,6 +66,7 @@ public class FilesController {
         interactionsFile = File.CreateText(Application.dataPath + "/" + interactionsFilename);
         meanSpeedFile = File.CreateText(Application.dataPath + "/" + meanSpeedFilename);
         meanAngVarFile = File.CreateText(Application.dataPath + "/" + meanAngVarFilename);
+        meanDistanceFile = File.CreateText(Application.dataPath + "/" + meanDistaceFilename);
         fullFDFile = File.CreateText(Application.dataPath + "/RodolfoFile.txt");
     }
 
@@ -245,6 +251,12 @@ public class FilesController {
     {
         //we save: Time, mean speed
         meanAngVarFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + meanAngVar);
+    }
+
+    public void SaveDistanceFile(int lastFrameCount, float meanDist)
+    {
+        //we save: Time, mean speed
+        meanDistanceFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + meanDist);
     }
 
     public void SaveFullFDFile(int qntAgents)

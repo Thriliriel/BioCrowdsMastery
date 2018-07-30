@@ -27,10 +27,10 @@ qntObstacles:0
 
 #Obstacle
 #qntVertices:4
-#18;0;18
-#18;0;25
-#25;0;25
-#25;0;18
+#5;0;10
+#5;0;13
+#15;0;13
+#15;0;10
 #qntTriangles:6
 #0
 #1
@@ -40,15 +40,19 @@ qntObstacles:0
 #0
 
 #Obstacle
-#qntVertices:4
-#5;0;5
-#5;0;12
-#12;0;12
-#12;0;5
-#qntTriangles:6
+#qntVertices:5
+#20;0;15
+#18;0;18
+#22;0;20
+#26;0;18
+#24;0;15
+#qntTriangles:9
 #0
 #1
 #2
 #2
 #3
+#4
 #0
+#2
+#4

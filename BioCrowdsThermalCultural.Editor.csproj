@@ -296,6 +296,15 @@
     <None Include="Assets\ConfigFiles\InitialValues.txt" />
     <None Include="Assets\ConfigFiles\SimulationIterator.txt" />
     <None Include="Assets\RodolfoFile.txt" />
+    <None Include="Assets\agent1.txt" />
+    <None Include="Assets\agent2.txt" />
+    <None Include="Assets\agent3.txt" />
+    <None Include="Assets\agent4.txt" />
+    <None Include="Assets\agent5.txt" />
+    <None Include="Assets\agent6.txt" />
+    <None Include="Assets\agent7.txt" />
+    <None Include="Assets\agent8.txt" />
+    <None Include="Assets\agent9.txt" />
     <None Include="Assets\newRodolfoFile.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

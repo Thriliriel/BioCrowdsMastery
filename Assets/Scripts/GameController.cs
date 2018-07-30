@@ -67,6 +67,8 @@ public class GameController : MonoBehaviour
     public string meanSpeedFilename;
     //mean angvar filename
     public string meanAngVarFilename;
+    //mean distance filename
+    public string meanDistanceFilename;
     //canvas text
     public Transform canvasText;
     //files controller
@@ -190,6 +192,9 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        //default useless value
+        staticLookingFor = Vector3.zero;
+
         //load master file
         LoadMasterFile();
 
@@ -199,9 +204,6 @@ public class GameController : MonoBehaviour
             ClearScene();
             LoadCellsAuxins();
         }
-
-        //default useless value
-        staticLookingFor = Vector3.zero;
 
         //get rooms
         allRooms = GameObject.FindGameObjectsWithTag("Room");
@@ -682,6 +684,7 @@ public class GameController : MonoBehaviour
             //meanAgentsSpeed = 0;
             float frameMeanAgentsSpeed = 0;
             float frameMeanAgentsAngVar = 0;
+            float frameMeanDistance = 0;
 
             foreach (GameObject agentI in allAgents)
             {
@@ -852,6 +855,19 @@ public class GameController : MonoBehaviour
                 }
             }
 
+            //check distances
+            int qntComp = 0;
+            for(int i = 0; i < allAgents.Length; i++)
+            {
+                for(int j = i+1; j < allAgents.Length; j++)
+                {
+                    frameMeanDistance += Vector3.Distance(allAgents[i].transform.position, allAgents[j].transform.position);
+
+                    qntComp++;
+                }
+            }
+            frameMeanDistance = frameMeanDistance / (float)qntComp;
+
             //update agents mean speed for frame...
             if (allAgents.Length > 0)
             {
@@ -867,6 +883,7 @@ public class GameController : MonoBehaviour
                 //update in the files too
                 filesController.SaveMeanSpeedFile(lastFrameCount, frameMeanAgentsSpeed);
                 filesController.SaveAngVarFile(lastFrameCount, frameMeanAgentsAngVar);
+                filesController.SaveDistanceFile(lastFrameCount, frameMeanDistance);
             }
 
             allGroups = GameObject.FindGameObjectsWithTag("AgentGroup");
@@ -909,7 +926,7 @@ public class GameController : MonoBehaviour
             }
 
             //write the exit file
-            //filesController.SaveExitFile(lastFrameCount);
+            filesController.SaveExitFile(lastFrameCount);
 
             //update time
             qntFrames++;
@@ -1417,6 +1434,13 @@ public class GameController : MonoBehaviour
                                 cellRadius = System.Convert.ToSingle(entries[4]);
                                 //change his name
                                 newCell.name = entries[0];
+
+                                bool pCollider = CheckObstacle(newCell.transform.position, "Obstacle", 0.1f);
+                                if (pCollider)
+                                {
+                                    newCell.GetComponent<CellController>().isWall = true;
+                                }
+
                                 //change parent
                                 newCell.transform.parent = parentCells.transform;
                             }
@@ -1791,6 +1815,49 @@ public class GameController : MonoBehaviour
         //default deviation
         defaultDeviation = Mathf.Abs(Mathf.Sqrt(variance));
         Debug.Log("Agents default deviation AngVar: " + (defaultDeviation));
+
+        //agents mean dist
+        //read the ang var file
+        theReader = new StreamReader(Application.dataPath + "/" + meanDistanceFilename, System.Text.Encoding.Default);
+        qntFrames = 0;
+        float sumDist = 0;
+
+        //store all values to calculate variance
+        List<float> allDist = new List<float>();
+
+        using (theReader)
+        {
+            // While there's lines left in the text file, do this:
+            do
+            {
+                line = theReader.ReadLine();
+
+                if (line != "" && line != null)
+                {
+                    string[] info = line.Split(';');
+                    qntFrames = System.Int32.Parse(info[0]);
+                    sumDist += System.Convert.ToSingle(info[1]);
+
+                    allDist.Add(System.Convert.ToSingle(info[1]));
+                }
+            }
+            while (line != null);
+        }
+        //close file
+        theReader.Close();
+        float averageDist = sumDist / qntFrames;
+        Debug.Log("Agents Mean Distance: " + averageDist);
+
+        //variance
+        variance = 0;
+        foreach (float value in allDist)
+        {
+            variance += Mathf.Pow(value - averageDist, 2);
+        }
+        variance /= qntFrames;
+        //default deviation
+        defaultDeviation = Mathf.Abs(Mathf.Sqrt(variance));
+        Debug.Log("Agents default deviation Distance: " + (defaultDeviation));
 
         //agents mean distances for each group
         //get the actual directory
@@ -2578,7 +2645,7 @@ public class GameController : MonoBehaviour
     {
         //start the filesController
         filesController = new FilesController(allSimulations, configFilename, obstaclesFilename, scheduleFilename, exitFilename, signsFilename, goalsFilename, agentsGoalFilename, 
-            interactionsFilename, meanSpeedFilename, meanAngVarFilename);
+            interactionsFilename, meanSpeedFilename, meanAngVarFilename, meanDistanceFilename);
 
         //get all cells and goals
         //allCells = GameObject.FindGameObjectsWithTag("Cell");
@@ -3084,6 +3151,9 @@ public class GameController : MonoBehaviour
                         case "MeanAgentAngVar":
                             meanAngVarFilename = entries[1];
                             break;
+                        case "MeanDistance":
+                            meanDistanceFilename = entries[1];
+                            break;
                         case "AgentsGoal":
                             agentsGoalFilename = entries[1];
                             break;
@@ -3289,6 +3359,7 @@ public class GameController : MonoBehaviour
         string[] intNam = interactionsFilename.Split('/');
         string[] masNam = meanSpeedFilename.Split('/');
         string[] angNam = meanAngVarFilename.Split('/');
+        string[] disNam = meanDistanceFilename.Split('/');
         string[] hofNam = hofstedeFilename.Split('/');
         string[] durNam = durupinarFilename.Split('/');
         string[] favNam = favarettoFilename.Split('/');
@@ -3325,6 +3396,10 @@ public class GameController : MonoBehaviour
                 else if (allFiles[i].Contains(angNam[angNam.Length - 1]))
                 {
                     meanAngVarFilename = allFiles[i];
+                }
+                else if (allFiles[i].Contains(disNam[disNam.Length - 1]))
+                {
+                    meanDistanceFilename = allFiles[i];
                 }
                 else if (allFiles[i].Contains(hofNam[hofNam.Length - 1]))
                 {
@@ -3428,10 +3503,27 @@ public class GameController : MonoBehaviour
             }
             meanAngVarFilename = meanAngVarFilename.Replace("0", simulationIndex.ToString());
         }
+        if (meanDistanceFilename.Contains(":") || true)
+        {
+            //update the filename
+            meanDistanceFilename = "";
+            foreach (string reform in disNam)
+            {
+                if (reform.Contains(".csv"))
+                {
+                    meanDistanceFilename += reform;
+                }
+                else
+                {
+                    meanDistanceFilename += reform + "/";
+                }
+            }
+            meanDistanceFilename = meanDistanceFilename.Replace("0", simulationIndex.ToString());
+        }
 
         //restart the filesController
         filesController = new FilesController(allSimulations, configFilename, obstaclesFilename, scheduleFilename, exitFilename, signsFilename, goalsFilename, agentsGoalFilename, 
-            interactionsFilename, meanSpeedFilename, meanAngVarFilename);
+            interactionsFilename, meanSpeedFilename, meanAngVarFilename, meanDistanceFilename);
 
         LoadConfigFile();
     }
@@ -3455,12 +3547,14 @@ public class GameController : MonoBehaviour
         mesh.triangles = triangles;
 
         //obstacle has center at 0x0, so, need to place it obstacleDisplacement forward
-        go.transform.position = new Vector3(go.transform.position.x + obstacleDisplacement, 0, go.transform.position.z + obstacleDisplacement);
+        go.transform.position = new Vector3(go.transform.position.x + obstacleDisplacement, 0.01f, go.transform.position.z + obstacleDisplacement);
 
         go.AddComponent<MeshCollider>();
         //go.GetComponent<MeshCollider>().isTrigger = true;
         go.tag = "Obstacle";
         go.name = "Obstacle";
+
+        go.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Gray");
 
         //change the static navigation to draw it dinamically
         //GameObjectUtility.SetStaticEditorFlags(go, StaticEditorFlags.NavigationStatic);

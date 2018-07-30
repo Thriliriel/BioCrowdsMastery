@@ -111,6 +111,7 @@ MonoBehaviour:
   farAwayTimer: 0
   maxFarAwayTimer: 0
   distanceToGroupCenter: 0
+  isIdle: 0
   metabolism: 0
   clothingIns: 0
   tr1: 0
@@ -118,7 +119,7 @@ MonoBehaviour:
   ppdT: 0
   ppdD: 0
   ppd: 0
-  ppdBias: 0
+  ppdBias: 1
   timeGap: 50
 --- !u!136 &136000012988700120
 CapsuleCollider:
