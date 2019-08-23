@@ -56,7 +56,8 @@ public class AgentGroupController : MonoBehaviour {
         meanSpeedDeviation = (3 - cohesion) / 15;
         angularVariation = 0;
         hall = new HallClass();
-        terrainLimits = new Vector3(GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.x, 0, GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.z);
+        //terrainLimits = new Vector3(GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.x, 0, GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.z);
+        terrainLimits = new Vector3(20, 0, 32);
         distanceBetweenAgents = 0;
 
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
@@ -65,7 +66,7 @@ public class AgentGroupController : MonoBehaviour {
 
     private void Start()
     {
-        OpenFile();
+        //OpenFile();
     }
 
     private void Update()
@@ -103,7 +104,7 @@ public class AgentGroupController : MonoBehaviour {
             distanceBetweenAgents = (distanceBetweenAgents + frameDistanceBetweenAgents) / 2;
 
             //update in the file
-            SaveAgentsExitFile(frameDistanceBetweenAgents, frameMeanSpeed, frameAngVar);
+            //SaveAgentsExitFile(frameDistanceBetweenAgents, frameMeanSpeed, frameAngVar);
         }
         else
         {
@@ -132,7 +133,7 @@ public class AgentGroupController : MonoBehaviour {
     public void CloseFile()
     {
         //close exit file
-        exitAgentGroupFile.Close();
+        //exitAgentGroupFile.Close();
     }
 
     public void SaveAgentsExitFile(float meanDistanceAgents, float meanSpeed, float meanAngVar)
@@ -141,9 +142,9 @@ public class AgentGroupController : MonoBehaviour {
         //Line 1: frame count, mean distance between agents on this frame
         //Line 2: frame count, mean speed of the group on this frame
         //Line 3: frame count, mean angVar of the group on this frame
-        exitAgentGroupFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + meanDistanceAgents);
-        exitAgentGroupFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + meanSpeed);
-        exitAgentGroupFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + meanAngVar);
+        //exitAgentGroupFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + meanDistanceAgents);
+        //exitAgentGroupFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + meanSpeed);
+        //exitAgentGroupFile.WriteLine((Time.frameCount - lastFrameCount) + ";" + meanAngVar);
     }
 
     //just to update group cell

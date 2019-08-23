@@ -41,6 +41,8 @@ public class AgentController : MonoBehaviour {
     public FavarettoClass favaretto;
     //is agent an idle agent?
     public bool isIdle;
+    //agent not moving for how long?
+    public int notMoving;
 
     //exit file
     private StreamWriter exitAgentFile;
@@ -80,6 +82,8 @@ public class AgentController : MonoBehaviour {
     public List<NodeClass> fullPath;
     //original path
     public List<NodeClass> originalPath;
+    //recently teleported? if so, cannot teleport again for 4 frames (defined on the teleport part (checkSubGoalDistance))
+    public int teleported = 0;
 
     //START THERMAL STUFF
     //thermical confort variables
@@ -162,7 +166,8 @@ public class AgentController : MonoBehaviour {
         farAwayTimer = 0;
         maxFarAwayTimer = 50;
         distanceToGroupCenter = 0;
-        terrainLimits = new Vector3(GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.x, 0, GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.z);
+        //terrainLimits = new Vector3(GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.x, 0, GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.z);
+        terrainLimits = new Vector3(20, 0, 32);
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         biggerThanZero = (Random.Range(0, 2) == 1);
         
@@ -173,6 +178,7 @@ public class AgentController : MonoBehaviour {
         notCozyTimer = 0;
         usedTimeGap = timeGap;
         ppdD = 0;
+        notMoving = 0;
     }
 
     void Start() {
@@ -264,14 +270,14 @@ public class AgentController : MonoBehaviour {
             CheckNodeInSight();
         }
 
+        //check the sub goal distance, to change sub-goal
+        CheckSubGoalDistance();
+
         //update agents in this cell
         if (!cell.GetComponent<CellController>().agentsDensity.Contains(gameObject))
         {
             cell.GetComponent<CellController>().agentsDensity.Add(gameObject);
         }
-
-        //check the sub goal distance, to change sub-goal
-        CheckSubGoalDistance();
 
         if (gameController.thermalComfort)
         {
@@ -450,6 +456,19 @@ public class AgentController : MonoBehaviour {
         //update agent orientation
         transform.LookAt(goal);
         transform.Rotate(transform.up * 180);
+
+        //update teleport part
+        if(teleported > 0)
+        {
+            teleported--;
+        }
+
+        //if the agent is too far of its cell, place it back there
+        /*if (Mathf.Abs(transform.position.x - cell.transform.position.x) > 5 ||
+            Mathf.Abs(transform.position.z - cell.transform.position.z) > 5)
+        {
+            transform.position = cell.transform.position;
+        }*/
     }
 
     void OnGUI() {
@@ -474,7 +493,7 @@ public class AgentController : MonoBehaviour {
     public void SaveAgentsExitFile(int lastFrameCount)
     {
         //we save: Agent name, Goal name, Time he arrived
-        exitAgentFile.WriteLine((Time.frameCount - lastFrameCount) + " " + transform.position.x + " " + transform.position.z);
+        //exitAgentFile.WriteLine((Time.frameCount - lastFrameCount) + " " + transform.position.x + " " + transform.position.z);
     }
 
     //clear agent´s informations
@@ -570,62 +589,46 @@ public class AgentController : MonoBehaviour {
         //check all auxins on agent's cell
         CheckAuxinsCell(cell);
 
-        //find all neighbours cells
-        float startX = (float)System.Math.Round(cell.transform.position.x - (cellRadius * 2f), 1);
-        float startZ = (float)System.Math.Round(cell.transform.position.z - (cellRadius * 2f), 1);
-        float endX = (float)System.Math.Round(cell.transform.position.x + (cellRadius * 2f), 1);
-        float endZ = (float)System.Math.Round(cell.transform.position.z + (cellRadius * 2f), 1);
-
-        //see if it is in some border
-        if (cell.transform.position.x == cellRadius)
-        {
-            startX = cell.transform.position.x;
-        }
-        if (cell.transform.position.z == cellRadius)
-        {
-            startZ = cell.transform.position.z;
-        }
-        if (cell.transform.position.x == terrainLimits.x - cellRadius)
-        //if ((int)cell.transform.position.x == 29)
-        {
-            endX = cell.transform.position.x;
-        }
-        if (cell.transform.position.z == terrainLimits.z - cellRadius)
-        //if ((int)cell.transform.position.z == 29)
-        {
-            endZ = cell.transform.position.z;
-        }
-
         //distance from agent to cell, to define agent new cell
         float distanceToCell = Vector3.Distance(transform.position, cell.transform.position);
-        //Debug.Log(gameObject.name+" -- StartX: "+startX+" -- StartZ: "+startZ+" -- EndX: "+endX+" -- EndZ: "+endZ);
-        //iterate to find the cells
-        //2 in 2, since the radius of each cell is 1 = diameter 2
-        for(float i = startX; i <= endX; i = i + (cellRadius * 2))
+        
+        //iterate through neighbors of the agent cell
+        foreach(GameObject neighbourCell in cell.GetComponent<CellController>().neighborCells)
         {
-            for (float j = startZ; j <= endZ; j = j + (cellRadius * 2))
+            //check all auxins on this cell
+            CheckAuxinsCell(neighbourCell);
+
+            //see distance to this cell
+            //if it is lower, the agent is in another(neighbour) cell
+            float distanceToNeighbourCell = Vector3.Distance(transform.position, neighbourCell.transform.position);
+            if (distanceToNeighbourCell < distanceToCell)
             {
-                float nameX = i;
-                float nameZ = j;
-                //find the cell
-                //GameObject neighbourCell = GameObject.Find("cell"+nameX+"-"+nameZ);
-                GameObject neighbourCell = CellController.GetCellByName("cell" + nameX + "-" + nameZ);
+                distanceToCell = distanceToNeighbourCell;
 
-                //if it exists..
-                if (neighbourCell)
+                //update agents in old cell
+                if (cell.GetComponent<CellController>().agentsDensity.Contains(gameObject))
                 {
-                    //check all auxins on this cell
-                    CheckAuxinsCell(neighbourCell);
-
-                    //see distance to this cell
-                    //if it is lower, the agent is in another(neighbour) cell
-                    float distanceToNeighbourCell = Vector3.Distance(transform.position, neighbourCell.transform.position);
-                    if (distanceToNeighbourCell < distanceToCell)
-                    {
-                        distanceToCell = distanceToNeighbourCell;
-                        SetCell(neighbourCell);
-                    }
+                    cell.GetComponent<CellController>().agentsDensity.Remove(gameObject);
                 }
+
+                SetCell(neighbourCell);
+            }
+        }
+
+        //check if it has a bridge
+        GameObject brigite = cell.GetComponent<CellController>().bridge;
+        if (brigite != null)
+        {
+            //check all auxins on this cell
+            CheckAuxinsCell(brigite);
+
+            //see distance to this cell
+            //if it is lower, the agent is in another(neighbour) cell
+            float distanceToNeighbourCell = Vector3.Distance(transform.position, brigite.transform.position);
+            if (distanceToNeighbourCell < distanceToCell)
+            {
+                distanceToCell = distanceToNeighbourCell;
+                SetCell(brigite);
             }
         }
     }
@@ -744,8 +747,8 @@ public class AgentController : MonoBehaviour {
                 otherAgent.GetComponent<AgentController>().ReorderGoals();
 
                 //get the game controller to write the file
-                gameController.filesController.SaveInteractionsFile(gameObject, gameController.lastFrameCount, deltaIntention, 
-                    otherAgent.GetComponent<AgentController>().intentions[otherIndex], go[z].name, null, otherAgent);
+                //gameController.filesController.SaveInteractionsFile(gameObject, gameController.lastFrameCount, deltaIntention, 
+                    //otherAgent.GetComponent<AgentController>().intentions[otherIndex], go[z].name, null, otherAgent);
             }
         }
     }
@@ -873,7 +876,13 @@ public class AgentController : MonoBehaviour {
         {
             float distance = Vector3.Distance(transform.position, sign.transform.position);
             //if distance <= agent field of view, the sign may affect the agent
-            if (distance <= fieldOfView)
+            //if sign has visibility, use it instead
+            float fov = fieldOfView;
+            if(sign.GetComponent<SignController>().visibility != 0)
+            {
+                fov = sign.GetComponent<SignController>().visibility;
+            }
+            if (distance <= fov)
             {
                 //now, lets see if this sign is from a goal that our agent has intention to go
                 for (int i = 0; i < go.Count; i++)
@@ -926,8 +935,8 @@ public class AgentController : MonoBehaviour {
         intentions[index] = intentions[index] + deltaIntention;
 
         //get the game controller to write the file
-        gameController.filesController.SaveInteractionsFile(gameObject, gameController.lastFrameCount, deltaIntention, intentions[index], 
-            sign.GetComponent<SignController>().goal.name, sign);
+        //gameController.filesController.SaveInteractionsFile(gameObject, gameController.lastFrameCount, deltaIntention, intentions[index], 
+            //sign.GetComponent<SignController>().goal.name, sign);
         //Debug.Log(gameObject.name+"--"+deltaIntention);
     }
 
@@ -1093,6 +1102,38 @@ public class AgentController : MonoBehaviour {
             float distanceSubGoal = Vector3.Distance(transform.position, goal);
             if(distanceSubGoal < agentRadius && cornerPath.Count > 1)
             {
+                //if the cell has a bridge and the next part of the path is in another room, teleport!
+                GameObject bridge = cornerPath[0].cell.GetComponent<CellController>().bridge;
+
+                CellController cornerPathCC;
+                if(cornerPath[1].cell.tag == "Cell")
+                {
+                    cornerPathCC = cornerPath[1].cell.GetComponent<CellController>();
+                }//else, it is Goal
+                else if(cornerPath[1].cell.tag == "Goal")
+                {
+                    cornerPathCC = cornerPath[1].cell.GetComponent<GoalController>().cell.GetComponent<CellController>();
+                }
+                //else, it is LF
+                else
+                {
+                    cornerPathCC = cornerPath[1].cell.GetComponent<LFController>().cell.GetComponent<CellController>();
+                }
+
+                if (bridge != null && cornerPathCC.room.name !=
+                    cell.GetComponent<CellController>().room.name && teleported == 0 &&
+                    Vector3.Distance(cell.transform.position, cornerPath[1].cell.transform.position) >= 3 &&
+                    bridge.name == cornerPathCC.name)
+                {
+                    Debug.Log("Agent " + name + " Teleported from " + transform.position + " to " + 
+                        bridge.transform.position);
+                    transform.position = bridge.transform.position;
+                    cell = bridge;
+                    teleported = 4;
+                    fullPath.RemoveAt(0);
+                    //Debug.Break();
+                }
+
                 cornerPath.RemoveAt(0);
                 goal = new Vector3(cornerPath[0].cell.transform.position.x, 0f, cornerPath[0].cell.transform.position.z);
             }

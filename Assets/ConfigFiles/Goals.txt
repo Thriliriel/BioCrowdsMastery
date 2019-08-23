@@ -1,13 +1,2 @@
-#####################################################
-#file structure:
-#each line represents a goal
-#
-#Example
-#
-#1 -> qnt of goals
-#Goal3,2,2 -> goal name, goal position x, goal position z
-#
-#####################################################
-
 1
-Goal1,5,5
+SaidaBoate,cell40-40.88

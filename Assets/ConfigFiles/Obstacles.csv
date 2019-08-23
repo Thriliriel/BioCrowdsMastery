@@ -1,58 +1,133 @@
-#####################################################
-#file structure:
-#each set of lines represents an obstacle
-#each set starts with the obstacle name (Obstacle) and goes until the next obstacle name (or EOF)
-#
-#Example
-#
-#qntObstacles:2 -> qnt of obstacles in the environment
-#
-#Obstacle -> Obstacle name
-#qntVertices:4 -> qnt of vertices that form the obstacle shape
-#18;0;18 -> obstacle vertice 1
-#18;0;25 -> obstacle vertice 2
-#25;0;25 -> obstacle vertice 3
-#25;0;18 -> obstacle vertice 4
-#qntTriangles:6 -> qnt of triangles points that connect the vertices
-#0 -> triangle 1 vertice 1
-#1 -> triangle 1 vertice 2
-#2 -> triangle 1 vertice 3
-#2 -> triangle 2 vertice 3
-#3 -> triangle 2 vertice 4
-#0 -> triangle 2 vertice 1
-#
-#####################################################
+qntObstacles:2
 
-qntObstacles:0
+Obstacle
+position:45.7;0;38.92
+scale:9.86;1;0.5
+qntVertices:24
+0.5;-0.5;0.5
+-0.5;-0.5;0.5
+0.5;0.5;0.5
+-0.5;0.5;0.5
+0.5;0.5;-0.5
+-0.5;0.5;-0.5
+0.5;-0.5;-0.5
+-0.5;-0.5;-0.5
+0.5;0.5;0.5
+-0.5;0.5;0.5
+0.5;0.5;-0.5
+-0.5;0.5;-0.5
+0.5;-0.5;-0.5
+0.5;-0.5;0.5
+-0.5;-0.5;0.5
+-0.5;-0.5;-0.5
+-0.5;-0.5;0.5
+-0.5;0.5;0.5
+-0.5;0.5;-0.5
+-0.5;-0.5;-0.5
+0.5;-0.5;-0.5
+0.5;0.5;-0.5
+0.5;0.5;0.5
+0.5;-0.5;0.5
+qntTriangles:36
+0
+2
+3
+0
+3
+1
+8
+4
+5
+8
+5
+9
+10
+6
+7
+10
+7
+11
+12
+13
+14
+12
+14
+15
+16
+17
+18
+16
+18
+19
+20
+21
+22
+20
+22
+23
 
-#Obstacle
-#qntVertices:4
-#5;0;10
-#5;0;13
-#15;0;13
-#15;0;10
-#qntTriangles:6
-#0
-#1
-#2
-#2
-#3
-#0
-
-#Obstacle
-#qntVertices:5
-#20;0;15
-#18;0;18
-#22;0;20
-#26;0;18
-#24;0;15
-#qntTriangles:9
-#0
-#1
-#2
-#2
-#3
-#4
-#0
-#2
-#4
+Obstacle
+position:34.18;0;38.92
+scale:9.86;1;0.5
+qntVertices:24
+0.5;-0.5;0.5
+-0.5;-0.5;0.5
+0.5;0.5;0.5
+-0.5;0.5;0.5
+0.5;0.5;-0.5
+-0.5;0.5;-0.5
+0.5;-0.5;-0.5
+-0.5;-0.5;-0.5
+0.5;0.5;0.5
+-0.5;0.5;0.5
+0.5;0.5;-0.5
+-0.5;0.5;-0.5
+0.5;-0.5;-0.5
+0.5;-0.5;0.5
+-0.5;-0.5;0.5
+-0.5;-0.5;-0.5
+-0.5;-0.5;0.5
+-0.5;0.5;0.5
+-0.5;0.5;-0.5
+-0.5;-0.5;-0.5
+0.5;-0.5;-0.5
+0.5;0.5;-0.5
+0.5;0.5;0.5
+0.5;-0.5;0.5
+qntTriangles:36
+0
+2
+3
+0
+3
+1
+8
+4
+5
+8
+5
+9
+10
+6
+7
+10
+7
+11
+12
+13
+14
+12
+14
+15
+16
+17
+18
+16
+18
+19
+20
+21
+22
+20
+22
+23

@@ -7,6 +7,8 @@ public class SignController : MonoBehaviour {
     public float appeal;
     //goal it directs
     public GameObject goal;
+    //visibility (meters)
+    public float visibility;
 
     //GETs and SETs
     public float GetAppeal() {

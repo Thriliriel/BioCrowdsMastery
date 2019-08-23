@@ -4,6 +4,7 @@ using System.IO;
 //using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Globalization;
 
 public class GameController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class GameController : MonoBehaviour
     public float scenarioSizeZ;
     //agent prefabs
     public List<GameObject> agentPF;
+    //LF prefab
+    public GameObject LFPrefab;
     //agent radius
     public float agentRadius;
     //cell radius
@@ -33,8 +36,6 @@ public class GameController : MonoBehaviour
     public int qntGoals;
     //radius for auxin collide
     public float auxinRadius;
-    //save config file?
-    public bool saveConfigFile;
     //load config file?
     public bool loadConfigFile;
     //all simulation files directory
@@ -132,6 +133,9 @@ public class GameController : MonoBehaviour
     public int maxQntGroups;
     //store all cells
     public GameObject[] allCells;
+    //default FOV
+    public float defaultFOV;
+
 
     //all agents
     private GameObject[] allAgents;
@@ -150,8 +154,6 @@ public class GameController : MonoBehaviour
     private int simulationIndex = 0;
     //stop all sims
     private bool gameOver = false;
-    //terrain
-    private Terrain terrain;
     //intention threshold
     private float intentionThreshold = 0.8f;
     //signs instantiated positions
@@ -243,13 +245,8 @@ public class GameController : MonoBehaviour
         }*/
 
         //camera height and center position
-        ConfigCamera();
-
-        //find the Terrain gameObject and his terrain component
-        terrain = GameObject.Find("Terrain").GetComponent<Terrain>();
-        //change terrain size according informed
-        terrain.terrainData.size = new Vector3(scenarioSizeX, terrain.terrainData.size.y, scenarioSizeZ);
-
+        //ConfigCamera();
+        
         //get all obstacles (which should already be on the scene, along cells, goals, signs and markers)
         allObstacles = GameObject.FindGameObjectsWithTag("Obstacle");
 
@@ -454,7 +451,7 @@ public class GameController : MonoBehaviour
             }
         }
         //set the text
-        text.text = "Simulation " + simulationIndex + " Started!";
+        text.text = "Time " + secondsTaken + " seconds!";
 
         //calculate paths
         //CalculateAllPaths();
@@ -466,12 +463,6 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        //all ready to go. If saveConfigFile is checked, save this config in a csv file
-        if (saveConfigFile)
-        {
-            filesController.SaveConfigFile(cellRadius, auxinRadius, allObstacles);
-        }
-
         //change timeScale (make things faster)
         //seems to not be so good, since it calculates just once for a great amount of time
         //Time.timeScale = 5f;
@@ -656,23 +647,62 @@ public class GameController : MonoBehaviour
 
                     //now, we check if agent is stuck with another agent
                     //if so, change places
-                    if (agentIController.speed.Equals(Vector3.zero))
+                    if (agentIController.speedModule < 0.001f)
                     {
                         Collider[] lockHit = Physics.OverlapSphere(agentI.transform.position, agentRadius);
+                        bool hit = false;
                         foreach (Collider loki in lockHit)
                         {
                             //if it is the Player tag (agent) and it is not the agent itself and he can change position (to avoid forever changing)
                             if (loki.gameObject.tag == "Player" && loki.gameObject.name != agentI.gameObject.name && agentIController.changePosition)
                             {
-                                //the other agent will not change position in this frame
-                                loki.GetComponent<AgentController>().changePosition = false;
-                                Debug.Log(agentI.gameObject.name + " -- " + loki.gameObject.name);
-                                //exchange!!!
-                                Vector3 positionA = agentI.transform.position;
-                                agentI.transform.position = loki.gameObject.transform.position;
-                                loki.gameObject.transform.position = positionA;
+                                if (agentIController.notMoving >= 50)
+                                {
+                                    hit = true;
+                                    //the other agent will not change position in this frame
+                                    loki.GetComponent<AgentController>().changePosition = false;
+                                    Debug.Log(agentI.gameObject.name + " -- " + loki.gameObject.name);
+                                    //exchange!!!
+                                    Vector3 positionA = agentI.transform.position;
+                                    agentI.transform.position = loki.gameObject.transform.position;
+                                    loki.gameObject.transform.position = positionA;
+                                    agentIController.notMoving = 0;
+                                    break;
+                                    //recalculate path
+                                    /*Debug.Log(agentIController.gameObject.name + " recalculated path!");
+                                    agentIController.cornerPath.Clear();
+                                    agentIController.notMoving = 0;
+                                    break;*/
+                                }
+                                else
+                                {
+                                    agentIController.notMoving++;
+                                }
                             }
                         }
+
+                        //if no agent around, still check if there are agents on its cell
+                        if (!hit && agentIController.cell.GetComponent<CellController>().agentsDensity.Count <= 2)
+                        {
+                            //if the agent is on a bridge, and he needs to go forward, fly you fools!!!
+                            if (agentIController.cell.GetComponent<CellController>().bridge != null &&
+                                agentIController.cornerPath[0].cell.name == agentIController.cell.GetComponent<CellController>().bridge.name)
+                            {
+                                agentI.transform.position =
+                                agentIController.cell.GetComponent<CellController>().bridge.transform.position;
+                            }//else, try to recalculate the path
+                            else
+                            {
+                                //recalculate path
+                                Debug.Log(agentIController.gameObject.name + " recalculated path!");
+                                agentIController.cornerPath.Clear();
+                            }
+                            agentIController.notMoving = 0;
+                        }
+                    }
+                    else
+                    {
+                        agentIController.notMoving = 0;
                     }
                 }
             }
@@ -769,6 +799,7 @@ public class GameController : MonoBehaviour
                                         if (thisLF.tag == "LookingFor")
                                         {
                                             thisLF.transform.position = lookingFor.transform.position;
+                                            thisLF.GetComponent<LFController>().cell = lookingFor.GetComponent<LFController>().cell;
                                             break;
                                         }
                                     }
@@ -783,6 +814,7 @@ public class GameController : MonoBehaviour
                                     if (groupLF.tag == "LookingFor")
                                     {
                                         groupLF.transform.position = lookingFor.transform.position;
+                                        groupLF.GetComponent<LFController>().cell = lookingFor.GetComponent<LFController>().cell;
                                         break;
                                     }
                                 }
@@ -961,6 +993,9 @@ public class GameController : MonoBehaviour
                     ScreenCapture.CaptureScreenshot(Application.dataPath + "/" + allSimulations + "/" + "HeatMap.png");
                 }
             }
+
+            //set the text
+            text.text = "Time " + secondsTaken + " seconds!";
         }
     }
 
@@ -1139,81 +1174,51 @@ public class GameController : MonoBehaviour
     //draw cells
     public void DrawCells()
     {
-        //if it is not set yet
-        /*if (!terrain)
-        {
-            terrain = GameObject.Find("Terrain").GetComponent<Terrain>();
-        }
-
-        //reset the terrain size with the defined size
-        terrain.terrainData.size = new Vector3(scenarioSizeX, terrain.terrainData.size.y, scenarioSizeZ);
-
-        //get the cells parent
-        GameObject cells = GameObject.Find("Cells");
-
-        //first of all, create all cells (with this scene and this agentRadius)
-        //since radius = 1; diameter = 2. So, iterate cellRadius*2
-        //if the radius varies, this 2 operations adjust the cells
-        Vector3 newPosition = new Vector3(cell.transform.position.x * cellRadius,
-            cell.transform.position.y * cellRadius, cell.transform.position.z * cellRadius);
-        Vector3 newScale = new Vector3(cell.transform.localScale.x * cellRadius,
-            cell.transform.localScale.y * cellRadius, cell.transform.localScale.z * cellRadius);
-
-        for (float i = 0; i < terrain.terrainData.size.x; i = i + cellRadius * 2)
-        {
-            for (float j = 0; j < terrain.terrainData.size.z; j = j + cellRadius * 2)
-            {
-                //verify if collides with some obstacle. We dont need cells in them.
-                //for that, we need to check all 4 vertices of the cell. Otherwise, we may not have cells in some free spaces (for example, half of a cell would be covered by an obstacle, so that cell
-                //would not be instantied)
-                bool collideRight = CheckObstacle(new Vector3(newPosition.x + i + cellRadius, newPosition.y, newPosition.z + j), "Obstacle", 0.01f);
-                bool collideLeft = CheckObstacle(new Vector3(newPosition.x + i - cellRadius, newPosition.y, newPosition.z + j), "Obstacle", 0.01f);
-                bool collideTop = CheckObstacle(new Vector3(newPosition.x + i, newPosition.y, newPosition.z + j + cellRadius), "Obstacle", 0.01f);
-                bool collideDown = CheckObstacle(new Vector3(newPosition.x + i, newPosition.y, newPosition.z + j - cellRadius), "Obstacle", 0.01f);
-                bool collideRightTop = CheckObstacle(new Vector3(newPosition.x + i + cellRadius, newPosition.y, newPosition.z + j + cellRadius), "Obstacle", 0.01f);
-                bool collideLeftBottom = CheckObstacle(new Vector3(newPosition.x + i - cellRadius, newPosition.y, newPosition.z + j - cellRadius), "Obstacle", 0.01f);
-                bool collideTopLeft = CheckObstacle(new Vector3(newPosition.x + i - cellRadius, newPosition.y, newPosition.z + j + cellRadius), "Obstacle", 0.01f);
-                bool collideDownRight = CheckObstacle(new Vector3(newPosition.x + i + cellRadius, newPosition.y, newPosition.z + j - cellRadius), "Obstacle", 0.01f);
-                
-                //if did collide it all, means we have found at least 1 obstacle in each case. So, the cell is covered by an obstacle
-                //otherwise, we go on
-                if (!collideRight || !collideLeft || !collideTop || !collideDown || !collideRightTop || !collideLeftBottom || !collideTopLeft || !collideDownRight)
-                {
-                    //instantiante a new cell
-                    GameObject newCell = Instantiate(cell, new Vector3(newPosition.x + i, newPosition.y, newPosition.z + j), Quaternion.identity) as GameObject;
-                    //change his name
-                    newCell.name = "cell" + i + "-" + j;
-                    //change scale
-                    newCell.transform.localScale = newScale;
-                    //change parent
-                    newCell.transform.parent = cells.transform;
-                    //start list
-                    newCell.GetComponent<CellController>().StartList();
-                }
-            }
-        }
-        */
-
         //get rooms
         allRooms = GameObject.FindGameObjectsWithTag("Room");
 
         //foreach room, instantiate the cells
         foreach (GameObject room in allRooms)
         {
-            room.GetComponent<RoomController>().StartLists();
-            room.GetComponent<RoomController>().CreateTermicCells();
+            //to just create for the rooms with Rampas as parent
+            if (room.transform.parent.name == "Rampas")
+            {
+                room.GetComponent<RoomController>().StartLists();
+                room.GetComponent<RoomController>().CreateTermicCells();
+            }
         }
 
         //create room doors
         foreach (GameObject room in allRooms)
         {
-            room.GetComponent<RoomController>().CreateDoors();
+            //to just create for the rooms with Rampas as parent
+            if (room.transform.parent.name == "Rampas")
+            {
+                room.GetComponent<RoomController>().CreateDoors();
+            }
         }
 
         //get all cells in scene
         allCells = GameObject.FindGameObjectsWithTag("Cell");
         //just to see how many cells were generated
         Debug.Log(allCells.Length);
+
+        //get the neighbor cells
+        FindNeighborCells();
+    }
+
+    //just find the neighbor cells
+    public void FindNeighborCells()
+    {
+        //get the neighbor cells
+        foreach (GameObject cl in allCells)
+        {
+            //to just create for the rooms with Rampas as parent
+            if (cl.GetComponent<CellController>().room.transform.parent.name == "Rampas")
+            {
+                cl.GetComponent<CellController>().FindNeighbor();
+            }
+        }
     }
 
     //place auxins
@@ -1234,9 +1239,13 @@ public class GameController : MonoBehaviour
         //for each cell, we generate his auxins
         for (int c = 0; c < allCells.Length; c++)
         {
-            //Dart throwing auxins
-            DartThrowMarkers(c);
-            //Debug.Log(allCells[c].name+"--"+allCells[c].GetComponent<CellController>().GetAuxins().Count);
+            //to just create for the rooms with Rampas as parent
+            if (allCells[c].GetComponent<CellController>().room.transform.parent.name == "Rampas")
+            {
+                //Dart throwing auxins
+                DartThrowMarkers(c);
+                //Debug.Log(allCells[c].name+"--"+allCells[c].GetComponent<CellController>().GetAuxins().Count);
+            }
         }
     }
 
@@ -1286,6 +1295,10 @@ public class GameController : MonoBehaviour
         using (theReader)
         {
             int lineCount = 1;
+
+            Vector3 obsPosition = Vector3.zero;
+            Vector3 obsScale = Vector3.one;
+
             // While there's lines left in the text file, do this:
             do
             {
@@ -1310,6 +1323,22 @@ public class GameController : MonoBehaviour
                         //reset vertices
                         vertices = new Vector3[0];
                         triangles = new int[0];
+                    }//else, if line contains "position", set it
+                    else if (line.Contains("position"))
+                    {
+                        string[] info = line.Split(':');
+                        info = info[1].Split(';');
+                        obsPosition = new Vector3(System.Convert.ToSingle(info[0], CultureInfo.InvariantCulture),
+                            System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture), 
+                            System.Convert.ToSingle(info[2], CultureInfo.InvariantCulture));
+                    }//else, if line contains "scale", set it
+                    else if (line.Contains("scale"))
+                    {
+                        string[] info = line.Split(':');
+                        info = info[1].Split(';');
+                        obsScale = new Vector3(System.Convert.ToSingle(info[0], CultureInfo.InvariantCulture),
+                            System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture), 
+                            System.Convert.ToSingle(info[2], CultureInfo.InvariantCulture));
                     }//else, if line contains "qntVertices", set it and start to read the vertices
                     else if (line.Contains("qntVertices"))
                     {
@@ -1329,7 +1358,9 @@ public class GameController : MonoBehaviour
                         if(qntVertices > 0)
                         {
                             string[] info = line.Split(';');
-                            vertices[qntVertices - 1] = new Vector3(System.Convert.ToSingle(info[0]), System.Convert.ToSingle(info[1]), System.Convert.ToSingle(info[2]));
+                            vertices[qntVertices - 1] = new Vector3(System.Convert.ToSingle(info[0], CultureInfo.InvariantCulture), 
+                                System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture), 
+                                System.Convert.ToSingle(info[2], CultureInfo.InvariantCulture));
 
                             //decrement
                             qntVertices--;
@@ -1344,7 +1375,7 @@ public class GameController : MonoBehaviour
                             //if reached 0, obstacle is ready to draw
                             if(qntTriangles == 0)
                             {
-                                DrawObstacle(vertices, triangles);
+                                DrawObstacle(vertices, triangles, obsPosition, obsScale);
                             }
                         }
                     }
@@ -1372,13 +1403,18 @@ public class GameController : MonoBehaviour
 
         //parents
         GameObject parentCells = GameObject.Find("Cells");
-        //room
-        parentCells = parentCells.transform.GetChild(0).gameObject;
 
         int qntCells = 0;
         // Create a new StreamReader, tell it which file to read and what encoding the file
         theReader = new StreamReader(Path.Combine(Application.dataPath, configFilename), System.Text.Encoding.Default);
-        Terrain terrain = GameObject.Find("Terrain").GetComponent<Terrain>();
+
+        //since neighbor cells may not exist yet, create a list with them to add later
+        Dictionary<int, List<string>> neighbors = new Dictionary<int, List<string>>();
+        int controlNeighbors = 0;
+
+        //since bridge cells may not exist yet, create a list with them to add later
+        Dictionary<int, List<string>> bridges = new Dictionary<int, List<string>>();
+        int controlBridges = 0;
 
         using (theReader)
         {
@@ -1390,48 +1426,40 @@ public class GameController : MonoBehaviour
 
                 if (line != null)
                 {
-                    //in first line, we have the terrain size
+                    //in first line, we have the camera
                     if (lineCount == 1)
                     {
-                        string[] entries = line.Split(':');
-                        entries = entries[1].Split(',');
-
-                        scenarioSizeX = System.Convert.ToSingle(entries[0]);
-                        scenarioSizeZ = System.Convert.ToSingle(entries[1]);
-
-                        terrain.terrainData.size = new Vector3(scenarioSizeX, terrain.terrainData.size.y, scenarioSizeZ);
+                        //ConfigCamera();
                     }
-                    //in second line, we have the camera position
+                    //in the second line, we have the qntCells to instantiante
                     else if (lineCount == 2)
-                    {
-                        ConfigCamera();
-                    }
-                    //in the third line, we have the qntCells to instantiante
-                    else if (lineCount == 3)
                     {
                         string[] entries = line.Split(':');
                         qntCells = System.Int32.Parse(entries[1]);
                     }
-                    //else, if we are in the qntCells+4 line, we have the qntAuxins to instantiante
-                    else if (lineCount == qntCells + 4)
+                    //else, if we are in the qntCells+3 line, we have the qntAuxins to instantiante
+                    else if (lineCount == qntCells + 3)
                     {
                         string[] entries = line.Split(':');
                         qntAuxins = System.Int32.Parse(entries[1]);
                     }
                     else
                     {
-                        //while we are til qntCells+3 line, we have cells. After that, we have auxins and then, agents
-                        if (lineCount <= qntCells + 3)
+                        //while we are til qntCells+2 line, we have cells. After that, we have auxins
+                        if (lineCount <= qntCells + 2)
                         {
                             string[] entries = line.Split(';');
 
                             if (entries.Length > 0)
                             {
-                                GameObject newCell = Instantiate(cell, new Vector3(System.Convert.ToSingle(entries[1]), System.Convert.ToSingle(entries[2]), System.Convert.ToSingle(entries[3])),
+                                GameObject newCell = Instantiate(cell, new Vector3(
+                                    System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture), 
+                                    System.Convert.ToSingle(entries[2], CultureInfo.InvariantCulture), 
+                                    System.Convert.ToSingle(entries[3], CultureInfo.InvariantCulture)),
                                     Quaternion.identity) as GameObject;
                                 //change scale
-                                newCell.transform.localScale *= System.Convert.ToSingle(entries[4]);
-                                cellRadius = System.Convert.ToSingle(entries[4]);
+                                newCell.transform.localScale *= System.Convert.ToSingle(entries[4], CultureInfo.InvariantCulture);
+                                cellRadius = System.Convert.ToSingle(entries[4], CultureInfo.InvariantCulture);
                                 //change his name
                                 newCell.name = entries[0];
 
@@ -1441,11 +1469,43 @@ public class GameController : MonoBehaviour
                                     newCell.GetComponent<CellController>().isWall = true;
                                 }
 
+                                //is wall?
+                                if (entries[5] == "True")
+                                {
+                                    newCell.GetComponent<CellController>().isWall = true;
+                                }
+
                                 //change parent
-                                newCell.transform.parent = parentCells.transform;
+                                newCell.transform.parent = GameObject.Find(entries[6]).transform;
+
+                                newCell.GetComponent<CellController>().neighborCells = new List<GameObject>();
+                                
+                                //add the bridge, if exists
+                                if(entries[7] != null && entries[7] != "")
+                                {
+                                    List<string> brds = new List<string>();
+                                    brds.Add(entries[0]);
+                                    brds.Add(entries[7]);
+                                    bridges.Add(controlBridges, brds);
+                                    controlBridges++;
+                                }
+
+                                //add the neighbors to the list, if exists
+                                //max: 8 neighbors
+                                for(int b = 8; b < entries.Length; b++)
+                                {
+                                    if (entries[b] != "" && entries[b] != null)
+                                    {
+                                        List<string> neigh = new List<string>();
+                                        neigh.Add(entries[0]);
+                                        neigh.Add(entries[b]);
+                                        neighbors.Add(controlNeighbors, neigh);
+                                        controlNeighbors++;
+                                    }
+                                }
                             }
                         }
-                        else if (lineCount <= qntCells + qntAuxins + 4)
+                        else
                         {
                             string[] entries = line.Split(';');
                             if (entries.Length > 0)
@@ -1459,9 +1519,11 @@ public class GameController : MonoBehaviour
                                 //this auxin is from this cell
                                 newAuxin.SetCell(hisCell);
                                 //set position
-                                newAuxin.position = new Vector3(System.Convert.ToSingle(entries[1]), System.Convert.ToSingle(entries[2]), System.Convert.ToSingle(entries[3]));
+                                newAuxin.position = new Vector3(System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture), 
+                                    System.Convert.ToSingle(entries[2], CultureInfo.InvariantCulture), 
+                                    System.Convert.ToSingle(entries[3], CultureInfo.InvariantCulture));
                                 //alter auxinRadius
-                                auxinRadius = System.Convert.ToSingle(entries[4]);
+                                auxinRadius = System.Convert.ToSingle(entries[4], CultureInfo.InvariantCulture);
                                 //add this auxin to this cell
                                 hisCell.GetComponent<CellController>().AddAuxin(newAuxin);
                             }
@@ -1473,6 +1535,21 @@ public class GameController : MonoBehaviour
             while (line != null);
             // Done reading, close the reader and return true to broadcast success    
             theReader.Close();
+        }
+
+        //set the bridges
+        foreach (KeyValuePair<int, List<string>> brdg in bridges)
+        {
+            GameObject cellToBridge = GameObject.Find(brdg.Value[0]);
+            cellToBridge.GetComponent<CellController>().bridge = GameObject.Find(brdg.Value[1]);
+        }
+
+        //set the neighbors
+        foreach (KeyValuePair<int, List<string>> brdg in neighbors)
+        {
+            GameObject cellToBridge = GameObject.Find(brdg.Value[0]);
+            //cellToBridge.GetComponent<CellController>().bridge = new List<GameObject>();
+            cellToBridge.GetComponent<CellController>().neighborCells.Add(GameObject.Find(brdg.Value[1]));
         }
 
         // Create a new StreamReader, tell it which file to read and what encoding the file
@@ -1502,14 +1579,15 @@ public class GameController : MonoBehaviour
                     }
                     else
                     {
-                        //each line 1 agent, separated by ","
+                        //each line 1 goal, separated by ","
                         string[] entries = line.Split(',');
 
                         //goal position
-                        Vector3 newPosition = new Vector3(System.Convert.ToSingle(entries[1]), goalP.transform.position.y, System.Convert.ToSingle(entries[2]));
+                        GameObject cellGoal = GameObject.Find(entries[1]);
+                        Vector3 newPosition = new Vector3(cellGoal.transform.position.x, goalP.transform.position.y, cellGoal.transform.position.z);
 
                         //instantiante it
-                        DrawGoal(entries[0], newPosition);
+                        DrawGoal(entries[0], newPosition, cellGoal);
                     }
 
                     lineCount++;
@@ -1522,7 +1600,7 @@ public class GameController : MonoBehaviour
     }
 
     //Read the obstacle obj file
-    public void ReadOBJFile()
+    /*public void ReadOBJFile()
     {
         StreamReader theReader = new StreamReader(Application.dataPath + "/" + obstaclesFilename, System.Text.Encoding.Default);
         string line;
@@ -1590,6 +1668,108 @@ public class GameController : MonoBehaviour
         theReader.Close();
 
         DrawObstacle(vertices, triangles);
+    }*/
+
+    public void LoadGoals()
+    {
+        StreamReader theReader = new StreamReader(Path.Combine(Application.dataPath, goalsFilename), System.Text.Encoding.Default);
+        string line;
+
+        using (theReader)
+        {
+            int lineCount = 1;
+            // While there's lines left in the text file, do this:
+            do
+            {
+                line = theReader.ReadLine();
+
+                if (line != null && line != "")
+                {
+                    //if line starts with #, ignore
+                    if (line[0] == '#')
+                    {
+                        continue;
+                    }
+
+                    //each line 1 goal, separated by ","
+                    string[] entries = line.Split(',');
+
+                    if (entries.Length > 1)
+                    {
+                        string goalNome = entries[0];
+
+                        //find the cell
+                        GameObject goalCell = GameObject.Find(entries[1]);
+
+                        if(goalCell != null)
+                        {
+                            DrawGoal(goalNome, goalCell.transform.position, goalCell);
+                        }
+                    }
+                }
+                lineCount++;
+            }
+            while (line != null);
+            // Done reading, close the reader and return true to broadcast success    
+            theReader.Close();
+        }
+    }
+
+    //update the neigbors on the config file
+    public void UpdateNeighbors()
+    {
+        StreamReader theReader = new StreamReader(Path.Combine(Application.dataPath, configFilename), System.Text.Encoding.Default);
+        string line;
+        //full text
+        string textToSave = "";
+
+        using (theReader)
+        {
+            int lineCount = 1;
+            // While there's lines left in the text file, do this:
+            do
+            {
+                line = theReader.ReadLine();
+
+                if (line != null && line != "")
+                {
+                    if (line[0] == 'c' && line[1] == 'e')
+                    {
+                        //each line 1 cell, separated by ";"
+                        string[] entries = line.Split(';');
+
+                        //full text
+                        textToSave += entries[0] + ";" + entries[1] + ";" + entries[2] + ";" + entries[3]
+                            + ";" + entries[4] + ";" + entries[5] + ";" + entries[6];
+
+                        //find this cell
+                        GameObject cell = GameObject.Find(entries[0]);
+
+                        //foreach neighbor, update
+                        foreach(GameObject neigh in cell.GetComponent<CellController>().neighborCells)
+                        {
+                            textToSave += ";" + neigh.name;
+                        }
+
+                        textToSave += "\n";
+                    }
+                    else
+                    {
+                        textToSave += line + "\n";
+                        continue;
+                    }
+                }
+                lineCount++;
+            }
+            while (line != null);
+            // Done reading, close the reader and return true to broadcast success    
+            theReader.Close();
+        }
+
+        //overwrite
+        StreamWriter file = File.CreateText(Application.dataPath + "/" + configFilename);
+        file.Write(textToSave);
+        file.Close();
     }
 
     //save the new OBJ file
@@ -1671,6 +1851,17 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void SaveConfigFile()
+    {
+        allObstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+
+        //start the filesController
+        filesController = new FilesController(allSimulations, configFilename, obstaclesFilename, scheduleFilename, exitFilename, signsFilename, goalsFilename, agentsGoalFilename,
+            interactionsFilename, meanSpeedFilename, meanAngVarFilename, meanDistanceFilename);
+
+        filesController.SaveConfigFile(cellRadius, auxinRadius, allObstacles);
+    }
+
     //draw some goals
     public void DrawGoals()
     {
@@ -1750,9 +1941,9 @@ public class GameController : MonoBehaviour
                 {
                     string[] info = line.Split(';');
                     qntFrames = System.Int32.Parse(info[0]);
-                    sumSpeed += System.Convert.ToSingle(info[1]);
+                    sumSpeed += System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture);
 
-                    allSpeeds.Add(System.Convert.ToSingle(info[1]));
+                    allSpeeds.Add(System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture));
                 }
             }
             while (line != null);
@@ -1793,9 +1984,9 @@ public class GameController : MonoBehaviour
                 {
                     string[] info = line.Split(';');
                     qntFrames = System.Int32.Parse(info[0]);
-                    sumAngVar += System.Convert.ToSingle(info[1]);
+                    sumAngVar += System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture);
 
-                    allAngs.Add(System.Convert.ToSingle(info[1]));
+                    allAngs.Add(System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture));
                 }
             }
             while (line != null);
@@ -1836,9 +2027,9 @@ public class GameController : MonoBehaviour
                 {
                     string[] info = line.Split(';');
                     qntFrames = System.Int32.Parse(info[0]);
-                    sumDist += System.Convert.ToSingle(info[1]);
+                    sumDist += System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture);
 
-                    allDist.Add(System.Convert.ToSingle(info[1]));
+                    allDist.Add(System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture));
                 }
             }
             while (line != null);
@@ -1912,17 +2103,17 @@ public class GameController : MonoBehaviour
                             //frameLine = 1 -> distance
                             if (frameLine == 1)
                             {
-                                sumDistances += System.Convert.ToSingle(info[1]);
+                                sumDistances += System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture);
 
-                                allDistances.Add(System.Convert.ToSingle(info[1]));
+                                allDistances.Add(System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture));
                             }//frameLine = 2 -> speed
                             else if (frameLine == 2)
                             {
-                                sumSpeeds += System.Convert.ToSingle(info[1]);
+                                sumSpeeds += System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture);
                             }//frameLine = 3 -> angVar
                             else if (frameLine == 3)
                             {
-                                sumAngVars += System.Convert.ToSingle(info[1]);
+                                sumAngVars += System.Convert.ToSingle(info[1], CultureInfo.InvariantCulture);
                             }
 
                             //update frameline
@@ -1974,6 +2165,78 @@ public class GameController : MonoBehaviour
         }
 
         Debug.Log("Total mean distance between agents = " + (totalMeanDistance / totalGroupsWithDistances));
+    }
+
+    //save a randomized agents file
+    public void SaveRandomAgents()
+    {
+        string initialText = "#####################################################\n" +
+                "#file structure:\n" +
+                "#each pair os lines represents a group\n" +
+                "#\n" +
+                "#Example\n" +
+                "#\n" +
+                "#10 -> qnt of agents in the group\n" +
+                "#cell25-25;false;Goal1;0.359452;Goal2;0.0276675;Goal3;0.675362;Goal4;0.557535 -> INFOGROUP\n" +
+                "#\n" +
+                "#INFOGROUP -> Starting Cell, Are agents of this group Idle?, Pairs with Goal/Intention\n" +
+                "#\n" +
+                "#Goal -> Nearest = find the nearest goal\n" +
+                "#####################################################\n\n";
+
+        StreamWriter file = File.CreateText(Application.dataPath + "/" + scheduleFilename);
+
+        file.Write(initialText);
+
+        //control the qnt of agents on each floor
+        //120 superior, 100 subsolo, 20 terreo
+        int qntSup = 0;
+        int qntSub = 0;
+        int qntTer = 0;
+
+        //240 agents
+        for (int i = 0; i < 240; i++)
+        {
+            //random cell
+            int cellIndex = Random.Range(0, allCells.Length);
+            GameObject randomCell = allCells[cellIndex];
+            
+            //if the sorted cell is a bridge, or it is Saida, try another
+            while(randomCell.GetComponent<CellController>().bridge != null || 
+                randomCell.GetComponent<CellController>().room.name == "Saida" ||
+                randomCell.GetComponent<CellController>().room.transform.parent.name == "Rampas" ||
+                (randomCell.GetComponent<CellController>().room.transform.parent.name == "Superior" &&
+                    qntSup > 120) ||
+                (randomCell.GetComponent<CellController>().room.transform.parent.name == "Subsolo" &&
+                    qntSub > 100) ||
+                (randomCell.GetComponent<CellController>().room.transform.parent.name == "Terreo" &&
+                    qntTer > 20))
+            {
+                cellIndex = Random.Range(0, allCells.Length);
+                randomCell = allCells[cellIndex];
+            }
+
+            Debug.Log(randomCell.GetComponent<CellController>().room.transform.parent.name);
+            //update counting
+            if (randomCell.GetComponent<CellController>().room.transform.parent.name == "Superior")
+            {
+                qntSup++;
+            }
+            if (randomCell.GetComponent<CellController>().room.transform.parent.name == "Subsolo")
+            {
+                qntSub++;
+            }
+            if (randomCell.GetComponent<CellController>().room.transform.parent.name == "Terreo")
+            {
+                qntTer++;
+            }
+
+            //qnt agents in the group
+            file.WriteLine("1");
+            file.WriteLine(randomCell.name + ";false;SaidaBoate;1\n");
+        }
+
+        file.Close();
     }
 
     //calculate all the possible paths from each cell
@@ -2122,6 +2385,8 @@ public class GameController : MonoBehaviour
         //sort out a cell
         GameObject foundCell = GameObject.Find(cellName);
 
+        //if(foundCell.GetComponent<CellController>().transform.parent.name == "Subsolo_esquerda") {
+
         bool pCollider = true;
         //while collider inside obstacle or player
         while (pCollider)
@@ -2203,100 +2468,103 @@ public class GameController : MonoBehaviour
         //get the parent Agents
         GameObject agents = GameObject.Find("Agents");
 
-        //instantiate qntAgents Agents
-        for (int i = 0; i < qntAgentsInGroup; i++)
-        {
-            //generate the agent position, based on group cell
-            x = Random.Range(newAgentGroupController.cell.transform.position.x - cellRadius, newAgentGroupController.cell.transform.position.x + cellRadius);
-            z = Random.Range(newAgentGroupController.cell.transform.position.z - cellRadius, newAgentGroupController.cell.transform.position.z + cellRadius);
-
-            //see if there are agents in this radius. if not, instantiante
-            pCollider = CheckObstacle(new Vector3(x, 0, z), "Player", 0.1f);
-
-            //even so, if we are an obstacle, cannot instantiate either
-            //just need to check for obstacle if found no player, otherwise it will not be instantiated anyway
-            if (!pCollider)
+            //instantiate qntAgents Agents
+            for (int i = 0; i < qntAgentsInGroup; i++)
             {
-                pCollider = CheckObstacle(new Vector3(x, 0, z), "Obstacle", 0.1f);
-            }
+                //generate the agent position, based on group cell
+                x = Random.Range(newAgentGroupController.cell.transform.position.x - cellRadius, newAgentGroupController.cell.transform.position.x + cellRadius);
+                z = Random.Range(newAgentGroupController.cell.transform.position.z - cellRadius, newAgentGroupController.cell.transform.position.z + cellRadius);
 
-            //if found a player in the radius, do not instantiante. try again
-            if (pCollider)
-            {
-                //try again
-                i--;
-                continue;
-            }
-            else
-            {
-                GameObject newAgent = Instantiate(agentPF[Random.Range(0, agentPF.Count)], new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
-                AgentController newAgentController = newAgent.GetComponent<AgentController>();
-                //change his name
-                newAgent.name = "agent" + controlQntAgents;
-                //open file
-                newAgent.GetComponent<AgentController>().OpenFile();
-                //random agent color
-                newAgentController.SetColor(new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)));
-                //agent cell
-                newAgentController.SetCell(newAgentGroupController.cell);
-                //agent radius
-                newAgentController.agentRadius = agentRadius;
-                //is idle?
-                newAgentController.isIdle = agentsIdle;
+                //see if there are agents in this radius. if not, instantiante
+                pCollider = CheckObstacle(new Vector3(x, 0, z), "Player", 0.1f);
 
-                //newAgent.GetComponent<MeshRenderer>().material.color = newAgentController.GetColor();
-
-                //group max speed
-                newAgentController.maxSpeed = newAgentGroupController.GetMeanSpeed();
-
-                //the agent maxSpeed will not be the defined maxSpeed, but the calculated meanSpeed of the group with a variation in the meanSpeedDeviation, defined by the group cohesion
-                float newSpeed = -1;
-                //while speed is invalid
-                while (newSpeed <= 0)//newSpeed > agent.GetComponent<AgentController>().maxSpeed || 
+                //even so, if we are an obstacle, cannot instantiate either
+                //just need to check for obstacle if found no player, otherwise it will not be instantiated anyway
+                if (!pCollider)
                 {
-                    float variation = newAgentGroupController.GetMeanSpeed() * newAgentGroupController.GetMeanSpeedDeviation();
-                    newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - variation, newAgentGroupController.GetMeanSpeed() + variation);
-                    /*newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - newAgentGroupController.GetMeanSpeedDeviation(),
-                        newAgentGroupController.GetMeanSpeed() + newAgentGroupController.GetMeanSpeedDeviation());*/
-                }
-                //set agent speed
-                newAgentController.maxSpeed = newSpeed;
-
-                //agent goals from group
-                newAgentController.go.AddRange(newAgentGroupController.go);
-                newAgentController.intentions.AddRange(newAgentGroupController.intentions);
-                newAgentController.desire.AddRange(newAgentGroupController.desire);
-
-                newAgentController.group = newAgentGroup;
-                newAgentGroupController.agents.Add(newAgent);
-
-                //agent durupinar
-                if (useDurupinar)
-                {
-                    newAgentController.durupinar.CalculateDurupinar(duruvalues[i][0], duruvalues[i][1], duruvalues[i][2], duruvalues[i][3], duruvalues[i][4]);
-                }
-                else if (useFavaretto)
-                {
-                    newAgentController.favaretto.CalculateFavaretto(favavalues[i][0], favavalues[i][1], favavalues[i][2], favavalues[i][3], favavalues[i][4]);
+                    pCollider = CheckObstacle(new Vector3(x, 0, z), "Obstacle", 0.1f);
                 }
 
-                //change PPD bias according selected option
-                float ppdBias = 0;
-                if (thermalComfort)
+                //if found a player in the radius, do not instantiante. try again
+                if (pCollider)
                 {
-                    ppdBias = 1;
+                    //try again
+                    i--;
+                    continue;
                 }
-                if (thermalComfort && densityComfort)
+                else
                 {
-                    ppdBias = 0.5f;
+                    GameObject newAgent = Instantiate(agentPF[Random.Range(0, agentPF.Count)], new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
+                    AgentController newAgentController = newAgent.GetComponent<AgentController>();
+                    //change his name
+                    newAgent.name = "agent" + controlQntAgents;
+                    //open file
+                    //newAgent.GetComponent<AgentController>().OpenFile();
+                    //random agent color
+                    newAgentController.SetColor(new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)));
+                    //agent cell
+                    newAgentController.SetCell(newAgentGroupController.cell);
+                    //agent radius
+                    newAgentController.agentRadius = agentRadius;
+                    //is idle?
+                    newAgentController.isIdle = agentsIdle;
+                    //default FOV
+                    newAgentController.fieldOfView = defaultFOV;
+
+                    //newAgent.GetComponent<MeshRenderer>().material.color = newAgentController.GetColor();
+
+                    //group max speed
+                    newAgentController.maxSpeed = newAgentGroupController.GetMeanSpeed();
+
+                    //the agent maxSpeed will not be the defined maxSpeed, but the calculated meanSpeed of the group with a variation in the meanSpeedDeviation, defined by the group cohesion
+                    float newSpeed = -1;
+                    //while speed is invalid
+                    while (newSpeed <= 0)//newSpeed > agent.GetComponent<AgentController>().maxSpeed || 
+                    {
+                        float variation = newAgentGroupController.GetMeanSpeed() * newAgentGroupController.GetMeanSpeedDeviation();
+                        newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - variation, newAgentGroupController.GetMeanSpeed() + variation);
+                        /*newSpeed = Random.Range(newAgentGroupController.GetMeanSpeed() - newAgentGroupController.GetMeanSpeedDeviation(),
+                            newAgentGroupController.GetMeanSpeed() + newAgentGroupController.GetMeanSpeedDeviation());*/
+                    }
+                    //set agent speed
+                    newAgentController.maxSpeed = newSpeed;
+
+                    //agent goals from group
+                    newAgentController.go.AddRange(newAgentGroupController.go);
+                    newAgentController.intentions.AddRange(newAgentGroupController.intentions);
+                    newAgentController.desire.AddRange(newAgentGroupController.desire);
+
+                    newAgentController.group = newAgentGroup;
+                    newAgentGroupController.agents.Add(newAgent);
+
+                    //agent durupinar
+                    if (useDurupinar)
+                    {
+                        newAgentController.durupinar.CalculateDurupinar(duruvalues[i][0], duruvalues[i][1], duruvalues[i][2], duruvalues[i][3], duruvalues[i][4]);
+                    }
+                    else if (useFavaretto)
+                    {
+                        newAgentController.favaretto.CalculateFavaretto(favavalues[i][0], favavalues[i][1], favavalues[i][2], favavalues[i][3], favavalues[i][4]);
+                    }
+
+                    //change PPD bias according selected option
+                    float ppdBias = 0;
+                    if (thermalComfort)
+                    {
+                        ppdBias = 1;
+                    }
+                    if (thermalComfort && densityComfort)
+                    {
+                        ppdBias = 0.5f;
+                    }
+                    newAgentController.ppdBias = ppdBias;
+
+                    //change parent
+                    newAgent.transform.parent = agents.transform;
+
+                    controlQntAgents++;
                 }
-                newAgentController.ppdBias = ppdBias;
-
-                //change parent
-                newAgent.transform.parent = agents.transform;
-
-                controlQntAgents++;
-            }
+          //  }
         }
     }
 
@@ -2389,11 +2657,11 @@ public class GameController : MonoBehaviour
                         {
                             //values for each agent
                             float[] duruvalues = new float[5];
-                            duruvalues[0] = System.Convert.ToSingle(entries[0]);
-                            duruvalues[1] = System.Convert.ToSingle(entries[1]);
-                            duruvalues[2] = System.Convert.ToSingle(entries[2]);
-                            duruvalues[3] = System.Convert.ToSingle(entries[3]);
-                            duruvalues[4] = System.Convert.ToSingle(entries[4]);
+                            duruvalues[0] = System.Convert.ToSingle(entries[0], CultureInfo.InvariantCulture);
+                            duruvalues[1] = System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture);
+                            duruvalues[2] = System.Convert.ToSingle(entries[2], CultureInfo.InvariantCulture);
+                            duruvalues[3] = System.Convert.ToSingle(entries[3], CultureInfo.InvariantCulture);
+                            duruvalues[4] = System.Convert.ToSingle(entries[4], CultureInfo.InvariantCulture);
 
                             groupDuru[groupDuru.Count - 1].Add(duruvalues);
                         }
@@ -2440,11 +2708,11 @@ public class GameController : MonoBehaviour
                         {
                             //values for each agent
                             float[] favavalues = new float[5];
-                            favavalues[0] = System.Convert.ToSingle(entries[0]);
-                            favavalues[1] = System.Convert.ToSingle(entries[1]);
-                            favavalues[2] = System.Convert.ToSingle(entries[2]);
-                            favavalues[3] = System.Convert.ToSingle(entries[3]);
-                            favavalues[4] = System.Convert.ToSingle(entries[4]);
+                            favavalues[0] = System.Convert.ToSingle(entries[0], CultureInfo.InvariantCulture);
+                            favavalues[1] = System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture);
+                            favavalues[2] = System.Convert.ToSingle(entries[2], CultureInfo.InvariantCulture);
+                            favavalues[3] = System.Convert.ToSingle(entries[3], CultureInfo.InvariantCulture);
+                            favavalues[4] = System.Convert.ToSingle(entries[4], CultureInfo.InvariantCulture);
 
                             groupFava[groupFava.Count - 1].Add(favavalues);
                         }
@@ -2522,7 +2790,33 @@ public class GameController : MonoBehaviour
                             if (goalFound)
                             {
                                 groupGoals.Add(goalFound);
-                                groupIntentions.Add(System.Convert.ToSingle(entries[j + 1]));
+                                groupIntentions.Add(System.Convert.ToSingle(entries[j + 1], CultureInfo.InvariantCulture));
+                            }else
+
+                            //if it is set as "Nearest", find the nearest goal
+                            if (entries[j] == "Nearest")
+                            {
+                                GameObject[] allGoals = GameObject.FindGameObjectsWithTag("Goal");
+                                float dist = Vector3.Distance(chosenCell.transform.position, allGoals[0].transform.position);
+                                goalFound = allGoals[0];
+
+                                //find the nearest goal
+                                for(int i = 1; i < allGoals.Length; i++)
+                                {
+                                    float thisDist = Vector3.Distance(chosenCell.transform.position, allGoals[i].transform.position);
+                                    if(thisDist < dist)
+                                    {
+                                        dist = thisDist;
+                                        goalFound = allGoals[i];
+                                    }
+                                }
+
+                                //add to the list
+                                groupGoals.Add(goalFound);
+                                groupIntentions.Add(System.Convert.ToSingle(entries[j + 1], CultureInfo.InvariantCulture));
+
+                                //dont need to keep going, break
+                                break;
                             }
                         }
 
@@ -2580,7 +2874,7 @@ public class GameController : MonoBehaviour
                         continue;
                     }
 
-                    //each line 1 agent, separated by ";"
+                    //each line 1 sign, separated by ";"
                     string[] entries = line.Split(';');
 
                     //if entries just have 1, it is the qnt signs
@@ -2599,7 +2893,8 @@ public class GameController : MonoBehaviour
                             //sign goal
                             GameObject signGoal = GameObject.Find(entries[1]);
 
-                            DrawSign(newPosition, signGoal, System.Convert.ToSingle(entries[2]));
+                            DrawSign(newPosition, signGoal, System.Convert.ToSingle(entries[2], CultureInfo.InvariantCulture),
+                                System.Convert.ToSingle(entries[3], CultureInfo.InvariantCulture));
 
                             //add this position in the list, so we dont draw here again
                             //positionsSigns.Add(newPosition);
@@ -2928,7 +3223,7 @@ public class GameController : MonoBehaviour
                 //change his name
                 newAgent.name = "agent" + i;
                 //open file
-                newAgent.GetComponent<AgentController>().OpenFile();
+                //newAgent.GetComponent<AgentController>().OpenFile();
                 //random agent color
                 newAgentController.SetColor(new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)));
                 //agent cell
@@ -3025,12 +3320,21 @@ public class GameController : MonoBehaviour
     //generates a new looking for GameObject
     private GameObject GenerateLookingFor()
     {
-        GameObject lookingFor = new GameObject();
+        GameObject lookingFor = Instantiate(LFPrefab) as GameObject;
         lookingFor.name = "LookingFor";
         lookingFor.tag = "LookingFor";
 
         //just generate a random cell for the LF
         GameObject cl = allCells[Random.Range(0, allCells.Length)];
+
+        //not bridges!
+        while (cl.GetComponent<CellController>().bridge != null)
+        {
+            cl = allCells[Random.Range(0, allCells.Length)];
+        }
+
+        lookingFor.GetComponent<LFController>().cell = cl;
+
         lookingFor.transform.position = cl.transform.position;
 
         return lookingFor;
@@ -3169,16 +3473,6 @@ public class GameController : MonoBehaviour
                         case "Favaretto":
                             favarettoFilename = entries[1];
                             break;
-                        case "SaveConfigFile":
-                            if(entries[1].ToLower() == "true")
-                            {
-                                saveConfigFile = true;
-                            }
-                            else
-                            {
-                                saveConfigFile = false;
-                            }
-                            break;
                         case "LoadConfigFile":
                             if (entries[1].ToLower() == "true")
                             {
@@ -3235,32 +3529,33 @@ public class GameController : MonoBehaviour
                         case "Cohesion":
                             if (!useHofstede)
                             {
-                                defaultCohesion = System.Convert.ToSingle(entries[1]);
+                                defaultCohesion = System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture);
                             }
                             break;
                         case "MeanSpeed":
                             if (!useHofstede)
                             {
-                                defaultMeanSpeed = System.Convert.ToSingle(entries[1]);
+                                defaultMeanSpeed = System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture);
                             }
                             break;
                         case "MeanSpeedDeviation":
                             if (!useHofstede)
                             {
-                                defaultMeanSpeedDeviation = System.Convert.ToSingle(entries[1]);
+                                defaultMeanSpeedDeviation = System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture);
                             }
                             break;
                         case "AngularVariation":
                             if (!useHofstede)
                             {
-                                defaultAngularVariation = System.Convert.ToSingle(entries[1]);
+                                defaultAngularVariation = System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture);
                             }
                             break;
                         case "staticLFS":
                             //split by ,
                             string[] lfsPos = entries[1].Split(',');
-                            staticLookingFor = new Vector3(System.Convert.ToSingle(lfsPos[0]), System.Convert.ToSingle(lfsPos[1]),
-                                System.Convert.ToSingle(lfsPos[2]));
+                            staticLookingFor = new Vector3(System.Convert.ToSingle(lfsPos[0], CultureInfo.InvariantCulture), 
+                                System.Convert.ToSingle(lfsPos[1], CultureInfo.InvariantCulture),
+                                System.Convert.ToSingle(lfsPos[2], CultureInfo.InvariantCulture));
                             break;
                         case "PaintHeatMap":
                             if (entries[1].ToLower() == "true")
@@ -3311,6 +3606,9 @@ public class GameController : MonoBehaviour
                             {
                                 densityComfort = false;
                             }
+                            break;
+                        case "FieldOfView":
+                            defaultFOV = System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture);
                             break;
                     }
                 }
@@ -3529,7 +3827,7 @@ public class GameController : MonoBehaviour
     }
 
     //draw each obstacle
-    private void DrawObstacle(Vector3[] vertices, int[] triangles)
+    private void DrawObstacle(Vector3[] vertices, int[] triangles, Vector3 obsPosition, Vector3 obsScale)
     {
         GameObject obstacles = GameObject.Find("Obstacles");
 
@@ -3553,6 +3851,10 @@ public class GameController : MonoBehaviour
         //go.GetComponent<MeshCollider>().isTrigger = true;
         go.tag = "Obstacle";
         go.name = "Obstacle";
+
+        //position and scale
+        go.transform.position = obsPosition;
+        go.transform.localScale = obsScale;
 
         go.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Gray");
 
@@ -3591,7 +3893,7 @@ public class GameController : MonoBehaviour
     }
 
     //draw a sign
-    private void DrawSign(Vector3 signPosition, GameObject signGoal, float signAppeal)
+    private void DrawSign(Vector3 signPosition, GameObject signGoal, float signAppeal, float visibility)
     {
         //parent
         GameObject parentSigns = GameObject.Find("Signs");
@@ -3603,12 +3905,14 @@ public class GameController : MonoBehaviour
         newSign.GetComponent<SignController>().SetGoal(signGoal);
         //change appeal
         newSign.GetComponent<SignController>().SetAppeal(signAppeal);
+        //change visibility
+        newSign.GetComponent<SignController>().visibility = visibility;
         //change parent
         newSign.transform.parent = parentSigns.transform;
     }
 
     //draw a goal
-    private void DrawGoal(string goalName, Vector3 goalPosition)
+    private void DrawGoal(string goalName, Vector3 goalPosition, GameObject cellGoal = null)
     {
         //parent
         GameObject parentGoal = GameObject.Find("Goals");
@@ -3618,8 +3922,10 @@ public class GameController : MonoBehaviour
         newGoal.name = goalName;
         //change parent
         newGoal.transform.parent = parentGoal.transform;
+        //cell
+        newGoal.GetComponent<GoalController>().SetCell(cellGoal);
         //draw a sign on this position too, so if the agent is looking for around, he finds it
-        DrawSign(goalPosition, newGoal, 1);
+        DrawSign(goalPosition, newGoal, 1, defaultFOV);
     }
 
     //dart throwing markers

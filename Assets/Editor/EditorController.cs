@@ -17,6 +17,42 @@ public class EditorController : Editor {
         }
 
         rect = GUILayoutUtility.GetRect(500, 40);
+        if (GUI.Button(rect, "Save Config File"))
+        {
+            SaveConfigFile();
+        }
+
+        rect = GUILayoutUtility.GetRect(500, 40);
+        if (GUI.Button(rect, "Find Neigh Cells"))
+        {
+            FindNeighborCells();
+        }
+
+        rect = GUILayoutUtility.GetRect(500, 40);
+        if (GUI.Button(rect, "Update Neigh Cells"))
+        {
+            UpdateNeighbors();
+        }
+
+        rect = GUILayoutUtility.GetRect(500, 40);
+        if (GUI.Button(rect, "Save Random Agents"))
+        {
+            SaveRandomAgents();
+        }
+
+        rect = GUILayoutUtility.GetRect(500, 40);
+        if (GUI.Button(rect, "Load Goals"))
+        {
+            LoadGoals();
+        }
+
+        rect = GUILayoutUtility.GetRect(500, 40);
+        if (GUI.Button(rect, "Load Obstacles"))
+        {
+            LoadObstacles();
+        }
+
+        rect = GUILayoutUtility.GetRect(500, 40);
         if (GUI.Button(rect, "Fix FD File"))
         {
             FixFDFile();
@@ -29,6 +65,36 @@ public class EditorController : Editor {
         }
     }
 
+    public void SaveConfigFile()
+    {
+        (target as GameController).SaveConfigFile();
+    }
+
+    public void FindNeighborCells()
+    {
+        (target as GameController).FindNeighborCells();
+    }
+
+    public void UpdateNeighbors()
+    {
+        (target as GameController).UpdateNeighbors();
+    }
+
+    public void SaveRandomAgents()
+    {
+        (target as GameController).SaveRandomAgents();
+    }
+
+    public void LoadGoals()
+    {
+        (target as GameController).LoadGoals();
+    }
+
+    public void LoadObstacles()
+    {
+        (target as GameController).LoadObstacles();
+    }
+
     public void PreProccess() {
         if ((target as GameController).loadConfigFile)
         {
@@ -37,10 +103,10 @@ public class EditorController : Editor {
         }
         else
         {
-            (target as GameController).ClearScene();
+            //(target as GameController).ClearScene();
             //(target as GameController).DrawObstacles();
-            //(target as GameController).DrawCells();
-            //(target as GameController).PlaceAuxins();
+            (target as GameController).DrawCells();
+            (target as GameController).PlaceAuxins();
             //(target as GameController).DrawGoals();
             //(target as GameController).CalculateAllPaths();
         }

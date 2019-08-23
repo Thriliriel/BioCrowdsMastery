@@ -5,9 +5,9 @@
 #Example
 #
 #1 -> qnt of signs
-#cell14-14;Goal1;1 -> first sign, with: Cell it belongs, Goal it points out, Appeal
+#cell14-14;Goal1;1;5 -> first sign, with: Cell it belongs, Goal it points out, Appeal, Visibility
 #
 #####################################################
 
 0
-#cell15-9;Goal1;1
+#cell15-9;Goal1;1;10

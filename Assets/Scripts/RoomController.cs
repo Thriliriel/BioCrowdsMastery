@@ -29,6 +29,8 @@ public class RoomController : MonoBehaviour {
     public float density;
     //room size
     public Vector2 roomSize;
+    //is room active?
+    public bool isActive;
 
     //game controller
     private GameController gameController;
@@ -55,7 +57,16 @@ public class RoomController : MonoBehaviour {
         CellController[] allCells = gameObject.GetComponentsInChildren<CellController>();
         foreach(CellController hell in allCells)
         {
-            termicCells.Add(hell.gameObject);
+            //if room not active, ignore auxins of its cells
+            if (!isActive)
+            {
+                hell.isWall = true;
+                hell.myAuxins.Clear();
+            }
+            else
+            {
+                termicCells.Add(hell.gameObject);
+            }
         }
     }
 

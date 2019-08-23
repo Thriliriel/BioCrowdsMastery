@@ -78,6 +78,7 @@ public class FilesController {
         meanSpeedFile.Close();
         meanAngVarFile.Close();
         fullFDFile.Close();
+        meanDistanceFile.Close();
     }
 
     //save a csv config file
@@ -91,10 +92,6 @@ public class FilesController {
         //obstacles file
         StreamWriter fileObstacles = File.CreateText(Application.dataPath + "/" + obstaclesFilename);
 
-        //first, we save the terrain dimensions
-        Terrain terrain = GameObject.Find("Terrain").GetComponent<Terrain>();
-        file.WriteLine("terrainSize:" + terrain.terrainData.size.x + "," + terrain.terrainData.size.z);
-
         //then, camera position and height
         GameObject camera = GameObject.Find("Camera");
         file.WriteLine("camera:" + camera.transform.position.x + "," + camera.transform.position.y + "," +
@@ -106,15 +103,35 @@ public class FilesController {
         GameObject[] allCells = GameObject.FindGameObjectsWithTag("Cell");
         if (allCells.Length > 0)
         {
-            //each line: name, positionx, positiony, positionz, cell radius
+            //each line: name, positionx, positiony, positionz, cell radius, cell wall, cell room, cell bridge
             //separated with ;
 
             file.WriteLine("qntCells:" + allCells.Length);
             //for each auxin
             for (int i = 0; i < allCells.Length; i++)
             {
+                string neigborName = "";
+                string bridgeName = "";
+                
+                if(allCells[i].GetComponent<CellController>().neighborCells != null)
+                {
+                    foreach (GameObject brdg in allCells[i].GetComponent<CellController>().neighborCells)
+                    {
+                        if (brdg != null)
+                        {
+                            neigborName += ";" + brdg.name;
+                        }
+                    }
+                }
+
+                if(allCells[i].GetComponent<CellController>().bridge != null)
+                {
+                    bridgeName = allCells[i].GetComponent<CellController>().bridge.name;
+                }
+
                 file.WriteLine(allCells[i].name + ";" + allCells[i].transform.position.x + ";" + allCells[i].transform.position.y +
-                    ";" + allCells[i].transform.position.z + ";" + cellRadius);
+                    ";" + allCells[i].transform.position.z + ";" + cellRadius + ";" + allCells[i].GetComponent<CellController>().isWall + ";" + allCells[i].transform.parent.name +
+                    ";" + bridgeName + neigborName);
 
                 //add all cell auxins to write later
                 List<AuxinController> allCellAuxins = allCells[i].GetComponent<CellController>().GetAuxins();
@@ -146,13 +163,13 @@ public class FilesController {
         GameObject[] allGoals = GameObject.FindGameObjectsWithTag("Goal");
         if (allGoals.Length > 0)
         {
-            //separated with " "
+            //separated with ","
             fileGoals.WriteLine(allGoals.Length);
             //for each goal
             for (int i = 0; i < allGoals.Length; i++)
             {
                 //new line for the goal name and position
-                fileGoals.WriteLine(allGoals[i].name + " " + allGoals[i].transform.position.x + " " + allGoals[i].transform.position.z);
+                fileGoals.WriteLine(allGoals[i].name + "," + allGoals[i].GetComponent<GoalController>().GetCell().name);
             }
         }
         fileGoals.Close();
@@ -167,6 +184,12 @@ public class FilesController {
             {
                 //new line for the obstacle name
                 fileObstacles.WriteLine("\nObstacle");
+                //position
+                fileObstacles.WriteLine("position:" + allObstacles[i].transform.position.x + ";" +
+                    allObstacles[i].transform.position.y + ";" + allObstacles[i].transform.position.z);
+                //scale
+                fileObstacles.WriteLine("scale:" + allObstacles[i].transform.localScale.x + ";" +
+                    allObstacles[i].transform.localScale.y + ";" + allObstacles[i].transform.localScale.z);
                 //new line for the qnt vertices
                 //obstacle mesh
                 MeshFilter obsMesh = allObstacles[i].GetComponent<MeshFilter>();
@@ -189,6 +212,9 @@ public class FilesController {
             }
         }
         fileObstacles.Close();
+
+        //close it all
+        Finish();
     }
 
     //save a csv exit file, with positions of all agents in function of time

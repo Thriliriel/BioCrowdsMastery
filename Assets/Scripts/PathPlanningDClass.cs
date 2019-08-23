@@ -12,7 +12,8 @@ public class PathPlanningDClass {
         originNode = new NodeClass();
         destinationNode = new NodeClass();
         cellRadius = GameObject.Find("GameController").GetComponent<GameController>().cellRadius;
-        terrainLimits = new Vector3(GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.x, 0, GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.z);
+        //terrainLimits = new Vector3(GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.x, 0, GameObject.Find("Terrain").GetComponent<Terrain>().terrainData.size.z);
+        terrainLimits = new Vector3(20, 0, 32);
     }
     
     //open list of cells to check
@@ -150,6 +151,13 @@ public class PathPlanningDClass {
     public List<NodeClass> FindPathCorners(List<NodeClass> path)
     {
         List<NodeClass> cornerPath = new List<NodeClass>();
+
+        //if first node isnt the actual cell, add it
+        if(path[0].cell.name != destinationNode.cell.name)
+        {
+            cornerPath.Add(path[0]);
+        }
+
         for (int i = 1; i < path.Count - 1; i++)
         {
             //difference between next position and actual position
@@ -198,163 +206,166 @@ public class PathPlanningDClass {
     //find nodes around the chosen node
     private void FindNodes(NodeClass chosenNode)
     {
-        //find all neighbours cells
-        float cellSize = cellRadius * 2;
-        float startX = Mathf.Round((chosenNode.cell.transform.position.x - cellSize) * 10) / 10.0f;
-        float startZ = Mathf.Round((chosenNode.cell.transform.position.z - cellSize) * 10) / 10.0f;
-        float endX = Mathf.Round((chosenNode.cell.transform.position.x + cellSize) * 10) / 10.0f;
-        float endZ = Mathf.Round((chosenNode.cell.transform.position.z + cellSize) * 10) / 10.0f;
+        List<GameObject> neighCells = new List<GameObject>();
 
-        //see if it is in some border
-        if (chosenNode.cell.transform.position.x == cellRadius)
+        //if it is a cell
+        if (chosenNode.cell.tag == "Cell")
         {
-            startX = chosenNode.cell.transform.position.x;
+            neighCells = chosenNode.cell.GetComponent<CellController>().neighborCells;
+        }//else, it can be a looking for
+        else if(chosenNode.cell.tag == "LookingFor")
+        {
+            neighCells = chosenNode.cell.GetComponent<LFController>().cell
+                .GetComponent<CellController>().neighborCells;
         }
-        if (chosenNode.cell.transform.position.z == cellRadius)
+        //else, it is a goal
+        else
         {
-            startZ = chosenNode.cell.transform.position.z;
+            neighCells = chosenNode.cell.GetComponent<GoalController>().GetCell()
+                .GetComponent<CellController>().neighborCells;
         }
-        if (chosenNode.cell.transform.position.x == terrainLimits.x - cellRadius)
-        //if ((int)cell.transform.position.x == 29)
+        //iterate through the neighbours of the cell
+        foreach(GameObject neighbourCell in neighCells)
         {
-            endX = chosenNode.cell.transform.position.x;
-        }
-        if (chosenNode.cell.transform.position.z == terrainLimits.z - cellRadius)
-        //if ((int)cell.transform.position.z == 29)
-        {
-            endZ = chosenNode.cell.transform.position.z;
+            CheckNode(chosenNode, neighbourCell);
         }
 
-        //iterate around the chosen node cell
-        for (float i = startX; i <= endX; i = i + cellSize)
+        //check if it has a bridge
+        if (chosenNode.cell.tag == "Cell")
         {
-            for (float j = startZ; j <= endZ; j = j + cellSize)
+            if (chosenNode.cell.GetComponent<CellController>().bridge != null)
             {
-                //find the cell
-                //GameObject neighbourCell = GameObject.Find("Cell" + i + "X" + j);
-                GameObject neighbourCell = CellController.GetCellByName("cell" + i + "-" + j);
-
-                //if it exists..
-                if (neighbourCell)
-                {
-                    //and if it is not the chosen cell
-                    if (neighbourCell.name != chosenNode.cell.name)
-                    {
-                        //see it this node is not already in closed list
-                        bool goAhead = true;
-
-                        foreach (NodeClass nd in nodesChecked)
-                        {
-                            if (nd.cell.name == neighbourCell.name)
-                            {
-                                goAhead = false;
-                                break;
-                            }
-                        }
-
-                        //if it is not
-                        if (goAhead)
-                        {
-                            //check if this node is not already on the open node list
-                            int alreadyInside = -1;
-                            for (int z = 0; z < nodesToCheck.Count; z++)
-                            {
-                                if (nodesToCheck[z].cell.name == neighbourCell.name)
-                                {
-                                    alreadyInside = z;
-                                    break;
-                                }
-                            }
-
-                            //if it is, check to see if this chosen path is better
-                            if (alreadyInside > -1)
-                            {
-                                //if the g value of chosenNode, plus the cost to move to this neighbour, is lower than the nodeG value, this path is better. So, update
-                                //otherwise, do nothing.
-                                int extraCost = 14;
-                                if (nodesToCheck[alreadyInside].cell.transform.position.x == chosenNode.cell.transform.position.x ||
-                                    nodesToCheck[alreadyInside].cell.transform.position.z == chosenNode.cell.transform.position.z)
-                                {
-                                    extraCost = 10;
-                                }
-
-                                if ((chosenNode.g + extraCost) < nodesToCheck[alreadyInside].g)
-                                {
-                                    //re-calculate the values
-                                    /*nodesToCheck[alreadyInside].g = (chosenNode.g + extraCost);
-                                    nodesToCheck[alreadyInside].f = nodesToCheck[alreadyInside].g + nodesToCheck[alreadyInside].h;
-                                    //change parent
-                                    nodesToCheck[alreadyInside].parent = chosenNode;*/
-                                    //re-calculate the values
-                                    nodesToCheck[alreadyInside].g = (chosenNode.g + extraCost);
-                                    nodesToCheck[alreadyInside].f = nodesToCheck[alreadyInside].g + nodesToCheck[alreadyInside].h + nodesToCheck[alreadyInside].tc +
-                                        nodesToCheck[alreadyInside].dc;
-                                    //change parent
-                                    nodesToCheck[alreadyInside].parent = chosenNode;
-                                }
-                            }//else, just create it
-                            else
-                            {
-                                //create its node
-                                NodeClass newNode = new NodeClass();
-                                //initialize
-                                newNode.cell = neighbourCell;
-                                newNode.g = 14;
-                                //set its values
-                                //h value
-                                newNode.h = EstimateDestination(newNode);
-                                //g value
-                                //if x or z axis is equal to the chosen node cell, it is hor/ver movement, so it costs only 10
-                                if (newNode.cell.transform.position.x == chosenNode.cell.transform.position.x || newNode.cell.transform.position.z == chosenNode.cell.transform.position.z)
-                                {
-                                    newNode.g = 10;
-                                }
-
-                                //hot is as uncomfortable as cold
-                                if (newNode.cell.GetComponent<CellController>().airTemperature < 10)
-                                {
-                                    newNode.tc = 60;
-                                }
-                                else if (newNode.cell.GetComponent<CellController>().airTemperature >= 10 && newNode.cell.GetComponent<CellController>().airTemperature < 18)
-                                {
-                                    newNode.tc = 30;
-                                }
-                                else if (newNode.cell.GetComponent<CellController>().airTemperature >= 18 && newNode.cell.GetComponent<CellController>().airTemperature < 25)
-                                {
-                                    newNode.tc = 0;
-                                }
-                                else if (newNode.cell.GetComponent<CellController>().airTemperature >= 25 && newNode.cell.GetComponent<CellController>().airTemperature < 29)
-                                {
-                                    newNode.tc = 30;
-                                }
-                                else if (newNode.cell.GetComponent<CellController>().airTemperature >= 29)
-                                {
-                                    newNode.tc = 60;
-                                }
-
-                                //density confort: just sum up the qnt of agents on this cell node, * 10
-                                //TO SEE: it gets cells which have agents in that instant, but agents may be still moving
-                                newNode.dc = newNode.cell.GetComponent<CellController>().agents.Count * 10;
-
-                                //f, just sums h with g
-                                //new stuff: adds up the thermal comfort too
-                                //newNode.f = newNode.h + newNode.g;
-                                newNode.f = newNode.h + newNode.g + newNode.tc + newNode.dc;
-                                //set the parent node
-                                newNode.parent = chosenNode;
-
-                                //add this node in the open list
-                                nodesToCheck.Add(newNode);
-                            }
-                        }
-                    }
-                }
+                //check also
+                CheckNode(chosenNode, chosenNode.cell.GetComponent<CellController>().bridge);
             }
         }
 
         //done with this one
         nodesChecked.Add(chosenNode);
         nodesToCheck.Remove(chosenNode);
+    }
+
+    private void CheckNode(NodeClass chosenNode, GameObject neighbourCell)
+    {
+        //find the cell
+        //GameObject neighbourCell = GameObject.Find("Cell" + i + "X" + j);
+        
+
+        //if it exists..
+        if (neighbourCell)
+        {
+            //and if it is not the chosen cell
+            if (neighbourCell.name != chosenNode.cell.name)
+            {
+                //see it this node is not already in closed list
+                bool goAhead = true;
+
+                foreach (NodeClass nd in nodesChecked)
+                {
+                    if (nd.cell.name == neighbourCell.name)
+                    {
+                        goAhead = false;
+                        break;
+                    }
+                }
+
+                //if it is not
+                if (goAhead)
+                {
+                    //check if this node is not already on the open node list
+                    int alreadyInside = -1;
+                    for (int z = 0; z < nodesToCheck.Count; z++)
+                    {
+                        if (nodesToCheck[z].cell.name == neighbourCell.name)
+                        {
+                            alreadyInside = z;
+                            break;
+                        }
+                    }
+
+                    //if it is, check to see if this chosen path is better
+                    if (alreadyInside > -1)
+                    {
+                        //if the g value of chosenNode, plus the cost to move to this neighbour, is lower than the nodeG value, this path is better. So, update
+                        //otherwise, do nothing.
+                        int extraCost = 14;
+                        if (nodesToCheck[alreadyInside].cell.transform.position.x == chosenNode.cell.transform.position.x ||
+                            nodesToCheck[alreadyInside].cell.transform.position.z == chosenNode.cell.transform.position.z)
+                        {
+                            extraCost = 10;
+                        }
+
+                        if ((chosenNode.g + extraCost) < nodesToCheck[alreadyInside].g)
+                        {
+                            //re-calculate the values
+                            /*nodesToCheck[alreadyInside].g = (chosenNode.g + extraCost);
+                            nodesToCheck[alreadyInside].f = nodesToCheck[alreadyInside].g + nodesToCheck[alreadyInside].h;
+                            //change parent
+                            nodesToCheck[alreadyInside].parent = chosenNode;*/
+                            //re-calculate the values
+                            nodesToCheck[alreadyInside].g = (chosenNode.g + extraCost);
+                            nodesToCheck[alreadyInside].f = nodesToCheck[alreadyInside].g + nodesToCheck[alreadyInside].h + nodesToCheck[alreadyInside].tc +
+                                nodesToCheck[alreadyInside].dc;
+                            //change parent
+                            nodesToCheck[alreadyInside].parent = chosenNode;
+                        }
+                    }//else, just create it
+                    else
+                    {
+                        //create its node
+                        NodeClass newNode = new NodeClass();
+                        //initialize
+                        newNode.cell = neighbourCell;
+                        newNode.g = 14;
+                        //set its values
+                        //h value
+                        newNode.h = EstimateDestination(newNode);
+                        //g value
+                        //if x or z axis is equal to the chosen node cell, it is hor/ver movement, so it costs only 10
+                        if (newNode.cell.transform.position.x == chosenNode.cell.transform.position.x || newNode.cell.transform.position.z == chosenNode.cell.transform.position.z)
+                        {
+                            newNode.g = 10;
+                        }
+
+                        //hot is as uncomfortable as cold
+                        if (newNode.cell.GetComponent<CellController>().airTemperature < 10)
+                        {
+                            newNode.tc = 60;
+                        }
+                        else if (newNode.cell.GetComponent<CellController>().airTemperature >= 10 && newNode.cell.GetComponent<CellController>().airTemperature < 18)
+                        {
+                            newNode.tc = 30;
+                        }
+                        else if (newNode.cell.GetComponent<CellController>().airTemperature >= 18 && newNode.cell.GetComponent<CellController>().airTemperature < 25)
+                        {
+                            newNode.tc = 0;
+                        }
+                        else if (newNode.cell.GetComponent<CellController>().airTemperature >= 25 && newNode.cell.GetComponent<CellController>().airTemperature < 29)
+                        {
+                            newNode.tc = 30;
+                        }
+                        else if (newNode.cell.GetComponent<CellController>().airTemperature >= 29)
+                        {
+                            newNode.tc = 60;
+                        }
+
+                        //density confort: just sum up the qnt of agents on this cell node, * 10
+                        //TO SEE: it gets cells which have agents in that instant, but agents may be still moving
+                        newNode.dc = newNode.cell.GetComponent<CellController>().agents.Count * 10;
+
+                        //f, just sums h with g
+                        //new stuff: adds up the thermal comfort too
+                        //newNode.f = newNode.h + newNode.g;
+                        newNode.f = newNode.h + newNode.g + newNode.tc + newNode.dc;
+                        //set the parent node
+                        newNode.parent = chosenNode;
+
+                        //add this node in the open list
+                        nodesToCheck.Add(newNode);
+                    }
+                }
+            }
+        }
     }
 
     //estimate the h node value

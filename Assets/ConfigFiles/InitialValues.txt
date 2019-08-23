@@ -15,9 +15,6 @@ Interactions:ConfigFiles/sign_0/Interactions.csv
 MeanAgentSpeed:ConfigFiles/sign_0/MeanAgentSpeed.csv
 MeanAgentAngVar:ConfigFiles/sign_0/MeanAgentAngVar.csv
 
-#Save this input files to use another time?
-SaveConfigFile:false
-
 #Load file?
 LoadConfigFile:True
 
@@ -40,20 +37,23 @@ UseFavaretto:False
 PaintHeatMap:False
 
 #use exploratory behavior?
-ExploratoryBehavior:False
+ExploratoryBehavior:True
 
 #use group behavior?
 GroupBehavior:False
 
 #use thermal comfort?
-ThermalComfort:True
+ThermalComfort:False
 
 #use density comfort?
 DensityComfort:False
 
+#default field of view
+FieldOfView:5
+
 #group parameters (just used if not using cultural parameters)
 Cohesion:3
-MeanSpeed:1.2
+MeanSpeed:1.5
 MeanSpeedDeviation:0
 AngularVariation:0
 
