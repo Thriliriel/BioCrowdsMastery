@@ -151,7 +151,7 @@ public class AgentController : MonoBehaviour {
 
         //clear it
         myAuxins.Clear();
-        CloseFile();
+        //CloseFile();
     }
 
     void Awake(){
@@ -887,7 +887,7 @@ public class AgentController : MonoBehaviour {
                 //now, lets see if this sign is from a goal that our agent has intention to go
                 for (int i = 0; i < go.Count; i++)
                 {
-                    if (go[i] == sign.GetComponent<SignController>().GetGoal())
+                    if (go[i].name == sign.GetComponent<SignController>().GetGoal().name)
                     {
                         //well, lets do the interaction
                         Interaction(sign, distance, i);
@@ -930,7 +930,9 @@ public class AgentController : MonoBehaviour {
 
         float gama = desire[index] * alfa * sign.GetComponent<SignController>().GetAppeal();
 
-        deltaIntention = gama * (Sq - intentions[index]);
+        //make it slower (/50)
+        //Debug.Log(gameController.interactionFactor);
+        deltaIntention = gama * (Sq - intentions[index]) / gameController.interactionFactor;
 
         intentions[index] = intentions[index] + deltaIntention;
 

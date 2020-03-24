@@ -135,6 +135,8 @@ public class GameController : MonoBehaviour
     public GameObject[] allCells;
     //default FOV
     public float defaultFOV;
+    //default interaction factor
+    public int interactionFactor;
 
 
     //all agents
@@ -196,6 +198,8 @@ public class GameController : MonoBehaviour
     {
         //default useless value
         staticLookingFor = Vector3.zero;
+        Debug.Break();
+        interactionFactor = 1;
 
         //load master file
         LoadMasterFile();
@@ -748,8 +752,10 @@ public class GameController : MonoBehaviour
                     {
                         //if we are already at the last agent goal, he arrived
                         //if he has 2 goals yet, but the second one is the Looking For, he arrived too
+                        //also, if the goal is an exit, get out!
                         if (agentIController.go.Count == 1 ||
-                            (agentIController.go.Count == 2 && agentIController.go[1].gameObject.tag == "LookingFor"))
+                            (agentIController.go.Count == 2 && agentIController.go[1].gameObject.tag == "LookingFor") ||
+                            (goal.name.Contains("Saida")))
                         {
                             //save on the file
                             filesController.SaveAgentsGoalFile(agentI.name, goal.name, lastFrameCount);
@@ -2195,7 +2201,7 @@ public class GameController : MonoBehaviour
         int qntTer = 0;
 
         //240 agents
-        for (int i = 0; i < 240; i++)
+        for (int i = 0; i < 1010; i++)
         {
             //random cell
             int cellIndex = Random.Range(0, allCells.Length);
@@ -2206,11 +2212,11 @@ public class GameController : MonoBehaviour
                 randomCell.GetComponent<CellController>().room.name == "Saida" ||
                 randomCell.GetComponent<CellController>().room.transform.parent.name == "Rampas" ||
                 (randomCell.GetComponent<CellController>().room.transform.parent.name == "Superior" &&
-                    qntSup > 120) ||
+                    qntSup > 240) ||
                 (randomCell.GetComponent<CellController>().room.transform.parent.name == "Subsolo" &&
-                    qntSub > 100) ||
+                    qntSub > 656) ||
                 (randomCell.GetComponent<CellController>().room.transform.parent.name == "Terreo" &&
-                    qntTer > 20))
+                    qntTer > 114))
             {
                 cellIndex = Random.Range(0, allCells.Length);
                 randomCell = allCells[cellIndex];
@@ -2231,9 +2237,19 @@ public class GameController : MonoBehaviour
                 qntTer++;
             }
 
+            //get all goals, because agents need to have them in the list
+            GameObject[] allGoals = GameObject.FindGameObjectsWithTag("Goal");
+
+            string gols = "";
+
+            foreach(GameObject gol in allGoals)
+            {
+                gols += ";" + gol.name + ";" + "0.1";
+            }
+
             //qnt agents in the group
             file.WriteLine("1");
-            file.WriteLine(randomCell.name + ";false;SaidaBoate;1\n");
+            file.WriteLine(randomCell.name + ";false" + gols + "\n");
         }
 
         file.Close();
@@ -2746,6 +2762,13 @@ public class GameController : MonoBehaviour
 
                 if (line != null && line != "")
                 {
+                    //just use half of agents
+                    /*if(lineCount % 2 == 0)
+                    {
+                        lineCount++;
+                        continue;
+                    }*/
+
                     //if line starts with #, ignore
                     if(line[0] == '#')
                     {
@@ -3431,7 +3454,7 @@ public class GameController : MonoBehaviour
 
                     //each line 1 group, separated by ";"
                     string[] entries = line.Split(':');
-
+                    
                     switch (entries[0])
                     {
                         case "Config":
@@ -3609,6 +3632,10 @@ public class GameController : MonoBehaviour
                             break;
                         case "FieldOfView":
                             defaultFOV = System.Convert.ToSingle(entries[1], CultureInfo.InvariantCulture);
+                            break;
+                        case "InteractionFactor":
+                            interactionFactor = System.Convert.ToInt16(entries[1], CultureInfo.InvariantCulture);
+                            //Debug.Log(interactionFactor);
                             break;
                     }
                 }
@@ -3925,7 +3952,10 @@ public class GameController : MonoBehaviour
         //cell
         newGoal.GetComponent<GoalController>().SetCell(cellGoal);
         //draw a sign on this position too, so if the agent is looking for around, he finds it
-        DrawSign(goalPosition, newGoal, 1, defaultFOV);
+        if (goalName.Contains("Saida"))
+        {
+            DrawSign(goalPosition, newGoal, 1, defaultFOV);
+        }
     }
 
     //dart throwing markers

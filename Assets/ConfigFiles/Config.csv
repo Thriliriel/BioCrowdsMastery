@@ -207,9 +207,9 @@ cell31.9-20.22;31.9;0;20.22;1;False;MeioEsquerdaQuadrado;;cell31.9-18.22;cell33.
 cell33.9-18.22;33.9;0;18.22;1;False;MeioEsquerdaQuadrado;;cell31.9-18.22;cell31.9-20.22;cell33.9-20.22;cell35.9-17.3
 cell33.9-20.22;33.9;0;20.22;1;False;MeioEsquerdaQuadrado;;cell31.9-18.22;cell31.9-20.22;cell33.9-18.22;cell34.52-22.09
 cell41.121-23.65;41.121;0;23.65;1;False;MeioEsquerdaBaixoPassagemMeio (1);;cell41.35-23.2;cell41.35-25.2;cell43.35-23.2;cell43.35-25.2;cell40.2-25.48;cell41.121-26.18;cell40.19-23.24
-cell34.52-22.09;34.52;0;22.09;1;False;MeioEsquerdaBaixoPassagemQuadrado;;cell34.19-23.24;cell33.9-20.22;cell36.3-20.464;cell36.3-22.464
-cell35.9-13.3;35.9;0;13.3;1;False;BaixoMeioEsquerda;;cell35.9-15.3;cell37.9-13.3;cell37.9-15.3;cell35.91-10.8;cell35.91-12.8;cell37.91-12.8
-cell35.9-15.3;35.9;0;15.3;1;False;BaixoMeioEsquerda;;cell35.9-13.3;cell35.9-17.3;cell37.9-13.3;cell37.9-15.3;cell37.9-17.3;cell35.91-12.8
+cell34.52-22.09;34.52;0;22.09;1;False;MeioEsquerdaBaixoPassagemQuadrado;;cell34.19-23.24;cell33.9-20.22;cell36.3-22.464
+cell35.9-13.3;35.9;0;13.3;1;False;BaixoMeioEsquerda;;cell35.9-15.3;cell37.9-13.3;cell37.9-15.3;cell35.91-10.8;cell35.91-12.8;cell37.91-12.8;cell34.39-14.5
+cell35.9-15.3;35.9;0;15.3;1;False;BaixoMeioEsquerda;;cell35.9-13.3;cell35.9-17.3;cell37.9-13.3;cell37.9-15.3;cell37.9-17.3;cell35.91-12.8;cell34.39-14.5;cell34.39-16.5
 cell35.9-17.3;35.9;0;17.3;1;False;BaixoMeioEsquerda;cell5.6-53.25;cell33.9-18.22;cell35.9-15.3;cell37.9-15.3;cell37.9-17.3
 cell37.9-13.3;37.9;0;13.3;1;False;BaixoMeioEsquerda;;cell35.9-13.3;cell35.9-15.3;cell37.9-15.3;cell35.91-12.8;cell37.91-10.8;cell37.91-12.8;cell38.84-10.82
 cell37.9-15.3;37.9;0;15.3;1;False;BaixoMeioEsquerda;;cell35.9-13.3;cell35.9-15.3;cell35.9-17.3;cell37.9-13.3;cell37.9-17.3;cell37.91-12.8
@@ -218,7 +218,7 @@ cell30.39-14.5;30.39;0;14.5;1;False;BaixoEsquerdao;;cell30.39-16.5;cell32.39-14.
 cell30.39-16.5;30.39;0;16.5;1;False;BaixoEsquerdao;;cell30.39-14.5;cell32.39-14.5;cell32.39-16.5
 cell32.39-14.5;32.39;0;14.5;1;False;BaixoEsquerdao;;cell30.39-14.5;cell30.39-16.5;cell32.39-16.5;cell34.39-14.5;cell34.39-16.5
 cell32.39-16.5;32.39;0;16.5;1;False;BaixoEsquerdao;;cell30.39-14.5;cell30.39-16.5;cell32.39-14.5;cell34.39-14.5;cell34.39-16.5
-cell34.39-14.5;34.39;0;14.5;1;False;BaixoEsquerdao;;cell35.9-13.3;cell35.9-15.3;cell32.39-14.5;cell32.39-16.5;cell34.39-16.5;cell35.91-12.8
+cell34.39-14.5;34.39;0;14.5;1;False;BaixoEsquerdao;;cell35.9-13.3;cell35.9-15.3;cell32.39-14.5;cell32.39-16.5;cell34.39-16.5
 cell34.39-16.5;34.39;0;16.5;1;False;BaixoEsquerdao;;cell35.9-15.3;cell35.9-17.3;cell32.39-14.5;cell32.39-16.5;cell34.39-14.5
 cell48.8-0.9590001;48.8;0;0.9590001;1;False;BaixoDireito;cell15.4-53;cell48.8-2.959;cell50.8-0.9590001;cell50.8-2.959
 cell48.8-2.959;48.8;0;2.959;1;False;BaixoDireito;;cell48.8-0.9590001;cell48.8-4.959;cell50.8-0.9590001;cell50.8-2.959;cell50.8-4.959
@@ -236,8 +236,8 @@ cell50.8-8.959001;50.8;0;8.959001;1;False;BaixoDireito;;cell48.8-6.959;cell48.8-
 cell50.8-10.959;50.8;0;10.959;1;False;BaixoDireito;;cell48.8-8.959001;cell48.8-10.959;cell48.8-12.959;cell50.8-8.959001;cell50.8-12.959
 cell50.8-12.959;50.8;0;12.959;1;False;BaixoDireito;;cell48.8-10.959;cell48.8-12.959;cell48.8-14.959;cell50.8-10.959;cell50.8-14.959
 cell50.8-14.959;50.8;0;14.959;1;False;BaixoDireito;;cell48.8-12.959;cell48.8-14.959;cell50.8-12.959
-cell48.2-16.901;48.2;0;16.901;1;False;BaixoDireitaMeioDireita;;cell47.8-17.25;cell48.8-14.959
-cell38.7-14.5;38.7;0;14.5;1;False;MeioBaixo;cell10.5-53.5;cell38.7-16.5;cell40.7-14.5;cell40.7-16.5;cell37.91-12.8;cell41.1-13.82
+cell48.2-16.901;48.2;0;16.901;1;False;BaixoDireitaMeioDireita;;cell47.8-17.25;cell48.8-14.959;cell46.7-16.5
+cell38.7-14.5;38.7;0;14.5;1;False;MeioBaixo;cell10.5-53.5;cell38.7-16.5;cell40.7-14.5;cell40.7-16.5;cell41.1-13.82
 cell38.7-16.5;38.7;0;16.5;1;False;MeioBaixo;;cell38.7-14.5;cell40.7-14.5;cell40.7-16.5
 cell40.7-14.5;40.7;0;14.5;1;False;MeioBaixo;;cell38.7-14.5;cell38.7-16.5;cell40.7-16.5;cell42.7-14.5;cell42.7-16.5;cell41.1-11.82;cell41.1-13.82
 cell40.7-16.5;40.7;0;16.5;1;False;MeioBaixo;;cell38.7-14.5;cell38.7-16.5;cell40.7-14.5;cell42.7-14.5;cell42.7-16.5;cell41.1-13.82
@@ -246,7 +246,7 @@ cell42.7-16.5;42.7;0;16.5;1;False;MeioBaixo;;cell40.7-14.5;cell40.7-16.5;cell42.
 cell44.7-14.5;44.7;0;14.5;1;False;MeioBaixo;;cell42.7-14.5;cell42.7-16.5;cell44.7-16.5;cell46.7-14.5;cell46.7-16.5
 cell44.7-16.5;44.7;0;16.5;1;False;MeioBaixo;;cell42.7-14.5;cell42.7-16.5;cell44.7-14.5;cell46.7-14.5;cell46.7-16.5
 cell46.7-14.5;46.7;0;14.5;1;False;MeioBaixo;;cell45.8-17.25;cell48.8-12.959;cell48.8-14.959;cell44.7-14.5;cell44.7-16.5;cell46.7-16.5
-cell46.7-16.5;46.7;0;16.5;1;False;MeioBaixo;;cell48.8-14.959;cell44.7-14.5;cell44.7-16.5;cell46.7-14.5
+cell46.7-16.5;46.7;0;16.5;1;False;MeioBaixo;;cell48.8-14.959;cell44.7-14.5;cell44.7-16.5;cell46.7-14.5;cell48.2-16.901
 cell30-30.88;30;0;30.88;1;False;Saida;cell0.4-57;cell30-32.88;cell32-30.88;cell32-32.88
 cell30-32.88;30;0;32.88;1;False;Saida;;cell30-30.88;cell30-34.88;cell32-30.88;cell32-32.88;cell32-34.88
 cell30-34.88;30;0;34.88;1;False;Saida;;cell30-32.88;cell30-36.88;cell32-32.88;cell32-34.88;cell32-36.88
@@ -324,21 +324,21 @@ cell35.91-4.8;35.91;0;4.8;1;False;BaixoEsquerda;;cell35.91-2.8;cell35.91-6.8;cel
 cell35.91-6.8;35.91;0;6.8;1;False;BaixoEsquerda;;cell35.91-4.8;cell35.91-8.8;cell37.91-4.8;cell37.91-6.8;cell37.91-8.8
 cell35.91-8.8;35.91;0;8.8;1;False;BaixoEsquerda;;cell35.91-6.8;cell35.91-10.8;cell37.91-6.8;cell37.91-8.8;cell37.91-10.8
 cell35.91-10.8;35.91;0;10.8;1;False;BaixoEsquerda;;cell35.9-13.3;cell35.91-8.8;cell35.91-12.8;cell37.91-8.8;cell37.91-10.8;cell37.91-12.8
-cell35.91-12.8;35.91;0;12.8;1;False;BaixoEsquerda;;cell35.9-13.3;cell35.9-15.3;cell37.9-13.3;cell34.39-14.5;cell35.91-10.8;cell37.91-10.8;cell37.91-12.8
+cell35.91-12.8;35.91;0;12.8;1;False;BaixoEsquerda;;cell35.9-13.3;cell35.9-15.3;cell37.9-13.3;cell35.91-10.8;cell37.91-10.8;cell37.91-12.8
 cell37.91-0.8000002;37.91;0;0.7999997;1;False;BaixoEsquerda;;cell35.91-0.8000002;cell35.91-2.8;cell37.91-2.8
 cell37.91-2.8;37.91;0;2.8;1;False;BaixoEsquerda;;cell35.91-0.8000002;cell35.91-2.8;cell35.91-4.8;cell37.91-0.8000002;cell37.91-4.8
 cell37.91-4.8;37.91;0;4.8;1;False;BaixoEsquerda;;cell35.91-2.8;cell35.91-4.8;cell35.91-6.8;cell37.91-2.8;cell37.91-6.8
 cell37.91-6.8;37.91;0;6.8;1;False;BaixoEsquerda;;cell35.91-4.8;cell35.91-6.8;cell35.91-8.8;cell37.91-4.8;cell37.91-8.8
 cell37.91-8.8;37.91;0;8.8;1;False;BaixoEsquerda;;cell35.91-6.8;cell35.91-8.8;cell35.91-10.8;cell37.91-6.8;cell37.91-10.8;cell39.6-10.82;cell38.84-10.82
 cell37.91-10.8;37.91;0;10.8;1;False;BaixoEsquerda;;cell37.9-13.3;cell35.91-8.8;cell35.91-10.8;cell35.91-12.8;cell37.91-8.8;cell37.91-12.8;cell39.6-10.82;cell38.84-10.82
-cell37.91-12.8;37.91;0;12.8;1;False;BaixoEsquerda;;cell35.9-13.3;cell37.9-13.3;cell37.9-15.3;cell38.7-14.5;cell35.91-10.8;cell35.91-12.8;cell37.91-10.8;cell39.6-10.82;cell38.84-10.82
+cell37.91-12.8;37.91;0;12.8;1;False;BaixoEsquerda;;cell35.9-13.3;cell37.9-13.3;cell37.9-15.3;cell35.91-10.8;cell35.91-12.8;cell37.91-10.8;cell39.6-10.82;cell38.84-10.82
 cell41.1-11.82;41.1;0;11.82;1;False;BaixoEsquerdaMeioEscada;;cell40.7-14.5;cell41.1-13.82;cell39.6-10.82;cell41.6-10.82;cell38.84-10.82
 cell41.1-13.82;41.1;0;13.82;1;False;BaixoEsquerdaMeioEscada;;cell38.7-14.5;cell40.7-14.5;cell40.7-16.5;cell42.7-14.5;cell41.1-11.82
 cell39.6-10.82;39.6;0;10.82;1;False;BaixoEsquerdaMeioEscada2;cell5.45-67.75;cell37.91-8.8;cell37.91-10.8;cell37.91-12.8;cell41.1-11.82;cell41.6-10.82;cell38.84-10.82
 cell41.6-10.82;41.6;0;10.82;1;False;BaixoEsquerdaMeioEscada2;;cell41.1-11.82;cell39.6-10.82;cell38.84-10.82
 cell38.84-10.82;38.84;0;10.82;1;False;BaixoEsquerdaMeioEscada3;;cell37.9-13.3;cell37.91-8.8;cell37.91-10.8;cell37.91-12.8;cell41.1-11.82;cell39.6-10.82;cell41.6-10.82
 cell36.3-20.464;36.3;0;20.464;1;False;OutraEscada;;cell36.3-22.464;cell36.3-19.5
-cell36.3-22.464;36.3;0;22.464;1;False;OutraEscada;;cell34.19-23.24;cell36.19-23.24;cell38.19-23.24;cell36.3-20.464
+cell36.3-22.464;36.3;0;22.464;1;False;OutraEscada;;cell34.19-23.24;cell36.19-23.24;cell38.19-23.24;cell36.3-20.464;cell34.52-22.09
 cell36.3-19.5;36.3;0;19.5;1;False;OutraEscada2;;cell36.3-20.464;cell38.3-19.5
 cell38.3-19.5;38.3;0;19.5;1;False;OutraEscada2;cell0.455-67.5;cell36.3-19.5
 cell46.42-30.643;46.42;0;30.643;1;False;MeioDireitaSaida;;cell47.8-29.25;cell44-30.88;cell46-30.88;cell48-30.88

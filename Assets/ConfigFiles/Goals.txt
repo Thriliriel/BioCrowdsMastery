@@ -1,2 +1,12 @@
-1
-SaidaBoate,cell40-40.88
+11
+SaidaBoate,cell40-30.88
+RampaSuperiorEsquerdaG,cell36.3-19.5
+RampaSuperiorDireitaG,cell41.6-10.82
+RampaSubsoloDireita,cell48.8-2.959
+RampaSubsoloCentro,cell38.7-16.5
+RampaSubsoloEsquerdaSaida,cell30-32.88
+RampaSubsoloEsquerdaD,cell35.9-17.3
+RampaSubsoloTopCentro,cell40.19-23.24
+RampaSubsoloTopDireita,cell47.8-21.25
+SaidaBoate2,cell46-30.88
+SaidaBoate3,cell50-30.88

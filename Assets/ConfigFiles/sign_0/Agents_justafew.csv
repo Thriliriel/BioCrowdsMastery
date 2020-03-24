@@ -1,0 +1,22 @@
+#####################################################
+#file structure:
+#each pair os lines represents a group
+#
+#Example
+#
+#10 -> qnt of agents in the group
+#cell25-25;false;Goal1;0.359452;Goal2;0.0276675;Goal3;0.675362;Goal4;0.557535 -> INFOGROUP
+#
+#INFOGROUP -> Starting Cell, Are agents of this group Idle?, Pairs with Goal/Intention
+#
+#Goal -> Nearest = find the nearest goal
+#####################################################
+
+1
+cell30.39-14.5;false;SaidaBoate;0.1;RampaSuperiorEsquerdaG;0.1;RampaSuperiorDireitaG;0.1;RampaSubsoloDireita;0.1;RampaSubsoloCentro;0.1;RampaSubsoloEsquerdaSaida;0.1;RampaSubsoloEsquerdaD;0.1;RampaSubsoloTopCentro;0.1;RampaSubsoloTopDireita;0.1;SaidaBoate2;0.1;SaidaBoate3;0.1
+
+1
+cell31.9-20.22;false;SaidaBoate;0.1;RampaSuperiorEsquerdaG;0.1;RampaSuperiorDireitaG;0.1;RampaSubsoloDireita;0.1;RampaSubsoloCentro;0.1;RampaSubsoloEsquerdaSaida;0.1;RampaSubsoloEsquerdaD;0.1;RampaSubsoloTopCentro;0.1;RampaSubsoloTopDireita;0.1;SaidaBoate2;0.1;SaidaBoate3;0.1
+
+1
+cell65.7-29;false;SaidaBoate;0.1;RampaSuperiorEsquerdaG;0.1;RampaSuperiorDireitaG;0.1;RampaSubsoloDireita;0.1;RampaSubsoloCentro;0.1;RampaSubsoloEsquerdaSaida;0.1;RampaSubsoloEsquerdaD;0.1;RampaSubsoloTopCentro;0.1;RampaSubsoloTopDireita;0.1;SaidaBoate2;0.1;SaidaBoate3;0.1

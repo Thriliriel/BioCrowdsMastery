@@ -221,8 +221,19 @@ public class PathPlanningDClass {
         //else, it is a goal
         else
         {
-            neighCells = chosenNode.cell.GetComponent<GoalController>().GetCell()
-                .GetComponent<CellController>().neighborCells;
+            try
+            {
+                neighCells = chosenNode.cell.GetComponent<GoalController>().GetCell()
+                    .GetComponent<CellController>().neighborCells;
+            }
+            catch
+            {
+                Debug.Log(chosenNode.cell.name);
+                Debug.Log(chosenNode.cell.GetComponent<GoalController>());
+                Debug.Log(chosenNode.cell.GetComponent<GoalController>().GetCell());
+                Debug.Log(chosenNode.cell.GetComponent<GoalController>().GetCell().GetComponent<CellController>());
+                Debug.Log(chosenNode.cell.GetComponent<GoalController>().GetCell().GetComponent<CellController>().neighborCells);
+            }
         }
         //iterate through the neighbours of the cell
         foreach(GameObject neighbourCell in neighCells)
@@ -352,13 +363,19 @@ public class PathPlanningDClass {
                         //density confort: just sum up the qnt of agents on this cell node, * 10
                         //TO SEE: it gets cells which have agents in that instant, but agents may be still moving
                         newNode.dc = newNode.cell.GetComponent<CellController>().agents.Count * 10;
-
+                        
                         //f, just sums h with g
                         //new stuff: adds up the thermal comfort too
-                        //newNode.f = newNode.h + newNode.g;
-                        newNode.f = newNode.h + newNode.g + newNode.tc + newNode.dc;
+                        newNode.f = newNode.h + newNode.g;
+                        //deactivate comfort here
+                        //newNode.f = newNode.h + newNode.g + newNode.tc + newNode.dc;
                         //set the parent node
                         newNode.parent = chosenNode;
+
+                        if (newNode.cell.name == "cell0.455-67.5")
+                        {
+                            Debug.Log("Cost: " + newNode.f + " - " + newNode.h + " - " + newNode.g + " - " + newNode.tc);
+                        }
 
                         //add this node in the open list
                         nodesToCheck.Add(newNode);
@@ -380,6 +397,8 @@ public class PathPlanningDClass {
         //sum up and multiply by the weight (10)
         manhattanWay = (int)(differenceX + differenceZ) * 10;
 
-        return manhattanWay;
+        //problem with bridges. Just use 10 as default
+        //return manhattanWay;
+        return 10;
     }
 }

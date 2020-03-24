@@ -51,6 +51,9 @@ DensityComfort:False
 #default field of view
 FieldOfView:5
 
+#default interaction factor
+InteractionFactor:180
+
 #group parameters (just used if not using cultural parameters)
 Cohesion:3
 MeanSpeed:1.5
