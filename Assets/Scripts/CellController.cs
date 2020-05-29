@@ -301,12 +301,14 @@ public class CellController : MonoBehaviour {
     //find the neighbor cells
     public void FindNeighbor()
     {
+        GameObject[] allCells = GameObject.FindGameObjectsWithTag("Cell");
+
         neighborCells = new List<GameObject>();
 
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
         //for each cell, check if the distance is lower or equal the hyp of the drawn square between the center os the cells
-        foreach (GameObject cl in gameController.allCells)
+        foreach (GameObject cl in allCells)
         {
             float distance = Vector3.Distance(transform.position, cl.transform.position);
 
@@ -315,7 +317,7 @@ public class CellController : MonoBehaviour {
             {
                 //now, check if the distance is inside the boundaries 
                 //(for example: cellRadius = 1, max distance = sqrt(8) = 2.sqrt(2))
-                if (distance < Mathf.Sqrt(Mathf.Pow(gameController.cellRadius*2, 2) + 
+                if (distance <= 0.1f + Mathf.Sqrt(Mathf.Pow(gameController.cellRadius*2, 2) + 
                     Mathf.Pow(gameController.cellRadius * 2, 2)))
                 {
                     neighborCells.Add(cl);

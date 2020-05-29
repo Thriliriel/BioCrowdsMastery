@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 
 public class AgentController : MonoBehaviour {
-	//agent radius
+    //agent ifd
+    public int agentId;
+    //agent radius
 	public float agentRadius;
 	//agent speed
 	public Vector3 speed;

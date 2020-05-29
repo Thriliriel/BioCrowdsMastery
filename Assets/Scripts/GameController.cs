@@ -137,7 +137,10 @@ public class GameController : MonoBehaviour
     public float defaultFOV;
     //default interaction factor
     public int interactionFactor;
-
+    //frame from/to time-jump
+    public int frameToStop;
+    public int frameToJump;
+    public bool timeJumping;
 
     //all agents
     private GameObject[] allAgents;
@@ -184,11 +187,11 @@ public class GameController : MonoBehaviour
         GameObject[] allAgents = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject ag in allAgents)
         {
-            ag.GetComponent<AgentController>().CloseFile();
+            //ag.GetComponent<AgentController>().CloseFile();
         }
 
         //save the Rodolfo file
-        filesController.SaveFullFDFile(qntAgents);
+        //filesController.SaveFullFDFile(qntAgents);
 
         filesController.Finish();
     }
@@ -198,7 +201,7 @@ public class GameController : MonoBehaviour
     {
         //default useless value
         staticLookingFor = Vector3.zero;
-        Debug.Break();
+        //Debug.Break();
         interactionFactor = 1;
 
         //load master file
@@ -485,10 +488,17 @@ public class GameController : MonoBehaviour
             Debug.DrawLine(pathD[i].cell.transform.position, pathD[i + 1].cell.transform.position, Color.red);
         }*/
 
-        //if simulation should be running yet
-        if (!gameOver)
+        //if there is a time jump frame and we arrived at it, go!
+        if(frameToJump > 0 && frameToStop > 0 && frameToStop == Time.frameCount)
         {
-            //Debug.Log(Time.deltaTime);
+            JumpTime();
+            //Debug.Break();
+        }
+
+        //if simulation should be running yet and it is not time jumping
+        if (!gameOver && !timeJumping)
+        {
+            //Debug.Log(Time.frameCount);
 
             //update agents list
             allAgents = GameObject.FindGameObjectsWithTag("Player");
@@ -651,7 +661,7 @@ public class GameController : MonoBehaviour
 
                     //now, we check if agent is stuck with another agent
                     //if so, change places
-                    if (agentIController.speedModule < 0.001f)
+                    if (agentIController.speedModule < 0.001f && false)
                     {
                         Collider[] lockHit = Physics.OverlapSphere(agentI.transform.position, agentRadius);
                         bool hit = false;
@@ -1216,14 +1226,12 @@ public class GameController : MonoBehaviour
     //just find the neighbor cells
     public void FindNeighborCells()
     {
+        GameObject[] allCells = GameObject.FindGameObjectsWithTag("Cell");
+
         //get the neighbor cells
         foreach (GameObject cl in allCells)
         {
-            //to just create for the rooms with Rampas as parent
-            if (cl.GetComponent<CellController>().room.transform.parent.name == "Rampas")
-            {
-                cl.GetComponent<CellController>().FindNeighbor();
-            }
+            cl.GetComponent<CellController>().FindNeighbor();
         }
     }
 
@@ -1408,7 +1416,7 @@ public class GameController : MonoBehaviour
         StreamReader theReader = new StreamReader(Application.dataPath + Path.DirectorySeparatorChar + configFilename, System.Text.Encoding.Default);
 
         //parents
-        GameObject parentCells = GameObject.Find("Cells");
+        //GameObject parentCells = GameObject.Find("Cells");
 
         int qntCells = 0;
         // Create a new StreamReader, tell it which file to read and what encoding the file
@@ -1469,6 +1477,8 @@ public class GameController : MonoBehaviour
                                 //change his name
                                 newCell.name = entries[0];
 
+                                newCell.GetComponent<CellController>().isWall = false;
+
                                 bool pCollider = CheckObstacle(newCell.transform.position, "Obstacle", 0.1f);
                                 if (pCollider)
                                 {
@@ -1483,6 +1493,7 @@ public class GameController : MonoBehaviour
 
                                 //change parent
                                 newCell.transform.parent = GameObject.Find(entries[6]).transform;
+                                newCell.GetComponent<CellController>().room = newCell.transform.parent.gameObject;
 
                                 newCell.GetComponent<CellController>().neighborCells = new List<GameObject>();
                                 
@@ -1746,7 +1757,7 @@ public class GameController : MonoBehaviour
 
                         //full text
                         textToSave += entries[0] + ";" + entries[1] + ";" + entries[2] + ";" + entries[3]
-                            + ";" + entries[4] + ";" + entries[5] + ";" + entries[6];
+                            + ";" + entries[4] + ";" + entries[5] + ";" + entries[6] + ";" + entries[7];
 
                         //find this cell
                         GameObject cell = GameObject.Find(entries[0]);
@@ -2512,6 +2523,7 @@ public class GameController : MonoBehaviour
                 {
                     GameObject newAgent = Instantiate(agentPF[Random.Range(0, agentPF.Count)], new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
                     AgentController newAgentController = newAgent.GetComponent<AgentController>();
+                    newAgentController.agentId = i;
                     //change his name
                     newAgent.name = "agent" + controlQntAgents;
                     //open file
@@ -2971,6 +2983,7 @@ public class GameController : MonoBehaviour
         //Debug.Log(allCells.Length);
 
         int qntTries = 0;
+        
         //create the groups
         for (int i = 0; i < qntGroups; i++)
         {
@@ -3243,6 +3256,7 @@ public class GameController : MonoBehaviour
             {
                 GameObject newAgent = Instantiate(agentPF[Random.Range(0, agentPF.Count)], new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
                 AgentController newAgentController = newAgent.GetComponent<AgentController>();
+                newAgentController.agentId = i;
                 //change his name
                 newAgent.name = "agent" + i;
                 //open file
@@ -4022,5 +4036,114 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    //stop the time
+    private void JumpTime()
+    {
+        //time jumping
+        timeJumping = !timeJumping;
+
+        //save the CLIC file
+        StreamWriter file = File.CreateText(Application.dataPath + "/CLIC.txt");
+
+        file.WriteLine("AGENTS " + qntAgents);
+        file.WriteLine("DIAM_AG 0.456"); // What is this?
+        file.WriteLine("GROUPS " + qntGroups);
+        file.WriteLine("id GROUP FRAME VELO GOALX GOALY GOALZ POSITIONX POSITIONY POSITIONZ");
+
+        int idGroup = 0;
+        foreach (GameObject ag in allAgents)
+        {
+            file.WriteLine(ag.GetComponent<AgentController>().agentId + " " + idGroup + " " + Time.frameCount + " " + ag.GetComponent<AgentController>().speedModule * fixedStep + " " +
+                ag.GetComponent<AgentController>().go[0].transform.position.x + " " +
+                0 + " " +
+                ag.GetComponent<AgentController>().go[0].transform.position.z + " " + ag.transform.position.x + " " +
+                ag.transform.position.y + " " + ag.transform.position.z);
+
+            idGroup++;
+        }
+
+        file.WriteLine("");
+        file.WriteLine("ENVIRONMENT");
+        file.WriteLine("TOTAL_AREA " + scenarioSizeX * scenarioSizeZ); //this can be a problem is the environment is not uniform like, for example, Santa monica.
+        file.WriteLine("OBSTACLES 0"); //put obstacles later
+        //file.WriteLine("0 0.000 0.000 16.580 0.000 0.000 9.480 16.580 9.480"); // obs 1
+        //file.WriteLine("1 0.000 13.900 17.550 13.900 0.000 21.950 17.550 21.950"); // obs 2
+        file.WriteLine("");
+        file.WriteLine("WEIGHT_OBSTACLES 2.0"); //what is that??
+
+        file.Close();
+
+        //with the file saved, call the time machine to generate the file with the new positions
+        TimeMachine tm = new TimeMachine();
+        //start the attributes
+        tm.StartClass();
+        //set the frame to jump
+        tm.time = frameToJump;
+        //JUMP!
+        tm.JumpTime();
+
+        //place agents at its positions
+        StreamReader theReader = new StreamReader(Application.dataPath + "/CLIC.out", System.Text.Encoding.Default);
+        string line;
+
+        using (theReader)
+        {
+            int lineCount = 1;
+            bool reading = false;
+
+            // While there's lines left in the text file, do this:
+            do
+            {
+                line = theReader.ReadLine();
+                
+                if (line != null && line != "")
+                {
+                    //just start to read the positions when find the tag USING
+                    if (line.Contains("USING"))
+                    {
+                        reading = true;
+                        continue;
+                    }
+
+                    if (reading)
+                    {
+                        string[] info = line.Split(' ');
+
+                        //find the agent with this id
+                        foreach (GameObject ag in allAgents)
+                        {
+                            if (ag.GetComponent<AgentController>().agentId == int.Parse(info[0]))
+                            {
+                                Vector3 newPos = new Vector3(float.Parse(info[1]), float.Parse(info[2]), float.Parse(info[3]));
+                                ag.transform.position = newPos;
+                                ag.GetComponent<AgentController>().cornerPath.Clear();
+
+                                //we also need to update the cell of the agent
+                                int posX = Mathf.RoundToInt(newPos.x);
+                                int posZ = Mathf.RoundToInt(newPos.z);
+
+                                //if it is even, --
+                                if (posX % 2 == 0) posX--;
+                                if (posZ % 2 == 0) posZ--;
+
+                                ag.GetComponent<AgentController>().SetCell(GameObject.Find("cell" + posX + "-" + posZ));
+
+                                break;
+                            }
+                        }
+                    }
+
+                    lineCount++;
+                }
+            }
+            while (line != null);
+        }
+        //close file
+        theReader.Close();
+
+        //revert the time jumping
+        timeJumping = !timeJumping;
     }
 }

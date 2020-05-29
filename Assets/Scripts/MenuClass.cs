@@ -810,7 +810,7 @@ public class MenuClass : MonoBehaviour {
         StreamWriter file = File.CreateText(Application.dataPath + "/" + configFilename);
 
         //first, we save the terrain dimensions
-        file.WriteLine("terrainSize:" + envSizeX + "," + envSizeZ);
+        //file.WriteLine("terrainSize:" + envSizeX + "," + envSizeZ);
 
         //then, camera position and height
         file.WriteLine("camera:" + (envSizeX / 2) + "," + 10 + "," + (envSizeZ / 2) + "," + ((envSizeX + envSizeZ) / 2) / 2);
@@ -819,7 +819,7 @@ public class MenuClass : MonoBehaviour {
         GameObject[] allCells = GameObject.FindGameObjectsWithTag("Cell");
         if (allCells.Length > 0)
         {
-            //each line: name, positionx, positiony, positionz, cell radius
+            //each line: name, positionx, positiony, positionz, cell radius, isWall ("True", "False"), parent, bridge (""), neighbors
             //separated with ;
 
             file.WriteLine("qntCells:" + allCells.Length);
@@ -827,7 +827,7 @@ public class MenuClass : MonoBehaviour {
             for (int i = 0; i < allCells.Length; i++)
             {
                 file.WriteLine(allCells[i].name + ";" + allCells[i].transform.position.x + ";" + allCells[i].transform.position.y +
-                    ";" + allCells[i].transform.position.z + ";" + cellRadius);
+                    ";" + allCells[i].transform.position.z + ";" + cellRadius + ";" + "False" + ";" + "Square" + ";;");
             }
         }
 

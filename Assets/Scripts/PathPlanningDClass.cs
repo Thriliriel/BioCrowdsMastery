@@ -73,7 +73,8 @@ public class PathPlanningDClass {
             //if it is looking for, get the cell name
             if (destinationName == "LookingFor")
             {
-                destinationName = "cell" + destinationNode.cell.transform.position.x + "-" + destinationNode.cell.transform.position.z;
+                //destinationName = "cell" + destinationNode.cell.transform.position.x + "-" + destinationNode.cell.transform.position.z;
+                destinationName = destinationNode.cell.GetComponent<LFController>().cell.name;
             }
 
             //if arrived at destination, finished
@@ -140,7 +141,7 @@ public class PathPlanningDClass {
 
         //now the full path is ready, find only the corners
         List<NodeClass> cornerPath = FindPathCorners(path);
-
+        //Debug.Break();
         //return a list of the corner paths (index 0) and the full path (index 1)
         //return cornerPath;
         //return path;
@@ -251,6 +252,8 @@ public class PathPlanningDClass {
             }
         }
 
+        //Debug.Log("Chosen - " + chosenNode.cell.name);
+
         //done with this one
         nodesChecked.Add(chosenNode);
         nodesToCheck.Remove(chosenNode);
@@ -260,7 +263,6 @@ public class PathPlanningDClass {
     {
         //find the cell
         //GameObject neighbourCell = GameObject.Find("Cell" + i + "X" + j);
-        
 
         //if it exists..
         if (neighbourCell)
@@ -327,7 +329,7 @@ public class PathPlanningDClass {
                         NodeClass newNode = new NodeClass();
                         //initialize
                         newNode.cell = neighbourCell;
-                        newNode.g = 14;
+                        newNode.g = 10; //TODO: NEED TO SEE WHY 14 IS A PROBLEM HERE
                         //set its values
                         //h value
                         newNode.h = EstimateDestination(newNode);
@@ -371,11 +373,6 @@ public class PathPlanningDClass {
                         //newNode.f = newNode.h + newNode.g + newNode.tc + newNode.dc;
                         //set the parent node
                         newNode.parent = chosenNode;
-
-                        if (newNode.cell.name == "cell0.455-67.5")
-                        {
-                            Debug.Log("Cost: " + newNode.f + " - " + newNode.h + " - " + newNode.g + " - " + newNode.tc);
-                        }
 
                         //add this node in the open list
                         nodesToCheck.Add(newNode);

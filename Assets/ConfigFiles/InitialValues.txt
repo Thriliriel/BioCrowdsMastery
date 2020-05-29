@@ -18,12 +18,6 @@ MeanAgentAngVar:ConfigFiles/sign_0/MeanAgentAngVar.csv
 #Load file?
 LoadConfigFile:True
 
-#qnt agents
-QntAgents:1
-
-#qnt groups
-QntGroups:1
-
 #use Hofstede parameters?
 UseHofstede:False
 
@@ -37,10 +31,10 @@ UseFavaretto:False
 PaintHeatMap:False
 
 #use exploratory behavior?
-ExploratoryBehavior:True
+ExploratoryBehavior:False
 
 #use group behavior?
-GroupBehavior:False
+GroupBehavior:True
 
 #use thermal comfort?
 ThermalComfort:False
@@ -52,7 +46,7 @@ DensityComfort:False
 FieldOfView:5
 
 #default interaction factor
-InteractionFactor:180
+InteractionFactor:1
 
 #group parameters (just used if not using cultural parameters)
 Cohesion:3

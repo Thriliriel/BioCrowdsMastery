@@ -11,7 +11,7 @@ public class EditorController : Editor {
         var rect = GUILayoutUtility.GetRect(500, 40);
 
         //pre process for set all cells and obstacles
-        if (GUI.Button(rect, "Pre-Process"))
+        /*if (GUI.Button(rect, "Pre-Process"))
         {
             PreProccess();
         }
@@ -20,7 +20,7 @@ public class EditorController : Editor {
         if (GUI.Button(rect, "Save Config File"))
         {
             SaveConfigFile();
-        }
+        }*/
 
         rect = GUILayoutUtility.GetRect(500, 40);
         if (GUI.Button(rect, "Find Neigh Cells"))
@@ -34,11 +34,11 @@ public class EditorController : Editor {
             UpdateNeighbors();
         }
 
-        rect = GUILayoutUtility.GetRect(500, 40);
+        /*rect = GUILayoutUtility.GetRect(500, 40);
         if (GUI.Button(rect, "Save Random Agents"))
         {
             SaveRandomAgents();
-        }
+        }*/
 
         rect = GUILayoutUtility.GetRect(500, 40);
         if (GUI.Button(rect, "Load Goals"))
@@ -53,6 +53,12 @@ public class EditorController : Editor {
         }
 
         rect = GUILayoutUtility.GetRect(500, 40);
+        if (GUI.Button(rect, "Load Cells"))
+        {
+            LoadCells();
+        }
+
+        /*rect = GUILayoutUtility.GetRect(500, 40);
         if (GUI.Button(rect, "Fix FD File"))
         {
             FixFDFile();
@@ -62,7 +68,7 @@ public class EditorController : Editor {
         if (GUI.Button(rect, "Calculate Metrics"))
         {
             CalculateMetrics();
-        }
+        }*/
     }
 
     public void SaveConfigFile()
@@ -93,6 +99,11 @@ public class EditorController : Editor {
     public void LoadObstacles()
     {
         (target as GameController).LoadObstacles();
+    }
+
+    public void LoadCells()
+    {
+        (target as GameController).LoadCellsAuxins();
     }
 
     public void PreProccess() {

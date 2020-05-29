@@ -82,14 +82,23 @@
     <Compile Include="Assets\Scripts\RoomController.cs" />
     <Compile Include="Assets\Scripts\SerializableDictionary.cs" />
     <Compile Include="Assets\Scripts\SignController.cs" />
+    <Compile Include="Assets\Scripts\TimeMachine.cs" />
     <None Include="Assets\ConfigFiles\Goals.txt" />
-    <None Include="Assets\ConfigFiles\Goals_meu.txt" />
+    <None Include="Assets\Dens0.5.txt" />
+    <None Include="Assets\Dens2.txt" />
+    <None Include="Assets\Dens2.25.txt" />
+    <None Include="Assets\Dens1.25.txt" />
     <None Include="Assets\ConfigFiles\SimulationIterator.txt" />
+    <None Include="Assets\Dens1.5.txt" />
+    <None Include="Assets\Dens1.75.txt" />
     <None Include="Assets\ConfigFiles\FrameCount.txt" />
+    <None Include="Assets\Dens1.txt" />
     <None Include="Assets\RodolfoFile.txt" />
+    <None Include="Assets\Dens0.75.txt" />
+    <None Include="Assets\CLIC.txt" />
     <None Include="Assets\newRodolfoFile.txt" />
-    <None Include="Assets\ConfigFiles\Goals_Original.txt" />
     <None Include="Assets\ConfigFiles\InitialValues.txt" />
+    <None Include="Assets\Dens0.25.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Docs/UnityProjects/BioCrowds/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
